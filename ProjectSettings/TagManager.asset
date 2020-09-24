@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Animal
+  - Enemy
+  - Collide
   layers:
   - Default
   - TransparentFX
@@ -13,12 +16,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerAttack
+  - EnemyAttack
+  - Player
+  - Friend
+  - Enemy
+  - Item
   - 
   - 
   - 
