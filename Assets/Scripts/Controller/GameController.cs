@@ -41,4 +41,39 @@ namespace Controller
 
         #endregion
     }
+    
+
+
+
+    public sealed class MainController : MonoBehaviour
+    {
+        [SerializeField] private PlayerData _playerData;
+        [SerializeField] private EnemyData _enemyData;
+        private List<IUpdateble> _iIdpatables = new List<IUpdateble>();
+
+        private void Start()
+        {
+            new InitializeController(this);
+        }
+    }
+
+    internal class InitializeController
+    {
+        public InitializeController(MainController mainController)
+        {
+            
+        }
+    }
+
+    internal interface IUpdateble
+    {
+    }
+
+    internal class EnemyData
+    {
+    }
+
+    internal class PlayerData
+    {
+    }
 }
