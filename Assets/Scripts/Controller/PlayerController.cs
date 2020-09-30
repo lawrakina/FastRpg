@@ -1,6 +1,5 @@
 ﻿using Controller.TimeRemaining;
 using Interface;
-using Model;
 using Model.Player;
 using Model.Weapons;
 using UnityEngine;
@@ -12,6 +11,7 @@ namespace Controller
         #region Fields
 
         private PlayerModel _playerModel;
+        private FairyComponent _fairyComponent; 
 
         #endregion
 
@@ -22,6 +22,7 @@ namespace Controller
         {
             base.On();
             _playerModel = Object.FindObjectOfType<PlayerModel>();
+            _fairyComponent = Object.FindObjectOfType<FairyComponent>();
         }
 
         #endregion
@@ -38,6 +39,7 @@ namespace Controller
             }
 
             _playerModel.Execute();
+            _fairyComponent.Execute();
 
             // UiInterface.PlayerXpUiText.Text = _playerModel.Hp;
             // UiInterface.PlayerXpUiBar.Fill = _playerModel.PercentXp;
