@@ -25,6 +25,7 @@ namespace Model
             private bool _attack;
             private int _weaponType;
             private int _attackType;
+            private float _speed;
 
             public bool Battle
             {
@@ -47,6 +48,16 @@ namespace Model
                 {
                     _move = value;
                     _animator.SetBool(TagManager.ANIMATOR_PARAM_MOVE, value);
+                }
+            }
+
+            public float Speed
+            {
+                get => _speed;
+                set
+                {
+                    _speed = value;
+                    _animator.SetFloat(TagManager.ANIMATOR_PARAM_SPEED, value);
                 }
             }
 
@@ -153,6 +164,7 @@ namespace Model
         [HideInInspector] public bool CashKinematicRigidBody;
         [HideInInspector] public Animator CashAnimator;
         [HideInInspector] public AnimatorParammeters AnimatorParams;
+        [HideInInspector] public SoundPlayer SoundPlayer;
 
         #endregion
 
@@ -202,6 +214,8 @@ namespace Model
 
             CashAnimator = GetComponentInChildren<Animator>();
             AnimatorParams = new AnimatorParammeters(ref CashAnimator);
+
+            SoundPlayer = GetComponentInChildren<SoundPlayer>();
         }
 
         #endregion

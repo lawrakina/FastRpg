@@ -10,6 +10,7 @@
 
         public static string ANIMATOR_PARAM_BATTLE = "Battle";
         public static string ANIMATOR_PARAM_MOVE = "Move";
+        public static string ANIMATOR_PARAM_SPEED = "Speed";
         public static string ANIMATOR_PARAM_WEAPON_TYPE = "WeaponType";
         public static string ANIMATOR_PARAM_ATTACK_TYPE = "AttackType";
         public static string ANIMATOR_PARAM_ATTACK_TRIGGER = "Attack";

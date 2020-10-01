@@ -15,10 +15,10 @@ namespace Controller
         // private KeyCode _cancel = KeyCode.Escape;
         // private KeyCode _reloadClip = KeyCode.R;
         // private KeyCode _removeWeapon = KeyCode.T;
-        // private KeyCode _selectWeapon1 = KeyCode.Alpha1;
-        // private KeyCode _selectWeapon2 = KeyCode.Alpha2;
-        // private KeyCode _selectWeapon3 = KeyCode.Alpha3;
-        // private KeyCode _selectWeapon4 = KeyCode.Alpha4;
+        private KeyCode _selectWeapon1 = KeyCode.Alpha1;
+        private KeyCode _selectWeapon2 = KeyCode.Alpha2;
+        private KeyCode _selectWeapon3 = KeyCode.Alpha3;
+        private KeyCode _selectWeapon4 = KeyCode.Alpha4;
         // private int _mouseButton = (int)MouseButton.LeftButton;
         private Vector3 _inputVector;
 
@@ -76,12 +76,29 @@ namespace Controller
             //     MouseScroll(MouseScrollWheel.Down);
             // }
 
-            //_inputVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            _inputVector = new Vector3(
-                UltimateJoystick.GetHorizontalAxis("Movement"),
-                0.0f,
-                UltimateJoystick.GetVerticalAxis("Movement"));
+            _inputVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            // _inputVector = new Vector3(
+            //     UltimateJoystick.GetHorizontalAxis("Movement"),
+            //     0.0f,
+            //     UltimateJoystick.GetVerticalAxis("Movement"));
             ServiceLocator.Resolve<PlayerController>().Move(_inputVector);
+
+            if (Input.GetKeyDown(_selectWeapon1))
+            {
+                ServiceLocator.Resolve<InputController>().EquipWeapon(0);
+            }
+            if (Input.GetKeyDown(_selectWeapon2))
+            {
+                ServiceLocator.Resolve<InputController>().EquipWeapon(1);
+            }
+            if (Input.GetKeyDown(_selectWeapon3))
+            {
+                ServiceLocator.Resolve<InputController>().EquipWeapon(21);
+            }
+            if (Input.GetKeyDown(_selectWeapon4))
+            {
+                ServiceLocator.Resolve<InputController>().EquipWeapon(23);
+            }
         }
 
         #endregion

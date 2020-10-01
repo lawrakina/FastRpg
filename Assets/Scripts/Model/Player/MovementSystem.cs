@@ -28,6 +28,9 @@ namespace Model.Player
             set
             {
                 _speed = value;
+
+                _owner.AnimatorParams.Speed = value;
+                
                 if (_speed > 0.1f)
                     _owner.AnimatorParams.Move = true;
                 else
@@ -69,7 +72,7 @@ namespace Model.Player
         public void Move(Vector3 moveVector)
         {
             _owner.CashNavMeshAgent.enabled = false;
-            Speed = moveVector.magnitude;
+            Speed = moveVector.magnitude * _moveSpeed;
             // if (CashCharacterController.isGrounded)
             // {
             // CashAnimator.ResetTrigger($"Jump");

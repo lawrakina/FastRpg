@@ -39,6 +39,7 @@ namespace Controller
             ServiceLocator.SetService(new InventoryController());
             ServiceLocator.SetService(new BotController());
             ServiceLocator.SetService(new PoolController());
+            ServiceLocator.SetService(new AudioController());
 
             _executeControllers = new IExecute[5];
             _executeControllers[0] = ServiceLocator.Resolve<TimeRemainingController>();
@@ -66,14 +67,17 @@ namespace Controller
                     initialization.Initialization();
                 }
             }
+            
+            Transform gameControllerTransform = Object.FindObjectOfType<GameController>().transform;
 
             ServiceLocator.Resolve<InventoryController>().Initialization();
             ServiceLocator.Resolve<InputController>().On();
-            // ServiceLocator.Resolve<SelectionController>().On();
-            // ServiceLocator.Resolve<PlayerController>().On();
             ServiceLocator.Resolve<PlayerController>().Initialization();
             ServiceLocator.Resolve<BotController>().On();
-            ServiceLocator.Resolve<PoolController>().Init(Object.FindObjectOfType<GameController>().transform);
+            ServiceLocator.Resolve<PoolController>().Init(gameControllerTransform);
+            ServiceLocator.Resolve<AudioController>().Initialization(gameControllerTransform);
+            // ServiceLocator.Resolve<SelectionController>().On();
+            // ServiceLocator.Resolve<PlayerController>().On();
         }
 
         #endregion

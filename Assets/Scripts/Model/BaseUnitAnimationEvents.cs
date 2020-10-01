@@ -12,11 +12,13 @@ namespace Model
         #region Fields
 
         private PlayerModel _unitModel;
+        private SoundPlayer _soundPlayer;
 
         #endregion
         private void Start()
         {
             _unitModel = GetComponent<PlayerModel>();
+            _soundPlayer = GetComponentInChildren<SoundPlayer>();
         }
 
         public void Hit()
@@ -33,11 +35,13 @@ namespace Model
         public void FootR()
         {
             Dbg.Log($"BaseUnitAnimationEvents.FootR");
+            _soundPlayer.PlayStepFoot();
         }
 
         public void FootL()
         {
             Dbg.Log($"BaseUnitAnimationEvents.FootL");
+            _soundPlayer.PlayStepFoot();
         }
     }
 }

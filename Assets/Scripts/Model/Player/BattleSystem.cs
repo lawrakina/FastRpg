@@ -1,4 +1,5 @@
-﻿using Controller.TimeRemaining;
+﻿using Controller;
+using Controller.TimeRemaining;
 using Helper;
 using Interface;
 using Manager;
@@ -79,6 +80,9 @@ namespace Model.Player
                     _isEnabledTimer = true;
                     _owner.AnimatorParams.AttackType = Weapon.RandomVariantAttack;
                     _owner.AnimatorParams.SetTriggerAttack();
+
+                    // ServiceLocator.Resolve<AudioController>().PlaySwordAttack();
+                    _owner.SoundPlayer.PlaySwordAttack();
                     Dbg.Log($"BattleSystem.Attack.SetTriggers");
                 }
             }

@@ -39,7 +39,8 @@ namespace Controller
             }
 
             _playerModel.Execute();
-            _fairyComponent.Execute();
+            if(_fairyComponent)
+                _fairyComponent.Execute();
 
             // UiInterface.PlayerXpUiText.Text = _playerModel.Hp;
             // UiInterface.PlayerXpUiBar.Fill = _playerModel.PercentXp;
@@ -70,6 +71,11 @@ namespace Controller
         public void EquipWeapon(Weapon weapon)
         {
             _playerModel.EquipmentSystem.Equip(weapon);
+        }
+
+        public SoundPlayer GetSoundPlayer()
+        {
+            return _playerModel.SoundPlayer;
         }
 
     }

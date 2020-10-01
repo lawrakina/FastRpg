@@ -27,7 +27,7 @@ MonoBehaviour:
   foamNoiseScaleHQ: 2.78
   foamNoiseSpeedHQ: 1
   shorelineFoamStrength: 1
-  crestFoamStrength: 0.433
+  crestFoamStrength: 0.479
   crestMaxDepth: 10
   slopeFoamStrength: 0.5
   slopeFoamFlowSpeed: 20
@@ -36,12 +36,12 @@ MonoBehaviour:
   rippleHeight: 1
   rippleSpeed: 3
   rippleNoiseScale: 1
-  enableWave: 0
+  enableWave: 1
   waveDirection: 39
   waveSpeed: 2.87
   waveHeight: 0.12
   waveLength: 32.55
-  waveSteepness: 0
+  waveSteepness: 0.013
   waveDeform: 0.257
   fresnelStrength: 0
   fresnelBias: 0

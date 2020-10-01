@@ -24,6 +24,12 @@ namespace Controller
             SearchPlayer();
         }
 
+        public AudioSource GetAudioSourceCamera()
+        {
+            var result = _cameraModel.GetComponentInChildren<AudioSource>();
+            return result;
+        }
+
         private void SearchPlayer()
         {
             _playerTransform = Object.FindObjectOfType<PlayerModel>().Transform;

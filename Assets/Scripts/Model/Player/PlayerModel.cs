@@ -10,6 +10,7 @@ namespace Model.Player
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(BaseUnitAnimationEvents))]
+    [RequireComponent(typeof(SoundPlayer))]
     public sealed class PlayerModel : BaseUnitModel, ICollision
     {
         #region Fields

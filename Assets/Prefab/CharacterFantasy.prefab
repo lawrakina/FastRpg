@@ -22818,6 +22818,8 @@ GameObject:
   - component: {fileID: 1730185710}
   - component: {fileID: 1730185709}
   - component: {fileID: 2756852361770945349}
+  - component: {fileID: 486182792}
+  - component: {fileID: 486182784}
   m_Layer: 10
   m_Name: CharacterFantasy
   m_TagString: Player
@@ -22855,7 +22857,7 @@ Animator:
   m_GameObject: {fileID: 1326728806038226}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 038320a534bd8b444b43734860d1a211, type: 3}
-  m_Controller: {fileID: 9100000, guid: 27370b6c97d7a654684e20edd23bd29f, type: 2}
+  m_Controller: {fileID: 9100000, guid: e1ab0b95ad3913a488910dbf421c0254, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -22954,13 +22956,14 @@ MonoBehaviour:
   CashNavMeshAgent: {fileID: 0}
   CashKinematicRigidBody: 0
   CashAnimator: {fileID: 0}
+  SoundPlayer: {fileID: 0}
   MovementSystem:
     _moveSpeed: 5
   VisionSystem:
     _battleDistance: 10
     SqrDistanceToTarget: 0
     Target: {fileID: 0}
-    _updatePeriodVisibility: 1
+    _updatePeriodVisibility: 0.22
     EnemiesLayerMask:
       serializedVersion: 2
       m_Bits: 4096
@@ -22986,11 +22989,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326728806038226}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72a4b6b4f114f19bed2f41ff46ad16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &486182792
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326728806038226}
+  m_Enabled: 1
+--- !u!114 &486182784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326728806038226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8803643af45f0414985dc8e7f41e36c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stepFoot: {fileID: 8300000, guid: 135b368fed185a04e83eba0b98e2d1e1, type: 3}
+  _attackSword: {fileID: 8300000, guid: 349fb36b320792f4f93f9746f84f89e0, type: 3}
+  _attack2HandAxe: {fileID: 8300000, guid: 3eb2a461e44bc6148b8da4f1811d02c2, type: 3}
 --- !u!1 &1327316723846306
 GameObject:
   m_ObjectHideFlags: 0
