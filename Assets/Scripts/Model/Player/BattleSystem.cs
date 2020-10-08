@@ -62,6 +62,8 @@ namespace Model.Player
 
         public void Attack(BaseUnitModel target)
         {
+            if(target == null) return;
+            
             _timerDisableBattleState.RemoveTimeRemainingExecute();
             
             Dbg.Log($"BattleSystem.Attack");

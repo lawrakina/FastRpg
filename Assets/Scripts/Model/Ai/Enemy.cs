@@ -72,7 +72,10 @@ namespace Model.Ai
         {
             Dbg.Log($"{name}: StateUnit:{StateUnit}, StateEnemy:{StateEnemy}");
             base.Execute();
-            if (StateUnit == StateUnit.Died) return;
+            if (StateUnit == StateUnit.Died)
+            {
+                return;
+            }
 
             if (StateUnit == StateUnit.Idle)
             {
@@ -87,7 +90,7 @@ namespace Model.Ai
                         if (StateEnemy == StateEnemy.Inspection)
                         {
                             StateEnemy = StateEnemy.Patrol;
-                            _point = Patrol.GenericPoint(transform);//todo сделать генерацию валидной точки
+                            _point = Patrol.GenericPoint(transform); //todo сделать генерацию валидной точки
                             Agent.stoppingDistance = _patrolStoppingDistance;
                         }
                         else
@@ -203,23 +206,26 @@ namespace Model.Ai
 
             if (Hp <= 0)
             {
+                var ragBoll = GetComponent<RagdollController>();
+                ragBoll.Kill(info.Direction);
                 StateUnitDied();
                 Agent.enabled = false;
                 foreach (var child in GetComponentsInChildren<Transform>())
                 {
-                    child.parent = null;
-
-                    var tempRbChild = child.GetComponent<Rigidbody>();
-                    if (!tempRbChild)
-                    {
-                        tempRbChild = child.gameObject.AddComponent<Rigidbody>();
-                    }
-
-                    tempRbChild.isKinematic = false;
-                    tempRbChild.AddForce(info.Direction * Random.Range(10, 20));
-
-                    Destroy(child.gameObject, 10);
+                //     child.parent = null;
+                //
+                //     var tempRbChild = child.GetComponent<Rigidbody>();
+                //     if (!tempRbChild)
+                //     {
+                //         tempRbChild = child.gameObject.AddComponent<Rigidbody>();
+                //     }
+                //
+                //     tempRbChild.isKinematic = false;
+                //     tempRbChild.AddForce(info.Direction * Random.Range(10, 20));
+                //
+                    Destroy(child.gameObject, 2);
                 }
+                Destroy(GetComponent<Enemy>());
 
                 OnDieChange?.Invoke(this);
             }

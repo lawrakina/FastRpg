@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace Model
 {
-    [RequireComponent(typeof(PlayerModel))]
     public class BaseUnitAnimationEvents : MonoBehaviour
     {
         #region Fields

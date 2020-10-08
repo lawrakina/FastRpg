@@ -17,7 +17,7 @@ namespace Controller
         #region Fields
 
         private int _countBot;
-        private readonly List<Bot> _botList = new List<Bot>();
+        private readonly List<BaseUnitModel> _botList = new List<BaseUnitModel>();
         private List<EnemyRespawn> _respawns = new List<EnemyRespawn>();
         private List<Enemy> _enemies = new List<Enemy>();
 
@@ -118,7 +118,7 @@ namespace Controller
             }
         }
 
-        private void RemoveBotToList(Bot bot)
+        private void RemoveBotToList(BaseUnitModel bot)
         {
             if (!_botList.Contains(bot))
             {

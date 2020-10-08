@@ -126,5 +126,12 @@ namespace Controller
             weapon.transform.position = _inventoryModel.Transform.position; 
             return true;
         }
+
+        public void AddItem(GameObject item)
+        {
+            var weapon = item.GetComponent<Weapon>();
+            _weapons.Add(weapon);
+            
+        }
     }
 }

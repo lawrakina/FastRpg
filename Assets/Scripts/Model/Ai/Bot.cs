@@ -28,7 +28,6 @@ namespace Model.Ai
         private float _deltaTimeMoving = 0.0f;
         private float _timeToMoving = 5.0f;
 
-        public event Action<Bot> OnDieChange;
         private ITimeRemaining _timeRemaining;
 
         public StateBot StateBot
@@ -105,7 +104,8 @@ namespace Model.Ai
         public override void Execute()
         {
             base.Execute();
-            
+
+            if (StateUnit == StateUnit.Died) StateBot = StateBot.Died;
             if (StateBot == StateBot.Died) return;
 
             if (StateBot != StateBot.Detected)
@@ -186,39 +186,7 @@ namespace Model.Ai
         {
             StateBot = StateBot.None;
         }
-
-        private void SetDamage(InfoCollision info)
-        {
-            //todo реакциия на попадание  
-            if (Hp > 0)
-            {
-                Hp -= info.Damage;
-            }
-
-            if (Hp <= 0)
-            {
-                StateBot = StateBot.Died;
-                Agent.enabled = false;
-                foreach (var child in GetComponentsInChildren<Transform>())
-                {
-                    child.parent = null;
-
-                    var tempRbChild = child.GetComponent<Rigidbody>();
-                    if (!tempRbChild)
-                    {
-                        tempRbChild = child.gameObject.AddComponent<Rigidbody>();
-                    }
-
-                    tempRbChild.isKinematic = false;
-                    tempRbChild.AddForce(info.Direction * Random.Range(10, 20));
-
-                    Destroy(child.gameObject, 10);
-                }
-
-                OnDieChange?.Invoke(this);
-            }
-        }
-
+        
         #endregion
         
         

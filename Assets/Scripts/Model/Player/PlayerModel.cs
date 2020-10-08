@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller;
 using Controller.TimeRemaining;
 using Helper;
 using Interface;
@@ -8,9 +9,11 @@ using UnityEngine.AI;
 
 namespace Model.Player
 {
+    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(BaseUnitAnimationEvents))]
     [RequireComponent(typeof(SoundPlayer))]
+
     public sealed class PlayerModel : BaseUnitModel, ICollision
     {
         #region Fields
@@ -108,6 +111,11 @@ namespace Model.Player
         {
             base.StateUnitBattle();
             EquipmentSystem.UnsheathWeapons();
+        }
+
+        public void PickUpItem(GameObject item)
+        {
+            ServiceLocator.Resolve<InventoryController>().AddItem(item);
         }
     }
 }

@@ -6,6 +6,7 @@ using Interface;
 using Manager;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
 namespace Model
@@ -139,6 +140,14 @@ namespace Model
 
         #region Fields
 
+        [SerializeField] private string _nameAttachPointLeftHand = "Hand_L";
+        [SerializeField] private Vector3 _offsetAttachPointLeftHand = new Vector3(-10f, -2f, 0f);
+        private Transform _leftHand;
+        [SerializeField] private string _nameAttachPointRightHand = "Hand_R";
+        [SerializeField] private Vector3 _offsetAttachPointRightHand = new Vector3(10f, 2f, 0f);
+        private Transform _rightHand;
+        private Transform[] _gameObjects;
+
         [SerializeField] protected float _hp = 100;
         [SerializeField] protected float _maxHp = 100;
         private protected StateUnit _state;
@@ -166,6 +175,8 @@ namespace Model
         [HideInInspector] public AnimatorParammeters AnimatorParams;
         [HideInInspector] public SoundPlayer SoundPlayer;
 
+        public event Action<BaseUnitModel> OnDieChange;
+        
         #endregion
 
 
@@ -216,6 +227,31 @@ namespace Model
             AnimatorParams = new AnimatorParammeters(ref CashAnimator);
 
             SoundPlayer = GetComponentInChildren<SoundPlayer>();
+
+            FindAttachPoints();
+        }
+
+        private void FindAttachPoints()
+        {
+            _gameObjects = GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < _gameObjects.Length; i++)
+            {
+                if (_gameObjects[i].name == _nameAttachPointLeftHand)
+                {
+                    var go = Instantiate(new GameObject(), _gameObjects[i], false);
+                    _leftHand = go.transform;
+                    _leftHand.name = "_leftHand";
+                    _leftHand.localPosition = _offsetAttachPointLeftHand;
+                }
+                else if (_gameObjects[i].name == _nameAttachPointRightHand)
+                {
+                    var go = Instantiate(new GameObject(), _gameObjects[i], false);
+                    _rightHand = go.transform;
+                    _rightHand.name = "_rightHand";
+                    _rightHand.localPosition = _offsetAttachPointRightHand;
+                }
+            }
         }
 
         #endregion
@@ -288,6 +324,39 @@ namespace Model
                 Hp += delta;
             }
         }
+        
+        protected void SetDamage(InfoCollision info)
+        {
+            //todo реакциия на попадание  
+            if (Hp > 0)
+            {
+                Hp -= info.Damage;
+            }
+
+            if (Hp <= 0)
+            {
+                StateUnit = StateUnit.Died;
+                CashNavMeshAgent.enabled = false;
+                foreach (var child in GetComponentsInChildren<Transform>())
+                {
+                    child.parent = null;
+
+                    var tempRbChild = child.GetComponent<Rigidbody>();
+                    if (!tempRbChild)
+                    {
+                        tempRbChild = child.gameObject.AddComponent<Rigidbody>();
+                    }
+
+                    tempRbChild.isKinematic = false;
+                    tempRbChild.AddForce(info.Direction * Random.Range(10, 20));
+
+                    Destroy(child.gameObject, 10);
+                }
+
+                OnDieChange?.Invoke(this);
+            }
+        }
+
 
         public virtual void Execute()
         {

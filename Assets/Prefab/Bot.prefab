@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3238200231706487537}
   - component: {fileID: 4603370118957609811}
   - component: {fileID: 2572957663073334019}
-  m_Layer: 23
+  m_Layer: 12
   m_Name: Bot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -207,12 +207,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 0}
   Transform: {fileID: 0}
+  _nameAttachPointLeftHand: Hand_L
+  _offsetAttachPointLeftHand: {x: -10, y: -2, z: 0}
+  _nameAttachPointRightHand: Hand_R
+  _offsetAttachPointRightHand: {x: 10, y: 2, z: 0}
   _hp: 100
   _maxHp: 100
   CashCharacterController: {fileID: 0}
   CashNavMeshAgent: {fileID: 0}
   CashKinematicRigidBody: 0
   CashAnimator: {fileID: 0}
+  SoundPlayer: {fileID: 0}
   Vision:
     ActiveDis: 21
     ActiveAng: 90
