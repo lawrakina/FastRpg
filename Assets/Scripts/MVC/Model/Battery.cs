@@ -2,11 +2,11 @@
 using Controller;
 using Helper;
 using Interface;
-using Manager;
+using MVC.Manager;
 using UnityEngine;
 
 
-namespace Model
+namespace MVC.Model
 {
     public sealed class Battery : MonoBehaviour, ISelectObj
     {

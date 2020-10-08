@@ -1,12 +1,12 @@
-﻿namespace Manager
+﻿namespace MVC.Manager
 {
     public static class TagManager
     {
-        // public static string PLAYER = "Player";
-        // public static string AX_HORIZONTAL = "Horizontal";
-        // public static string AX_VERTICAL = "Vertical";
-        // public static string LAYER_MASK_ENVIRONMENT = "Environment";
-        // public static string LAYER_MASK_UNITS = "Units";
+        public static string PLAYER = "Player";
+        public static string AX_HORIZONTAL = "Horizontal";
+        public static string AX_VERTICAL = "Vertical";
+        public static string LAYER_MASK_ENVIRONMENT = "Environment";
+        public static string LAYER_MASK_UNITS = "Units";
 
         public static string ANIMATOR_PARAM_BATTLE = "Battle";
         public static string ANIMATOR_PARAM_MOVE = "Move";
