@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Initializer;
+using Initializator;
 using Interface;
-using Model;
 using UnityEngine;
 
 
@@ -37,15 +36,17 @@ namespace Controller
         private void Start()
         {
             _services = new Services(this);
-            _gameContext = new GameContext();
-            _gameContext.PlayerData = _playerData;
-            _gameContext.Camera = _mainCamera;
+            _gameContext = new GameContext
+            {
+                PlayerData = _playerData,
+            };
+            // _gameContext.Camera = _mainCamera;
             
-            new TimeRemainingInitializator(_services);
+            // new TimeRemainingInitializator(_services);
             // new InputInitializator(services);
             // new PoolInitializator(services, _gameContext);
-            new PlayerInitializator(_services, _gameContext);
-            // new ThirdCameraInitializator(services, _gameContext);
+            // new PlayerInitializator(_services, _gameContext);
+            new ThirdCameraInitializator(_services, _gameContext);
         }
         
         private void Update()

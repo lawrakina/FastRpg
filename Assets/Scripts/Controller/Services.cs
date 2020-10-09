@@ -8,7 +8,7 @@
         // public PoolController PoolController { get; set; }
         public InputController InputController { get; set; }
         public PlayerController PlayerController { get; set; }
-        public ThirdCameraController ThirdCameraController { get; set; }
+        // public ThirdCameraController ThirdCameraController { get; set; }
         // public InventoryController InventoryController { get; set; }
 
         #endregion

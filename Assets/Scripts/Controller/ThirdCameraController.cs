@@ -1,36 +1,39 @@
-﻿using Interface;
+﻿using Components;
+using Interface;
+using UnityEngine;
+
 
 namespace Controller
 {
     public sealed class ThirdCameraController: IUpdated
     {
         #region Fields
-
-        private CameraModel _cameraModel;
+    
+        private CameraComponent _cameraComponent;
         private Transform _target;
-
+    
         #endregion
-
-        public ThirdCameraController()
+    
+        public ThirdCameraController(CameraComponent camera, GameContext context)
         {
-            _cameraModel = Object.FindObjectOfType<CameraModel>();
-            _target = _context
-            SearchPlayer();
+            _cameraComponent = camera;
+            _target = context.PlayerData.PlayerStruct.Player.transform;
         }
         
         #region UnityMethods
         
-        private void SearchPlayer()
-        {
-            _target = Object.FindObjectOfType<PlayerModel>().Transform;
-            _cameraModel.SetTargetTransform(_target);
-        }
-
+        // public void SearchPlayer()
+        // {
+        //     _target = Object.FindObjectOfType<PlayerComponent>().Transform;
+        //     if(_target)
+        //         _cameraComponent.SetTargetTransform(_target);
+        // }
+    
         #endregion
-
+    
         public void UpdateTick()
         {
-            _cameraModel.Execute();
+            _cameraComponent.UpdateTick();
         }
     }
 }
