@@ -5,7 +5,7 @@ using UnityEngine;
 using Cursor = UnityEngine.Cursor;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class InputController : BaseController, IExecute
     {

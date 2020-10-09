@@ -3,7 +3,7 @@ using Interface;
 using UnityEngine;
 
 
-namespace Controller.TimeRemaining
+namespace MVC.Controller.TimeRemaining
 {
     public sealed class TimeRemainingController : IExecute, IFixedExecute
     {

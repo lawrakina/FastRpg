@@ -5,7 +5,7 @@ using Model.Weapons;
 using UnityEngine;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public class PoolController 
     {

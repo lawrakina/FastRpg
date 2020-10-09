@@ -8,7 +8,7 @@ using Model.Weapons;
 using UnityEngine;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class InventoryController : BaseController, IInitialization
     {

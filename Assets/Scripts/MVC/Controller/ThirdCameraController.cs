@@ -3,7 +3,7 @@ using Model;
 using Model.Player;
 using UnityEngine;
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class ThirdCameraController: BaseController, IInitialization, IExecute
     {

@@ -4,7 +4,7 @@ using Model;
 using UnityEngine;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class Controllers : IInitialization
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 using View;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class FlashLightController : BaseController, IExecute, IInitialization
     {

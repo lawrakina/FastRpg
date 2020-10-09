@@ -2,7 +2,7 @@
 using Model.Weapons;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class WeaponController : BaseController
     {

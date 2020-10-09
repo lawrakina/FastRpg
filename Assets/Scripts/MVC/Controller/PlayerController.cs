@@ -4,7 +4,7 @@ using Model.Player;
 using Model.Weapons;
 using UnityEngine;
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class PlayerController : BaseController, IInitialization, IExecute, IFixedExecute
     {

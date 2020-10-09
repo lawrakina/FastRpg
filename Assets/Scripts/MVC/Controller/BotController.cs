@@ -10,7 +10,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class BotController : BaseController, IExecute, IInitialization
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Controller
+namespace MVC.Controller
 {
     public sealed class GameController : MonoBehaviour
     {

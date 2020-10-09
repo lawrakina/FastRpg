@@ -1,7 +1,7 @@
 ﻿using Model;
 using View;
 
-namespace Controller
+namespace MVC.Controller
 {
     public abstract class BaseController
     {
