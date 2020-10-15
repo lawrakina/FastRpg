@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Controller
+
+namespace Data
 {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "PlayerData")]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "Units/PlayerData")]
     public class PlayerData : ScriptableObject
     {
         public PlayerStruct PlayerStruct;

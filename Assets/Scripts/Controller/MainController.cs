@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Data;
 using Initializator;
 using Interface;
 using UnityEngine;
+using VIew;
 
 
 namespace Controller
@@ -26,8 +28,9 @@ namespace Controller
         private readonly List<IUpdated> _iUpdated = new List<IUpdated>();
         private GameContext _gameContext;
         private Services _services;
-        [SerializeField] private Camera _mainCamera;
+        [SerializeField] private CameraView _mainCamera;
         [SerializeField] private PlayerData _playerData;
+        [SerializeField] private PetData _petData;
         
 
         #endregion
@@ -39,14 +42,15 @@ namespace Controller
             _gameContext = new GameContext
             {
                 PlayerData = _playerData,
+                PetData = _petData
             };
-            // _gameContext.Camera = _mainCamera;
             
             // new TimeRemainingInitializator(_services);
-            // new InputInitializator(services);
+            new InputInitializator(_services);
             // new PoolInitializator(services, _gameContext);
-            // new PlayerInitializator(_services, _gameContext);
-            new ThirdCameraInitializator(_services, _gameContext);
+            new PlayerInitializator(_services, _gameContext);
+            new PetInitializator(_services, _gameContext);
+            new ThirdCameraInitializator(_services, _gameContext, _mainCamera);
         }
         
         private void Update()

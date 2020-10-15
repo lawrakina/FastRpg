@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Data;
+using UnityEngine;
 
 
 namespace Controller
@@ -7,5 +8,6 @@ namespace Controller
     {
         public PlayerData PlayerData;
         public Camera Camera { get; set; }
+        public PetData PetData;
     }
 }

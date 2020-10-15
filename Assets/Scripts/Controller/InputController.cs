@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using Interface;
+using UnityEngine;
 
 namespace Controller
 {
-    public sealed class InputController
+    public sealed class InputController: IUpdated
     {
         #region Fields
 
-        private Vector2 _inputVector;
+        private Vector3 _inputVector;
         private Services _services;
 
         public InputController(Services services)

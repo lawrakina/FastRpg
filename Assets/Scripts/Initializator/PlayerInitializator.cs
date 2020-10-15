@@ -1,6 +1,6 @@
 ﻿using Controller;
-using Manager;
 using UnityEngine;
+using VIew;
 
 namespace Initializator
 {
@@ -9,16 +9,18 @@ namespace Initializator
         public PlayerInitializator(Services services, GameContext gameContext)
         {
             var spawnerPlayer = Object.Instantiate( gameContext.PlayerData.PlayerStruct.StoragePlayer,
-                gameContext.PlayerData.PlayerStruct.StartPosition.position,
-                gameContext.PlayerData.PlayerStruct.StartPosition.rotation);
+                gameContext.PlayerData.PlayerStruct.StartPosition,
+                Quaternion.identity);
             
-            PlayerStruct playerStruct = gameContext.PlayerData.PlayerStruct;
-            playerStruct.Player = spawnerPlayer;
+            // PlayerStruct playerStruct = gameContext.PlayerData.PlayerStruct;
+            // playerStruct.Player = spawnerPlayer;
 
-            var playerModel = new PlayerComponent(playerStruct);
-            var playerView = new PlayerView(playerStruct);
+            var playerView = spawnerPlayer.GetComponent<PlayerView>();
+            gameContext.PlayerData.PlayerStruct.Player = playerView.gameObject;
+            // var playerComponent = new PlayerView(playerStruct);
+            // var playerView = new PlayerView(playerStruct);
             
-            // services.PlayerController = new PlayerController(services, gameContext, playerModel, playerView);
+            services.PlayerController = new PlayerController(services, gameContext, playerView);
             services.MainController.AddUpdated(services.PlayerController);
         }
     }

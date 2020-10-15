@@ -2,7 +2,7 @@
 {
     public static class TagManager
     {
-        // public static string PLAYER = "Player";
+        public static string PLAYER = "Player";
         // public static string AX_HORIZONTAL = "Horizontal";
         // public static string AX_VERTICAL = "Vertical";
         // public static string LAYER_MASK_ENVIRONMENT = "Environment";

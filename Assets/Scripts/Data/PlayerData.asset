@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ae4f11a8174b59bac52845ce3bc99a, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  PlayerStruct:
+    StoragePlayer: {fileID: 1326728806038226, guid: c360e03d37d6f6c449ea70983e7e8b0b,
+      type: 3}
+    StartPosition: {x: 26.55, y: 50.51, z: 15.27}
+    Hp: 100
+    Speed: 5
+    TimeDisableBattleState: 5
+    UpdatePeriodVisibility: 1
+    _battleDistance: 15
+    EnemiesLayerMask:
+      serializedVersion: 2
+      m_Bits: 4096
+    Player: {fileID: 0}

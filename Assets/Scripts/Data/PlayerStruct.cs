@@ -2,14 +2,14 @@
 using UnityEngine;
 
 
-namespace Controller
+namespace Data
 {
     [Serializable]
     public class PlayerStruct
     {
         [Header("For Inspector")]
         public GameObject StoragePlayer;
-        public Transform StartPosition;
+        public Vector3 StartPosition;
         public float Hp = 100.0f;
         public float Speed = 5.0f;
         public float TimeDisableBattleState = 5.0f;
