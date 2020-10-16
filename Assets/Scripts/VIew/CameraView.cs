@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 
 namespace VIew
@@ -19,6 +18,14 @@ namespace VIew
 
         #endregion
 
+
+        #region Events
+
+        public event Action<Collider> OnCollisionEnter;
+        public event Action<Collider> OnCollisionExit;
+
+        #endregion
+
         private void Awake()
         {
             Collider = GetComponent<CapsuleCollider>();
@@ -26,18 +33,12 @@ namespace VIew
 
         private void OnTriggerEnter(Collider other)
         {
-            var meshRenderer = other.GetComponent<MeshRenderer>();
-            if(meshRenderer == null) return;
-            if (meshRenderer.shadowCastingMode != ShadowCastingMode.ShadowsOnly)
-                meshRenderer.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+            OnCollisionEnter?.Invoke(other);
         }
         
         private void OnTriggerExit(Collider other)
         {
-            var meshRenderer = other.GetComponent<MeshRenderer>();
-            if(meshRenderer == null) return;
-            if (meshRenderer.shadowCastingMode == ShadowCastingMode.ShadowsOnly)
-                meshRenderer.shadowCastingMode = ShadowCastingMode.TwoSided;
+            OnCollisionExit?.Invoke(other);
         }
     }
 }

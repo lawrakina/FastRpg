@@ -10,7 +10,7 @@
         public PlayerController PlayerController { get; set; }
 
         public PetController PetController { get; set; }
-        // public ThirdCameraController ThirdCameraController { get; set; }
+        public ThirdCameraController ThirdCameraController { get; set; }
         // public InventoryController InventoryController { get; set; }
 
         #endregion

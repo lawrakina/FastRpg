@@ -28,25 +28,33 @@ namespace Controller
 
         private readonly List<IUpdated> _iUpdated = new List<IUpdated>();
         private readonly List<IFixedUpdate> _iFixedUpdated = new List<IFixedUpdate>();
+        private readonly List<IEnabled> _iEnableds = new List<IEnabled>();
         private GameContext _gameContext;
         private Services _services;
+        
+        [Header("Game Data")]
         [SerializeField] private CameraView _mainCamera;
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private PetData _petData;
 
+        [Header("Game Layers")]
+        [SerializeField] private LayerMask _objectsToHideLayer;
         [SerializeField] private LayerMask _groundLayer;
 
         #endregion
-        
-        
-        private void Start()
+
+
+        #region UnityMethods
+
+        private void Awake()
         {
             _services = new Services(this);
             _gameContext = new GameContext
             {
                 PlayerData = _playerData,
                 PetData = _petData,
-                GroundLayer = _groundLayer
+                GroundLayer = _groundLayer,
+                ObjectsToHideLayer = _objectsToHideLayer
             };
             
             // new TimeRemainingInitializator(_services);
@@ -56,10 +64,7 @@ namespace Controller
             new PetInitializator(_services, _gameContext);
             new ThirdCameraInitializator(_services, _gameContext, _mainCamera);
         }
-        
-        
-        #region Methods
-        
+
         private void Update()
         {
             for (var i = 0; i < _iUpdated.Count; i++)
@@ -76,16 +81,42 @@ namespace Controller
             }
         }
 
-        public void AddUpdated(IUpdated iUpdated)
+        private void OnEnable()
         {
-            _iUpdated.Add(iUpdated);
+            foreach (var controller in _iEnableds)
+            {
+                controller.On();
+            }
         }
 
-        public void AddFixedUpdated(IFixedUpdate iFixedUpdate)
+        private void OnDisable()
         {
-            _iFixedUpdated.Add(iFixedUpdate);
+            foreach (var controller in _iEnableds)
+            {
+                controller.Off();
+            }
         }
 
         #endregion
+        
+        
+        #region Methods
+
+        public void AddUpdated(IUpdated controller)
+        {
+            _iUpdated.Add(controller);
+        }
+
+        public void AddFixedUpdated(IFixedUpdate controller)
+        {
+            _iFixedUpdated.Add(controller);
+        }
+
+        #endregion
+
+        public void AddEnabledAndDisabled(IEnabled controller)
+        {
+            _iEnableds.Add(controller);
+        }
     }
 }

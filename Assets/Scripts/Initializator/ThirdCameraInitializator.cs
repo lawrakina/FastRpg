@@ -9,7 +9,9 @@ namespace Initializator
         public ThirdCameraInitializator(Services services, GameContext context, CameraView mainCamera)
         {   
             // var camera = Object.FindObjectOfType<CameraComponent>();
-            services.MainController.AddUpdated(new ThirdCameraController(mainCamera, context));
+            services.ThirdCameraController = new ThirdCameraController(mainCamera, context);
+            services.MainController.AddUpdated(services.ThirdCameraController);
+            services.MainController.AddEnabledAndDisabled(services.ThirdCameraController);
         }
     }
 }
