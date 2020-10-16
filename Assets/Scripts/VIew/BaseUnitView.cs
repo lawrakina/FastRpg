@@ -8,7 +8,6 @@ namespace VIew
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(NavMeshAgent))]
-    // [RequireComponent(typeof(CharacterController))]
     public abstract class BaseUnitView: MonoBehaviour
     {
         public bool isEnable = true;
@@ -17,8 +16,8 @@ namespace VIew
         public Collider Collider;
         public Rigidbody Rigidbody;
         public Animator Animator;
-        // public CharacterController CharacterController;
         public AnimatorParammeters AnimatorParams;
+        public HealthBarView HealthBar;
 
         #region fields
 
@@ -27,7 +26,6 @@ namespace VIew
         
         public float _moveSpeed = 5.0f;
 
-        // public float _maxMoveSpeed = 5.0f;
 
         #endregion
 
@@ -168,7 +166,7 @@ namespace VIew
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
             AnimatorParams = new AnimatorParammeters(Animator);
-            // CharacterController = GetComponent<CharacterController>();
+            HealthBar = GetComponentInChildren<HealthBarView>();
         }
     }
 }

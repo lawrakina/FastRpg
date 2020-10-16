@@ -26,6 +26,7 @@ namespace Controller
     {
         #region Fields
 
+        private readonly List<ILateUpdated> _iLateUpdated = new List<ILateUpdated>();
         private readonly List<IUpdated> _iUpdated = new List<IUpdated>();
         private readonly List<IFixedUpdate> _iFixedUpdated = new List<IFixedUpdate>();
         private readonly List<IEnabled> _iEnableds = new List<IEnabled>();
@@ -65,6 +66,14 @@ namespace Controller
             new ThirdCameraInitializator(_services, _gameContext, _mainCamera);
         }
 
+        private void LateUpdate()
+        {
+            for (var i = 0; i < _iLateUpdated.Count; i++)
+            {
+                _iLateUpdated[i].LateUpdateTick();
+            }
+        }
+
         private void Update()
         {
             for (var i = 0; i < _iUpdated.Count; i++)
@@ -102,6 +111,11 @@ namespace Controller
         
         #region Methods
 
+        public void AddLateUpdated(ILateUpdated controller)
+        {
+            _iLateUpdated.Add(controller);
+        }
+        
         public void AddUpdated(IUpdated controller)
         {
             _iUpdated.Add(controller);

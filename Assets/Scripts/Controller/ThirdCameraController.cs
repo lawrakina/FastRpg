@@ -1,4 +1,5 @@
 ﻿using Interface;
+using Manager;
 using UnityEngine;
 using UnityEngine.Rendering;
 using VIew;
@@ -16,6 +17,13 @@ namespace Controller
     
         #endregion
 
+
+        #region Property
+
+        public Transform CameraTransform => _cameraView.transform;
+
+        #endregion
+        
         
         #region ctor
 
@@ -25,6 +33,7 @@ namespace Controller
             _context = context;
             _target = context.PlayerData.PlayerStruct.Player.transform;
         }
+
 
         #endregion
 
@@ -78,8 +87,7 @@ namespace Controller
 
         private void HideObject(Collider obj)
         {
-            //если слой объекта obj не входит в маску слоев _context.ObjectsToHideLayer то выход
-            if ((_context.ObjectsToHideLayer.value & (1 << obj.gameObject.layer)) == 0) return;
+            if(Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
 
             var meshRenderer = obj.GetComponent<MeshRenderer>();
             if(meshRenderer == null) return;
@@ -89,8 +97,7 @@ namespace Controller
         
         private void ShowObject(Collider obj)
         {
-            //если слой объекта obj не входит в маску слоев _context.ObjectsToHideLayer то выход
-            if ((_context.ObjectsToHideLayer.value & (1 << obj.gameObject.layer)) == 0) return;
+            if(Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
 
             var meshRenderer = obj.GetComponent<MeshRenderer>();
             if(meshRenderer == null) return;

@@ -1,6 +1,8 @@
 ﻿using Controller;
+using Model;
 using UnityEngine;
 using VIew;
+
 
 namespace Initializator
 {
@@ -8,21 +10,28 @@ namespace Initializator
     {
         public PlayerInitializator(Services services, GameContext gameContext)
         {
-            var spawnerPlayer = Object.Instantiate( gameContext.PlayerData.PlayerStruct.StoragePlayer,
+            var spawnerPlayer = Object.Instantiate(gameContext.PlayerData.PlayerStruct.StoragePlayer,
                 gameContext.PlayerData.PlayerStruct.StartPosition,
                 Quaternion.identity);
-            
-            // PlayerStruct playerStruct = gameContext.PlayerData.PlayerStruct;
-            // playerStruct.Player = spawnerPlayer;
+
+            var playerModel = new BaseUnitModel()
+            {
+                Hp = gameContext.PlayerData.PlayerStruct.Hp,
+                MaxHp = gameContext.PlayerData.PlayerStruct.Hp,
+            };
 
             var playerView = spawnerPlayer.GetComponent<PlayerView>();
             gameContext.PlayerData.PlayerStruct.Player = playerView.gameObject;
-            // var playerComponent = new PlayerView(playerStruct);
-            // var playerView = new PlayerView(playerStruct);
+
+            var healthBarView = spawnerPlayer.GetComponentInChildren<HealthBarView>();
+
+            services.PlayerController =
+                new PlayerController(services, gameContext, playerModel, playerView, healthBarView);
             
-            services.PlayerController = new PlayerController(services, gameContext, playerView);
             services.MainController.AddUpdated(services.PlayerController);
             services.MainController.AddFixedUpdated(services.PlayerController);
+            services.MainController.AddEnabledAndDisabled(services.PlayerController);
+            services.MainController.AddLateUpdated(services.PlayerController);
         }
     }
 }
