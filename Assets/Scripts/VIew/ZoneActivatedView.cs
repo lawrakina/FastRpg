@@ -10,6 +10,7 @@ namespace VIew
         #region Fields
         
         public GameObject GameObjectForEnable;
+        private BaseUnitView _baseUnit;
 
         #endregion
 
@@ -17,10 +18,11 @@ namespace VIew
         private void OnTriggerEnter(Collider other)
         {
             if (!other) return;
-            if (other.CompareTag(TagManager.PLAYER))
-            {
-                GameObjectForEnable.GetComponent<BaseUnitView>().isEnable = true;
-            }
+            Debug.Log($"ZoneActivatedView.OnTriggerEnter.other: {other.name}");
+            if (!other.CompareTag(TagManager.TAG_PLAYER)) return;
+            other.SendMessage($"EnterTheZone");
+            _baseUnit = GameObjectForEnable.GetComponent<BaseUnitView>();
+            _baseUnit.isEnable = !_baseUnit.isEnable;
         }
     }
 }

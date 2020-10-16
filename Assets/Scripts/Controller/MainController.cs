@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data;
 using Initializator;
 using Interface;
@@ -26,12 +27,14 @@ namespace Controller
         #region Fields
 
         private readonly List<IUpdated> _iUpdated = new List<IUpdated>();
+        private readonly List<IFixedUpdate> _iFixedUpdated = new List<IFixedUpdate>();
         private GameContext _gameContext;
         private Services _services;
         [SerializeField] private CameraView _mainCamera;
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private PetData _petData;
-        
+
+        [SerializeField] private LayerMask _groundLayer;
 
         #endregion
         
@@ -42,7 +45,8 @@ namespace Controller
             _gameContext = new GameContext
             {
                 PlayerData = _playerData,
-                PetData = _petData
+                PetData = _petData,
+                GroundLayer = _groundLayer
             };
             
             // new TimeRemainingInitializator(_services);
@@ -53,6 +57,9 @@ namespace Controller
             new ThirdCameraInitializator(_services, _gameContext, _mainCamera);
         }
         
+        
+        #region Methods
+        
         private void Update()
         {
             for (var i = 0; i < _iUpdated.Count; i++)
@@ -60,12 +67,23 @@ namespace Controller
                 _iUpdated[i].UpdateTick();
             }
         }
-        
-        #region Methods
+
+        private void FixedUpdate()
+        {
+            for (var i = 0; i < _iFixedUpdated.Count; i++)
+            {
+                _iFixedUpdated[i].FixedUpdateTick();
+            }
+        }
 
         public void AddUpdated(IUpdated iUpdated)
         {
             _iUpdated.Add(iUpdated);
+        }
+
+        public void AddFixedUpdated(IFixedUpdate iFixedUpdate)
+        {
+            _iFixedUpdated.Add(iFixedUpdate);
         }
 
         #endregion

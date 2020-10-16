@@ -2,7 +2,8 @@
 {
     public static class TagManager
     {
-        public static string PLAYER = "Player";
+        public static string TAG_PLAYER = "Player";
+        public static string TAG_PET_SPAWN_ZONE = "PetSpawnZone";
         // public static string AX_HORIZONTAL = "Horizontal";
         // public static string AX_VERTICAL = "Vertical";
         // public static string LAYER_MASK_ENVIRONMENT = "Environment";

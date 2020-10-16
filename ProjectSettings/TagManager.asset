@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Collide
   - Environment
+  - PetSpawnZone
   layers:
   - Default
   - TransparentFX

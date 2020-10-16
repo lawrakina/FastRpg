@@ -22,6 +22,7 @@ namespace Initializator
             
             services.PlayerController = new PlayerController(services, gameContext, playerView);
             services.MainController.AddUpdated(services.PlayerController);
+            services.MainController.AddFixedUpdated(services.PlayerController);
         }
     }
 }

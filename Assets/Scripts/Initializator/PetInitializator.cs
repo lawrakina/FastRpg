@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Manager;
 using UnityEngine;
 using VIew;
 
@@ -16,8 +17,15 @@ namespace Initializator
             var petView = spawnPet.GetComponent<PetView>();
             gameContext.PetData.PetStruct.Pet = petView.gameObject;
 
-            var zoneActivate = GameObject.Find($"FairyZone").GetComponent<ZoneActivatedView>();
-            zoneActivate.GameObjectForEnable = spawnPet;
+            var zonesActivate = GameObject.FindGameObjectsWithTag(TagManager.TAG_PET_SPAWN_ZONE);
+
+            foreach (var zone in zonesActivate)
+            {
+                zone.GetComponent<ZoneActivatedView>().GameObjectForEnable = spawnPet;
+            }
+                
+            //     .Find($"FairyZone").GetComponent<ZoneActivatedView>();
+            // zoneActivate.GameObjectForEnable = spawnPet;
             
             services.PetController = new PetController(services, gameContext, petView);
             services.MainController.AddUpdated(services.PetController);
