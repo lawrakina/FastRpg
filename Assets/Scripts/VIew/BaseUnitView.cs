@@ -1,4 +1,6 @@
-﻿using Manager;
+﻿using System;
+using Enums;
+using Manager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +10,7 @@ namespace VIew
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public abstract class BaseUnitView: MonoBehaviour
+    public abstract class BaseUnitView : MonoBehaviour
     {
         public bool isEnable = true;
         public Transform Transform;
@@ -21,17 +23,22 @@ namespace VIew
 
         #region fields
 
+        private float _speed;
+
         [Header("Movement")]
+
         #region movenment
-        
+
         public float _moveSpeed = 5.0f;
 
+        public float distanceToCheckGround = 0.51f;
+        public float accelerationOfGravity = 1f;
 
         #endregion
 
         #endregion
-        
-        
+
+
         #region PrivateClass
 
         public class AnimatorParammeters
@@ -45,6 +52,7 @@ namespace VIew
             private int _weaponType;
             private int _attackType;
             private float _speed;
+            private UnitState _unitState;
 
             public bool Battle
             {
@@ -132,6 +140,46 @@ namespace VIew
                 }
             }
 
+            public UnitState UnitState
+            {
+                get => _unitState;
+                set
+                {
+                    if(_unitState == value) return;
+                    _unitState = value;
+                    _animator.SetFloat(TagManager.ANIMATOR_PARAM_STATE_UNIT, (float)value);
+                    // switch (_unitState)
+                    // {
+                    //     case UnitState.None:
+                    //         //todo придумать зачем этот вариант нужен
+                    //         break;
+                    //     case UnitState.Dead:
+                    //         //todo реализовать анимацию смерти
+                    //         break;
+                    //     case UnitState.Normal:
+                    //         _animator.SetFloat(TagManager.ANIMATOR_PARAM_SWIM, false);
+                    //         // _animator.SetBool(TagManager.ANIMATOR_PARAM_FLY, false);
+                    //         // _animator.SetBool(TagManager.ANIMATOR_PARAM_STUNNED, false);
+                    //         break;
+                    //     case UnitState.Swim:
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_SWIM, true);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_FLY, false);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_STUNNED, false);
+                    //         break;
+                    //     case UnitState.Fly:
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_SWIM, false);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_FLY, true);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_STUNNED, false);
+                    //         break;
+                    //     case UnitState.Stunned:
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_SWIM, false);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_FLY, false);
+                    //         _animator.SetBool(TagManager.ANIMATOR_PARAM_STUNNED, true);
+                    //         break;
+                    // }
+                }
+            }
+
             public void ResetTrigger(string name)
             {
                 _animator.ResetTrigger(name);
@@ -145,8 +193,9 @@ namespace VIew
         }
 
         #endregion
-        
-        private float _speed;
+
+
+        #region Properties
 
         public float Speed
         {
@@ -158,6 +207,15 @@ namespace VIew
             }
         }
 
+        #endregion
+
+        #region Events
+
+        public event Action OnSwimEvent;
+        public event Action OnUnSwimEvent;
+
+        #endregion
+
         protected virtual void Awake()
         {
             Transform = GetComponent<Transform>();
@@ -167,6 +225,16 @@ namespace VIew
             Animator = GetComponent<Animator>();
             AnimatorParams = new AnimatorParammeters(Animator);
             HealthBar = GetComponentInChildren<HealthBarView>();
+        }
+
+        public void ToSwim()
+        {
+            OnSwimEvent?.Invoke();
+        }
+
+        public void ToUnSwim()
+        {
+            OnUnSwimEvent?.Invoke();
         }
     }
 }

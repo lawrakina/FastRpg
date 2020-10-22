@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Data;
 using Initializator;
 using Interface;
@@ -31,9 +30,10 @@ namespace Controller
         private readonly List<IFixedUpdate> _iFixedUpdated = new List<IFixedUpdate>();
         private readonly List<IEnabled> _iEnableds = new List<IEnabled>();
         private GameContext _gameContext;
-        private Services _services;
-        
-        [Header("Game Data")]
+        public Services _services;
+
+        [Header("Game Data")] 
+        [SerializeField] private GameObject _water;
         [SerializeField] private CameraView _mainCamera;
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private PetData _petData;
@@ -41,6 +41,8 @@ namespace Controller
         [Header("Game Layers")]
         [SerializeField] private LayerMask _objectsToHideLayer;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _waterLayer;
+        [SerializeField] private LayerMask _unitsPlayerAndNpc;
 
         #endregion
 
@@ -55,7 +57,10 @@ namespace Controller
                 PlayerData = _playerData,
                 PetData = _petData,
                 GroundLayer = _groundLayer,
-                ObjectsToHideLayer = _objectsToHideLayer
+                WaterLayer = _waterLayer,
+                ObjectsToHideLayer = _objectsToHideLayer,
+                LayerUnits = _unitsPlayerAndNpc,
+                WaterZone = _water
             };
             
             // new TimeRemainingInitializator(_services);
@@ -64,6 +69,7 @@ namespace Controller
             new PlayerInitializator(_services, _gameContext);
             new PetInitializator(_services, _gameContext);
             new ThirdCameraInitializator(_services, _gameContext, _mainCamera);
+            new ZoneInitializator(_services, _gameContext);
         }
 
         private void LateUpdate()

@@ -13,7 +13,7 @@ namespace Manager
         /// <returns></returns>
         public static bool CheckForComparerLayer(LayerMask layerMask, int layer)
         {
-            return (layerMask.value & (1 << layer)) == 0;
+            return (layerMask.value & (1 << layer)) != 0;
         }
         
         /// <summary>
@@ -24,7 +24,7 @@ namespace Manager
         /// <returns></returns>
         public static bool CheckForComparerLayer(LayerMask layerMask, GameObject gameObject)
         {
-            return (layerMask.value & (1 << gameObject.layer)) == 0;
+            return (layerMask.value & (1 << gameObject.layer)) != 0;
         }
         
         /// <summary>
@@ -35,7 +35,7 @@ namespace Manager
         /// <returns></returns>
         public static bool CheckForComparerLayer(LayerMask layerMask, Collider collider)
         {
-            return (layerMask.value & (1 << collider.gameObject.layer)) == 0;
+            return (layerMask.value & (1 << collider.gameObject.layer)) != 0;
         }
 
     }

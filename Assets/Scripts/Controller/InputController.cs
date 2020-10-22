@@ -21,10 +21,11 @@ namespace Controller
 
         public void UpdateTick()
         {
-            // _inputVector = new Vector2(
-            //     UltimateJoystick.GetHorizontalAxis("Movement"),
-            //     UltimateJoystick.GetVerticalAxis("Movement"));
-            _inputVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            _inputVector = new Vector3(
+                UltimateJoystick.GetHorizontalAxis("Movement"),
+                0.0f,
+                UltimateJoystick.GetVerticalAxis("Movement"));
+            // _inputVector = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             _services.PlayerController.Move(_inputVector);
         }
 

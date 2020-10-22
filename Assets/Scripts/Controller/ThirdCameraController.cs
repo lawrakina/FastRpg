@@ -87,7 +87,7 @@ namespace Controller
 
         private void HideObject(Collider obj)
         {
-            if(Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
+            if(!Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
 
             var meshRenderer = obj.GetComponent<MeshRenderer>();
             if(meshRenderer == null) return;
@@ -97,7 +97,7 @@ namespace Controller
         
         private void ShowObject(Collider obj)
         {
-            if(Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
+            if(!Helper.CheckForComparerLayer(_context.ObjectsToHideLayer, obj)) return;
 
             var meshRenderer = obj.GetComponent<MeshRenderer>();
             if(meshRenderer == null) return;

@@ -11,6 +11,8 @@
 
         public PetController PetController { get; set; }
         public ThirdCameraController ThirdCameraController { get; set; }
+
+        public ZoneController ZoneController { get; set; }
         // public InventoryController InventoryController { get; set; }
 
         #endregion

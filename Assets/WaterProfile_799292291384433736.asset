@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightingModel: 0
   renderQueueIndex: 0
-  color: {r: 0.14368258, g: 0.12482198, b: 0.5188679, a: 0.2}
+  color: {r: 0, g: 0.3179729, b: 0.6509434, a: 1}
   specColor: {r: 0, g: 0, b: 0, a: 1}
-  smoothness: 1
-  enableLightAbsorption: 1
+  smoothness: 0
+  enableLightAbsorption: 0
   depthColor: {r: 0.4669811, g: 0.7730476, b: 1, a: 0.85}
   maxDepth: 10
-  enableFoam: 1
+  enableFoam: 0
   foamColor: {r: 1, g: 1, b: 1, a: 1}
   foamDistance: 1.64
   enableFoamHQ: 1
@@ -33,19 +33,19 @@ MonoBehaviour:
   slopeFoamFlowSpeed: 20
   slopeFoamDistance: 50
   enableRipple: 1
-  rippleHeight: 0.173
+  rippleHeight: 0.775
   rippleSpeed: 1.16
   rippleNoiseScale: 1.46
-  enableWave: 1
+  enableWave: 0
   waveDirection: 39
   waveSpeed: 14.6
-  waveHeight: 0.03
+  waveHeight: 0.18
   waveLength: 21.18
   waveSteepness: 0
   waveDeform: 1
   fresnelStrength: 0
   fresnelBias: 0
-  enableReflection: 1
+  enableReflection: 0
   reflectionTextureResolution: 256
   enableReflectionPixelLight: 0
   reflectionClipPlaneOffset: 0.1

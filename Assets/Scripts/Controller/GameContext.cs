@@ -9,6 +9,9 @@ namespace Controller
         public PlayerData PlayerData;
         public LayerMask ObjectsToHideLayer;
         public LayerMask GroundLayer;
+        public LayerMask LayerUnits;
+        public LayerMask WaterLayer;
         public PetData PetData;
+        public GameObject WaterZone;
     }
 }

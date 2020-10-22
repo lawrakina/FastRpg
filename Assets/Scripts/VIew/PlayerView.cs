@@ -7,12 +7,6 @@ namespace VIew
 {
     public sealed class PlayerView: BaseUnitView
     {
-        #region Properties
-
-        public float distanceToCheckGround = 0.51f;
-        public float accelerationOfGravity = 1f;
-
-        #endregion
         
         
 
