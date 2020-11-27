@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerStruct:
     StoragePlayer: {fileID: 1326728806038226, guid: c360e03d37d6f6c449ea70983e7e8b0b,
       type: 3}
-    StartPosition: {x: 26.55, y: 50.51, z: 15.27}
+    StartPosition: {x: 0, y: 2, z: 0}
     Hp: 100
     Speed: 5
     TimeDisableBattleState: 5

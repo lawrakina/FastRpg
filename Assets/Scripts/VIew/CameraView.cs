@@ -9,7 +9,7 @@ namespace VIew
         #region Fields
 
         // private Transform _target;
-        public Vector3 _offset = new Vector3(0.0f, 18.0f, -8.0f);
+        public Vector3 _offset = new Vector3(0.0f, 120.0f, -8.0f);
         public Vector3 _offsetCollider = new Vector3(0.0f, 2.6f, 0.0f);
         public float _offsetHeight = 9.1f;
         public float _offsetRadius = 5.2f;
@@ -26,6 +26,7 @@ namespace VIew
 
         #endregion
 
+        
         private void Awake()
         {
             Collider = GetComponent<CapsuleCollider>();
