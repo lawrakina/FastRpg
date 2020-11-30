@@ -2,15 +2,13 @@
 using Interface;
 using UnityEngine;
 
-
-namespace Controller.TimeRemaining
+namespace Controller
 {
-    public sealed class TimeRemainingController : IExecute, IFixedExecute
+    public sealed class TimeRemainingController : IUpdated
     {
         #region Fields
         
         private readonly List<ITimeRemaining> _timeRemainingsExecute;
-        private readonly List<ITimeRemaining> _timeRemainingsFixedExecute;
         
         #endregion
 
@@ -19,8 +17,7 @@ namespace Controller.TimeRemaining
 
         public TimeRemainingController()
         {
-            _timeRemainingsExecute = TimeRemainingExtensions.TimeRemainingsExecute;
-            _timeRemainingsFixedExecute = TimeRemainingExtensions.TimeRemainingsFidexExecute;
+            _timeRemainingsExecute = TimeRemainingExtensions.TimeRemainings;
         }
         
         #endregion
@@ -28,7 +25,7 @@ namespace Controller.TimeRemaining
         
         #region IExecute
 
-        public void Execute()
+        public void UpdateTick()
         {
             var time = Time.deltaTime;
             for (var i = 0; i < _timeRemainingsExecute.Count; i++)
@@ -50,33 +47,6 @@ namespace Controller.TimeRemaining
             }
         }
         
-        #endregion
-
-        
-        #region IFixedExecute
-
-        public void FixedExecute()
-        {
-            var time = Time.fixedDeltaTime;
-            for (var i = 0; i < _timeRemainingsFixedExecute.Count; i++)
-            {
-                var obj = _timeRemainingsFixedExecute[i];
-                obj.CurrentTime -= time;
-                if (obj.CurrentTime <= 0.0f)
-                {
-                    obj?.Method?.Invoke();
-                    if (!obj.IsRepeating)
-                    {
-                        obj.RemoveTimeRemainingFixedExecute();
-                    }
-                    else
-                    {
-                        obj.CurrentTime = obj.Time;
-                    }
-                }
-            }
-        }
-
         #endregion
     }
 }

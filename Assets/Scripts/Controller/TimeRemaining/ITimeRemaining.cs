@@ -1,7 +1,6 @@
 ﻿using System;
 
-
-namespace Controller.TimeRemaining
+namespace Controller
 {
     public interface ITimeRemaining
     {
