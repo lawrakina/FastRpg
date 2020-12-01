@@ -12,7 +12,7 @@ namespace Gui.Windows
 
         #endregion
         
-        public void Init()
+        public virtual void Init()
         {
         }
 
@@ -20,13 +20,13 @@ namespace Gui.Windows
         {
         }
 
-        public void Show()
+        public virtual void Show()
         {
             gameObject.SetActive(true);
             _camera.enabled = true;
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             gameObject.SetActive(false);
             _camera.enabled = false;

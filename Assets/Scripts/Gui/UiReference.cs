@@ -1,7 +1,8 @@
 ﻿using System;
+using Controller;
 using Enums;
 using Interface;
-
+using Random = UnityEngine.Random;
 
 namespace Gui
 {
@@ -11,6 +12,7 @@ namespace Gui
         #region Fields
 
         private WindowsReference _windows;
+        private GeneratorDungeon _generator;
         
         public CharacterPanel CharacterPanel;
         public EquipmentPanel EquipmentPanel;
@@ -29,7 +31,7 @@ namespace Gui
             NavigationBar.Ctor(_windows);
         }
 
-        public void DefaultState(EnumWindow character)
+        public void DefaultState(EnumWindow activeWindow)
         {
             _windows.Hide(EnumWindow.Character);
             _windows.Hide(EnumWindow.Equip);
@@ -37,7 +39,7 @@ namespace Gui
             _windows.Hide(EnumWindow.Spells);
             _windows.Hide(EnumWindow.Talents);
             
-            _windows.Show(character);
+            _windows.Show(activeWindow);
         }
         
         public void Init()
@@ -58,6 +60,24 @@ namespace Gui
             SpellsPanel.Cleanup();
             TalentsPanel.Cleanup();
             NavigationBar.Cleanup();
+        }
+
+        public void SetReference(GeneratorDungeon generator)
+        {
+            _generator = generator;
+            
+            BattlePanel.SeedChange += delegate(int value)
+            {
+                generator.Config.Seed = (uint) value;
+            };
+            BattlePanel.OnRandomEdit += delegate
+            {
+                BattlePanel.SeedInputField.text = Random.Range(0, int.MaxValue).ToString();
+            };
+            BattlePanel.OnGenerateMap += delegate
+            {
+                _generator.Dungeon.Build();
+            };
         }
     }
 }

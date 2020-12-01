@@ -1,4 +1,6 @@
-﻿using Enums;
+﻿using DungeonArchitect;
+using DungeonArchitect.Builders.GridFlow;
+using Enums;
 using Gui;
 using UnityEngine;
 
@@ -24,6 +26,18 @@ namespace Controller
             _windows.Init();
             _ui.Ctor(_windows);
             _ui.Init();
+
+            var generator = new GeneratorDungeon
+            {
+                Dungeon = _windows.BattleWindow.DungeonGenerator,
+                Config = _windows.BattleWindow.DungeonConfig,
+                Builder = _windows.BattleWindow.DungeonBuilder
+            };
+
+            _ui.SetReference(generator);
+            
+            
+            
             _ui.DefaultState(EnumWindow.Character);
 
             // var guiInitialization = new GuiInitialization(_canvasRoot, _guiData);
@@ -36,5 +50,12 @@ namespace Controller
         }
 
         #endregion
+    }
+
+    public sealed class GeneratorDungeon
+    {
+        public Dungeon Dungeon { get; set; }
+        public GridFlowDungeonConfig Config { get; set; }
+        public GridFlowDungeonBuilder Builder { get; set; }
     }
 }
