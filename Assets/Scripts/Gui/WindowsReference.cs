@@ -44,11 +44,6 @@ namespace Gui
         public void Show(EnumWindow enumWindow)
         {
             //todo изучить mvvm, уйти от монолита
-            // CharacterWindow.Hide();
-            // EquipmentWindow.Hide();
-            // BattleWindow.Hide();
-            // SpellsWindow.Hide();
-            // TalentsWindow.Hide();
             switch (enumWindow)
             {
                 case EnumWindow.Character:

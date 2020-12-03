@@ -1,5 +1,6 @@
 ﻿using System;
 using Controller;
+using CoreComponent;
 using Enums;
 using Interface;
 using Random = UnityEngine.Random;
@@ -62,13 +63,13 @@ namespace Gui
             NavigationBar.Cleanup();
         }
 
-        public void SetReference(GeneratorDungeon generator)
+        public void SetReference(GeneratorDungeon generatorDungeon)
         {
-            _generator = generator;
+            _generator = generatorDungeon;
             
             BattlePanel.SeedChange += delegate(int value)
             {
-                generator.Config.Seed = (uint) value;
+                generatorDungeon.Config.Seed = (uint) value;
             };
             BattlePanel.OnRandomEdit += delegate
             {
@@ -77,6 +78,10 @@ namespace Gui
             BattlePanel.OnGenerateMap += delegate
             {
                 _generator.Dungeon.Build();
+            };
+            BattlePanel.OnIntoBattle += delegate
+            {
+                
             };
         }
     }
