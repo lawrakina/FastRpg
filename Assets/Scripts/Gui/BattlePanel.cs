@@ -1,50 +1,64 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using CoreComponent;
 using Interface;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Gui
 {
     [Serializable]
     public sealed class BattlePanel : MonoBehaviour, IInit, ICleanup
     {
+        #region Fields
+
+        private CompositeDisposable _subscriptions;
+        private GeneratorDungeon _generatorDungeon;
+        
         [SerializeField] private Button IntoBattleButton;
-        [SerializeField] private  Button RandomSeedButton;
-        public  InputField SeedInputField;
-        [SerializeField] private  Button GenerateMapButton;
+        [SerializeField] private Button RandomSeedButton;
+        [SerializeField] private Text SeedInputField;
+        [SerializeField] private Button GenerateMapButton;
 
-        public Action OnIntoBattle;
-        public Action OnRandomEdit;
-        public Action OnGenerateMap;
-        public Action<int> SeedChange;
+        #endregion
 
+
+        public void Ctor()
+        {
+            _subscriptions = new CompositeDisposable();
+        }
+        
         public void Init()
         {
-            IntoBattleButton.onClick.AddListener(delegate
+            
+        }
+
+        public void SetReference(GeneratorDungeon generatorDungeon)
+        {
+            _generatorDungeon = generatorDungeon;
+
+            _generatorDungeon.Seed.SubscribeToText(SeedInputField).AddTo(_subscriptions);
+            
+            var setRandomSeedCommand = new AsyncReactiveCommand();
+            setRandomSeedCommand.Subscribe(_ =>
             {
-                OnIntoBattle?.Invoke();
-            });
-            RandomSeedButton.onClick.AddListener(delegate
+                _generatorDungeon.DestroyDungeon();
+                _generatorDungeon.Seed.Value = (uint) Random.Range(0, int.MaxValue);
+                return Observable.Timer(TimeSpan.FromSeconds(1)).AsUnitObservable();
+            }).AddTo(_subscriptions);
+            setRandomSeedCommand.BindTo(RandomSeedButton).AddTo(_subscriptions);
+
+            GenerateMapButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
-                OnRandomEdit?.Invoke();
-            });
-            GenerateMapButton.onClick.AddListener(delegate
-            {
-                OnGenerateMap?.Invoke();
-            });
-            SeedInputField.onValueChanged.AddListener(delegate(string value)
-            {
-                SeedChange?.Invoke(int.Parse(value));
-            });
+                _generatorDungeon.BuildDungeon(); 
+            }).AddTo(_subscriptions);
         }
 
         public void Cleanup()
         {
-            IntoBattleButton.onClick.RemoveAllListeners();
-            RandomSeedButton.onClick.RemoveAllListeners();
-            GenerateMapButton.onClick.RemoveAllListeners();
-            SeedInputField.onValueChanged.RemoveAllListeners();
+            _subscriptions?.Dispose();
         }
     }
 }

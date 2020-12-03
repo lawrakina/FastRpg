@@ -1,9 +1,7 @@
 ﻿using System;
-using Controller;
-using CoreComponent;
 using Enums;
 using Interface;
-using Random = UnityEngine.Random;
+using UniRx;
 
 namespace Gui
 {
@@ -12,8 +10,7 @@ namespace Gui
     {
         #region Fields
 
-        private WindowsReference _windows;
-        private GeneratorDungeon _generator;
+        private IReactiveProperty<EnumWindow> _activeWindow;
         
         public CharacterPanel CharacterPanel;
         public EquipmentPanel EquipmentPanel;
@@ -23,26 +20,16 @@ namespace Gui
         public NavigationBar NavigationBar;
 
         #endregion
-
         
-        public void Ctor(WindowsReference windows)
+
+        public void Ctor(IReactiveProperty<EnumWindow> activeWindow)
         {
-            _windows = windows;
-            
-            NavigationBar.Ctor(_windows);
+            _activeWindow = activeWindow;
+
+            BattlePanel.Ctor();
+            NavigationBar.Ctor(_activeWindow);
         }
 
-        public void DefaultState(EnumWindow activeWindow)
-        {
-            _windows.Hide(EnumWindow.Character);
-            _windows.Hide(EnumWindow.Equip);
-            _windows.Hide(EnumWindow.Battle);
-            _windows.Hide(EnumWindow.Spells);
-            _windows.Hide(EnumWindow.Talents);
-            
-            _windows.Show(activeWindow);
-        }
-        
         public void Init()
         {
             CharacterPanel.Init();
@@ -61,28 +48,6 @@ namespace Gui
             SpellsPanel.Cleanup();
             TalentsPanel.Cleanup();
             NavigationBar.Cleanup();
-        }
-
-        public void SetReference(GeneratorDungeon generatorDungeon)
-        {
-            _generator = generatorDungeon;
-            
-            BattlePanel.SeedChange += delegate(int value)
-            {
-                generatorDungeon.Config.Seed = (uint) value;
-            };
-            BattlePanel.OnRandomEdit += delegate
-            {
-                BattlePanel.SeedInputField.text = Random.Range(0, int.MaxValue).ToString();
-            };
-            BattlePanel.OnGenerateMap += delegate
-            {
-                _generator.Dungeon.Build();
-            };
-            BattlePanel.OnIntoBattle += delegate
-            {
-                
-            };
         }
     }
 }

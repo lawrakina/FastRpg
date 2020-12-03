@@ -1,16 +1,19 @@
 ﻿using System;
+using Windows;
 using Enums;
-using Gui.Windows;
 using Interface;
+using UniRx;
 
 
 namespace Gui
 {
     [Serializable]
-    public sealed class WindowsReference : IInit, IWindows, ICleanup
+    public sealed class WindowsReference : IInit, ICleanup
     {
         #region Fields
 
+        private IReactiveProperty<EnumWindow> _activeWindow;
+        
         public CharacterWindow CharacterWindow;
         public EquipmentWindow EquipmentWindow;
         public BattleWindow BattleWindow;
@@ -19,6 +22,13 @@ namespace Gui
 
         #endregion
 
+
+        public void Ctor(IReactiveProperty<EnumWindow> activeWindow)
+        {
+            _activeWindow = activeWindow;
+
+            _activeWindow.Subscribe( _ => { ShowOnlyActiveWindow(); });
+        }
         
         public void Init()
         {
@@ -38,59 +48,14 @@ namespace Gui
             TalentsWindow.Cleanup();
         }
 
-        
-        #region IWindows
 
-        public void Show(EnumWindow enumWindow)
+        private void ShowOnlyActiveWindow()
         {
-            //todo изучить mvvm, уйти от монолита
-            switch (enumWindow)
-            {
-                case EnumWindow.Character:
-                    CharacterWindow.Show();
-                    break;
-                case EnumWindow.Equip:
-                    EquipmentWindow.Show();
-                    break;
-                case EnumWindow.Battle:
-                    BattleWindow.Show();
-                    break;
-                case EnumWindow.Spells:
-                    SpellsWindow.Show();
-                    break;
-                case EnumWindow.Talents:
-                    TalentsWindow.Show();
-                    break;
-                default:
-                    break;
-            }
+            if(_activeWindow.Value == EnumWindow.Character) CharacterWindow.Show();else CharacterWindow.Hide();
+            if(_activeWindow.Value == EnumWindow.Equip) EquipmentWindow.Show();else EquipmentWindow.Hide();
+            if(_activeWindow.Value == EnumWindow.Battle) BattleWindow.Show();else BattleWindow.Hide();
+            if(_activeWindow.Value == EnumWindow.Spells) SpellsWindow.Show();else SpellsWindow.Hide();
+            if(_activeWindow.Value == EnumWindow.Talents) TalentsWindow.Show();else TalentsWindow.Hide();
         }
-
-        public void Hide(EnumWindow enumWindow)
-        {
-            //todo изучить mvvm, уйти от монолита
-            switch (enumWindow)
-            {
-                case EnumWindow.Character:
-                    CharacterWindow.Hide();
-                    break;
-                case EnumWindow.Equip:
-                    EquipmentWindow.Hide();
-                    break;
-                case EnumWindow.Battle:
-                    BattleWindow.Hide();
-                    break;
-                case EnumWindow.Spells:
-                    SpellsWindow.Hide();
-                    break;
-                case EnumWindow.Talents:
-                    TalentsWindow.Hide();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        #endregion
     }
 }

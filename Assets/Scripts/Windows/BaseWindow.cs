@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Gui.Windows
+namespace Windows
 {
     public class BaseWindow : MonoBehaviour, IWindow, IInit, ICleanup
     {

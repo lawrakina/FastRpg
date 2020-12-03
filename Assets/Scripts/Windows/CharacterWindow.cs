@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Gui.Windows
+
+namespace Windows
 {
     public sealed class CharacterWindow : BaseWindow
     {
