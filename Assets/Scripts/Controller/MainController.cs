@@ -16,6 +16,7 @@ namespace Controller
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private UiReference _ui;
         [SerializeField] private WindowsReference _windows;
+        
 
         #endregion
 
