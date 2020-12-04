@@ -1,20 +1,10 @@
 ﻿using System;
-using Interface;
-using UnityEngine;
 
 namespace Gui
 {
     [Serializable]
-    public sealed class CharacterPanel : MonoBehaviour, IInit, ICleanup
+    public sealed class CharacterPanel : BasePanel
     {
-        public void Init()
-        {
-            
-        }
-
-        public void Cleanup()
-        {
-            
-        }
+        
     }
 }

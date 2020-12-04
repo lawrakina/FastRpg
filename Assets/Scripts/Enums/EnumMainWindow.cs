@@ -1,6 +1,6 @@
 ﻿namespace Enums
 {
-    public enum EnumWindow
+    public enum EnumMainWindow
     {
         Character,
         Equip,

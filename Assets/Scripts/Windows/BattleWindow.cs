@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Enums;
+using UniRx;
+using UnityEngine;
 
 
 namespace Windows
@@ -8,6 +10,7 @@ namespace Windows
         #region Fields
         
         [SerializeField] private Camera _forTextureRenderCamera;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
 
         #endregion
 
@@ -22,6 +25,17 @@ namespace Windows
         {
             base.Hide();
             _forTextureRenderCamera.enabled = false;
+        }
+
+        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
+        {
+            base.Ctor();
+            _battleState = battleState;
+
+            _battleState.Subscribe(_ =>
+            {
+                _forTextureRenderCamera.gameObject.SetActive(_battleState.Value == EnumBattleWindow.DungeonGenerator);
+            });
         }
     }
 }

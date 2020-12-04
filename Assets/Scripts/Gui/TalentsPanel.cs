@@ -5,16 +5,7 @@ using UnityEngine;
 namespace Gui
 {
     [Serializable]
-    public sealed class TalentsPanel : MonoBehaviour, IInit, ICleanup
+    public sealed class TalentsPanel  : BasePanel
     {
-        public void Init()
-        {
-            
-        }
-
-        public void Cleanup()
-        {
-            
-        }
     }
 }

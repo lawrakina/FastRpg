@@ -12,6 +12,11 @@ namespace Windows
 
         #endregion
         
+        public void Ctor()
+        {
+            
+        }
+        
         public virtual void Init()
         {
         }

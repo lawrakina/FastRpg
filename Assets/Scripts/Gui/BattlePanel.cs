@@ -1,64 +1,56 @@
 ﻿using System;
+using Controller;
 using CoreComponent;
+using Enums;
+using Gui.Battle;
 using Interface;
 using UniRx;
-using UniRx.Triggers;
-using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace Gui
 {
     [Serializable]
-    public sealed class BattlePanel : MonoBehaviour, IInit, ICleanup
+    public sealed class BattlePanel : BasePanel
     {
         #region Fields
 
-        private CompositeDisposable _subscriptions;
-        private GeneratorDungeon _generatorDungeon;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
         
-        [SerializeField] private Button IntoBattleButton;
-        [SerializeField] private Button RandomSeedButton;
-        [SerializeField] private Text SeedInputField;
-        [SerializeField] private Button GenerateMapButton;
+        public LevelGeneratorPanel LevelGeneratorPanel;
+        public FightPanel FightPanel;
+        public VictoryPanel VictoryPanel;
+        public PausePanel PausePanel;
+        public FailPanel FailPanel;
+        
 
         #endregion
 
-
-        public void Ctor()
+        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
         {
-            _subscriptions = new CompositeDisposable();
-        }
-        
-        public void Init()
-        {
+            base.Ctor();
+            LevelGeneratorPanel.Ctor();
+            FightPanel.Ctor();
+            VictoryPanel.Ctor();
+            PausePanel.Ctor();
+            FailPanel.Ctor();
             
-        }
+            _battleState = battleState;
 
-        public void SetReference(GeneratorDungeon generatorDungeon)
-        {
-            _generatorDungeon = generatorDungeon;
-
-            _generatorDungeon.Seed.SubscribeToText(SeedInputField).AddTo(_subscriptions);
+            _battleState.Subscribe(_ =>
+            {
+                if(!enabled) return;
+                if(_battleState.Value == EnumBattleWindow.DungeonGenerator)
+                    LevelGeneratorPanel.Show();else LevelGeneratorPanel.Hide();
+                if(_battleState.Value == EnumBattleWindow.Fight)
+                    FightPanel.Show(); else FightPanel.Hide();
+                if(_battleState.Value == EnumBattleWindow.Victory)
+                    VictoryPanel.Show(); else VictoryPanel.Hide();
+                if(_battleState.Value == EnumBattleWindow.Fail)
+                    FailPanel.Show(); else FailPanel.Hide();
+                if(_battleState.Value == EnumBattleWindow.Pause)
+                    PausePanel.Show(); else PausePanel.Hide();
+            }).AddTo(_subscriptions);
             
-            var setRandomSeedCommand = new AsyncReactiveCommand();
-            setRandomSeedCommand.Subscribe(_ =>
-            {
-                _generatorDungeon.DestroyDungeon();
-                _generatorDungeon.Seed.Value = (uint) Random.Range(0, int.MaxValue);
-                return Observable.Timer(TimeSpan.FromSeconds(1)).AsUnitObservable();
-            }).AddTo(_subscriptions);
-            setRandomSeedCommand.BindTo(RandomSeedButton).AddTo(_subscriptions);
-
-            GenerateMapButton.OnPointerClickAsObservable().Subscribe(_ =>
-            {
-                _generatorDungeon.BuildDungeon(); 
-            }).AddTo(_subscriptions);
-        }
-
-        public void Cleanup()
-        {
-            _subscriptions?.Dispose();
+            
         }
     }
 }

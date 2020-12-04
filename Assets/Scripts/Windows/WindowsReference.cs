@@ -1,32 +1,35 @@
 ﻿using System;
-using Windows;
 using Enums;
 using Interface;
 using UniRx;
 
 
-namespace Gui
+namespace Windows
 {
     [Serializable]
     public sealed class WindowsReference : IInit, ICleanup
     {
         #region Fields
 
-        private IReactiveProperty<EnumWindow> _activeWindow;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
         
         public CharacterWindow CharacterWindow;
         public EquipmentWindow EquipmentWindow;
         public BattleWindow BattleWindow;
         public SpellsWindow SpellsWindow;
         public TalentsWindow TalentsWindow;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
 
         #endregion
 
 
-        public void Ctor(IReactiveProperty<EnumWindow> activeWindow)
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
+            IReactiveProperty<EnumBattleWindow> battleState)
         {
+            _battleState = battleState;
             _activeWindow = activeWindow;
-
+            BattleWindow.Ctor(_battleState);
+            
             _activeWindow.Subscribe( _ => { ShowOnlyActiveWindow(); });
         }
         
@@ -51,11 +54,11 @@ namespace Gui
 
         private void ShowOnlyActiveWindow()
         {
-            if(_activeWindow.Value == EnumWindow.Character) CharacterWindow.Show();else CharacterWindow.Hide();
-            if(_activeWindow.Value == EnumWindow.Equip) EquipmentWindow.Show();else EquipmentWindow.Hide();
-            if(_activeWindow.Value == EnumWindow.Battle) BattleWindow.Show();else BattleWindow.Hide();
-            if(_activeWindow.Value == EnumWindow.Spells) SpellsWindow.Show();else SpellsWindow.Hide();
-            if(_activeWindow.Value == EnumWindow.Talents) TalentsWindow.Show();else TalentsWindow.Hide();
+            if(_activeWindow.Value == EnumMainWindow.Character) CharacterWindow.Show();else CharacterWindow.Hide();
+            if(_activeWindow.Value == EnumMainWindow.Equip) EquipmentWindow.Show();else EquipmentWindow.Hide();
+            if(_activeWindow.Value == EnumMainWindow.Battle) BattleWindow.Show();else BattleWindow.Hide();
+            if(_activeWindow.Value == EnumMainWindow.Spells) SpellsWindow.Show();else SpellsWindow.Hide();
+            if(_activeWindow.Value == EnumMainWindow.Talents) TalentsWindow.Show();else TalentsWindow.Hide();
         }
     }
 }

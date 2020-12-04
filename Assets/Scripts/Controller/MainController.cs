@@ -1,7 +1,7 @@
-﻿using CoreComponent;
+﻿using Windows;
+using CoreComponent;
 using Enums;
 using Gui;
-using Interface;
 using UniRx;
 using Unit.Player;
 using UnityEngine;
@@ -19,8 +19,12 @@ namespace Controller
         [SerializeField] private UiReference _ui;
         [SerializeField] private WindowsReference _windows;
 
-        private IReactiveProperty<EnumWindow> _activeWindow 
-            = new ReactiveProperty<EnumWindow>(EnumWindow.Character);
+        private readonly IReactiveProperty<EnumMainWindow> _activeWindow
+            = new ReactiveProperty<EnumMainWindow>(EnumMainWindow.Character);
+
+        private readonly IReactiveProperty<EnumBattleWindow> _battleState
+            = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
+        //todo - прокинуть зависимости в геймконтроллер, UI, WindowS
 
         #endregion
 
@@ -29,21 +33,26 @@ namespace Controller
 
         private void Awake()
         {
-            _windows.Ctor(_activeWindow);
-            _ui.Ctor(_activeWindow);
+            _windows.Ctor(_activeWindow, _battleState);
+            _ui.Ctor(_activeWindow, _battleState);
 
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.transform);
-            _ui.BattlePanel.SetReference(generatorDungeon);
-            
-            var gameController = new GameController();
+            _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
+
+            var playerFactory = new PlayerFactory(_playerData);
+            var player = playerFactory.CreatePlayer();
+
+            var positioningCharInMenuController = new PositioningCharInMenuController();
+            positioningCharInMenuController.SetReference(player);
+            positioningCharInMenuController.SetReference(generatorDungeon);
+            positioningCharInMenuController.AddPlayerPosition(_windows.CharacterWindow.CharacterSpawn.transform,
+                EnumMainWindow.Character);
+            positioningCharInMenuController.SetReference(_activeWindow, _battleState);
+            _ui.BattlePanel.LevelGeneratorPanel.SetReference(positioningCharInMenuController);
 
             _controllers = new Controllers();
-            _controllers.Add(gameController);
+            _controllers.Add(positioningCharInMenuController);
 
-            // var playerFactory = new PlayerFactory(_playerData);
-            // var player = playerFactory.CreatePlayer();
-
-            
             _ui.Init();
             _windows.Init();
             _controllers.Initialization();
@@ -73,13 +82,5 @@ namespace Controller
         }
 
         #endregion
-    }
-
-
-    public sealed class GameController : IInitialization
-    {
-        public void Initialization()
-        {
-        }
     }
 }

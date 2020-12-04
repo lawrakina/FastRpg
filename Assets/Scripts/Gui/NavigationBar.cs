@@ -11,7 +11,8 @@ namespace Gui
     [Serializable]
     public sealed class NavigationBar : MonoBehaviour, IInit, ICleanup
     {
-        private IReactiveProperty<EnumWindow> _activeWindow;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
         private CompositeDisposable _subscriptions;
 
         public Toggle CharToggle;
@@ -30,33 +31,47 @@ namespace Gui
             _subscriptions?.Dispose();
         }
 
-        public void Ctor(IReactiveProperty<EnumWindow> activeWindow)
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
+            IReactiveProperty<EnumBattleWindow> battleState)
         {
             _subscriptions = new CompositeDisposable();
+            _battleState = battleState;
             _activeWindow = activeWindow;
 
             CharToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumWindow.Character;
+                if (x) _activeWindow.Value = EnumMainWindow.Character;
             }).AddTo(_subscriptions);
             EquipToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumWindow.Equip;
+                if (x) _activeWindow.Value = EnumMainWindow.Equip;
             }).AddTo(_subscriptions);
             BattleToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumWindow.Battle;
+                if (x)
+                {
+                    _activeWindow.Value = EnumMainWindow.Battle;
+                    _battleState.Value = EnumBattleWindow.DungeonGenerator;
+                }
             }).AddTo(_subscriptions);
             SpellsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumWindow.Spells;
+                if (x) _activeWindow.Value = EnumMainWindow.Spells;
             }).AddTo(_subscriptions);
             TalentsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumWindow.Talents;
+                if (x) _activeWindow.Value = EnumMainWindow.Talents;
             }).AddTo(_subscriptions);
+        }
 
-            _subscriptions = new CompositeDisposable();
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
         }
     }
 }
