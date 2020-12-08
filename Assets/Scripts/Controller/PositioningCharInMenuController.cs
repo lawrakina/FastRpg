@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using CoreComponent;
 using Enums;
-using Gui;
 using Interface;
 using UniRx;
 using Unit.Player;
@@ -10,18 +9,13 @@ using UnityEngine;
 
 namespace Controller
 {
-    public sealed class PositioningCharInMenuController : IInitialization, IBattleInit
+    public sealed class PositioningCharInMenuController : BaseController, IBattleInit
     {
         private IPlayerView _player;
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private Dictionary<EnumMainWindow, Transform> _parentsPositions = new Dictionary<EnumMainWindow, Transform>();
         private GeneratorDungeon _generatorDungeon;
         private IReactiveProperty<EnumBattleWindow> _battleState;
-
-        public void Initialization()
-        {
-        }
-
 
         public void AddPlayerPosition(Transform position, EnumMainWindow mainWindow)
         {
@@ -69,6 +63,7 @@ namespace Controller
                     _parentsPositions.Add(EnumMainWindow.Battle, playerPosition);
                 _battleState.Value = EnumBattleWindow.Fight;
                 //todo start Battle
+                SetPlayerPosition(playerPosition);
             }
         }
 
@@ -78,5 +73,6 @@ namespace Controller
             _player.Transform().localPosition = Vector3.zero;
             _player.Transform().localRotation = Quaternion.identity;
         }
+
     }
 }

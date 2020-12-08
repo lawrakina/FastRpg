@@ -8,6 +8,7 @@ namespace Extension
 
         public static int ANIMATOR_PARAM_BATTLE  = Animator.StringToHash( "Battle");
         public static int ANIMATOR_PARAM_SPEED  = Animator.StringToHash("Speed");
+        public static int ANIMATOR_PARAM_HORIZONTAL_SPEED  = Animator.StringToHash("HorizontalSpeed");
         public static int ANIMATOR_PARAM_WEAPON_TYPE = Animator.StringToHash( "WeaponType");
         public static int ANIMATOR_PARAM_ATTACK_TYPE  = Animator.StringToHash("AttackType");
         public static int ANIMATOR_PARAM_ATTACK_TRIGGER  = Animator.StringToHash("Attack");

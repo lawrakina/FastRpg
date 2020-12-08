@@ -104,5 +104,15 @@ namespace Controller
         }
 
         #endregion
+
+        public void On()
+        {
+            
+        }
+
+        public void Off()
+        {
+            
+        }
     }
 }

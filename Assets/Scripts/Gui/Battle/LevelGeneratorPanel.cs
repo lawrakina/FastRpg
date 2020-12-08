@@ -27,16 +27,13 @@ namespace Gui.Battle
         {
             _generatorDungeon = generatorDungeon;
 
-            Debug.Log($"1");
             IntoBattleButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _battleInit.StartBattle();
             }).AddTo(_subscriptions);
             
-            Debug.Log($"2");
             _generatorDungeon.Seed.SubscribeToText(SeedInputField).AddTo(_subscriptions);
             
-            Debug.Log($"3");
             var setRandomSeedCommand = new AsyncReactiveCommand();
             setRandomSeedCommand.Subscribe(_ =>
             {
@@ -45,12 +42,10 @@ namespace Gui.Battle
             }).AddTo(_subscriptions);
             setRandomSeedCommand.BindTo(RandomSeedButton).AddTo(_subscriptions);
 
-            Debug.Log($"4");
             GenerateMapButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _generatorDungeon.BuildDungeon(); 
             }).AddTo(_subscriptions);
-            Debug.Log($"5");
         }
 
 

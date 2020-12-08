@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Data;
 using Extension;
 using UnityEngine;
 
@@ -32,9 +33,13 @@ namespace Unit.Player
                       center: new Vector3(0.0f,0.9f,0.0f),
                       height: 1.8f)
                   .AddRigidBody(mass: 80, CollisionDetectionMode.ContinuousSpeculative, 
-                      isKinematic: true, useGravity: true, 
+                      isKinematic: false, useGravity: true, 
                       constraints: RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationZ)
                   .AddCode<PlayerView>();
+            var component = player.GetComponent<PlayerView>();
+            component.Speed = _playerData.PlayerMoveSpeed;
+            component.AgroDistance = _playerData.AgroDistance;
+            component.RotateSpeedPlayer = _playerData.RotateSpeedPlayer;
             return player.GetComponent<IPlayerView>();
         }
 

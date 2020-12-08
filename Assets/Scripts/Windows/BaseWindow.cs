@@ -11,6 +11,13 @@ namespace Windows
         [SerializeField] private Camera _camera;
 
         #endregion
+
+
+        #region Properties
+
+        public Camera Camera => _camera;
+
+        #endregion
         
         public void Ctor()
         {
