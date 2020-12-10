@@ -12,7 +12,7 @@ namespace Gui.Battle
     {
         #region Fields
 
-        private GeneratorDungeon _generatorDungeon;
+        private IGeneratorDungeon _generatorDungeon;
         
         [SerializeField] private Button IntoBattleButton;
         [SerializeField] private Button RandomSeedButton;
@@ -23,7 +23,7 @@ namespace Gui.Battle
         #endregion
 
 
-        public void SetReference(GeneratorDungeon generatorDungeon)
+        public void SetReference(IGeneratorDungeon generatorDungeon)
         {
             _generatorDungeon = generatorDungeon;
 

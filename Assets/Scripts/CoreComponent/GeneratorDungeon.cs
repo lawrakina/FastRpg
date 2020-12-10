@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace CoreComponent
 {
-    public sealed class GeneratorDungeon 
+    public sealed class GeneratorDungeon : IGeneratorDungeon
     {
         private bool isEnableDungeon = false;
         private DungeonGeneratorData _dungeonGeneratorData;
