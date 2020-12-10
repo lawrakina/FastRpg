@@ -1,6 +1,5 @@
 ﻿using System;
 using Controller;
-using CoreComponent;
 using Enums;
 using Gui.Battle;
 using Interface;

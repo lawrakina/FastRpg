@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using Controller;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
@@ -9,14 +8,14 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 
-namespace CoreComponent
+namespace Dungeon
 {
-    public sealed class GeneratorDungeon
+    public sealed class GeneratorDungeon : IGeneratorDungeon
     {
         private bool isEnableDungeon = false;
         private DungeonGeneratorData _dungeonGeneratorData;
         private Transform _parent;
-        private Dungeon _generator;
+        private DungeonArchitect.Dungeon _generator;
         private GridFlowDungeonConfig _config;
         private GridFlowDungeonBuilder _builder;
         private PooledDungeonSceneProvider _pooledSceneProvider;
@@ -34,7 +33,7 @@ namespace CoreComponent
             dungeon.name = "Dungeon";
 
             var gO = Object.Instantiate(_dungeonGeneratorData.StorageGenerator, _parent);
-            _generator = gO.GetComponent<Dungeon>();
+            _generator = gO.GetComponent<DungeonArchitect.Dungeon>();
             _config = gO.GetComponent<GridFlowDungeonConfig>();
             _builder = gO.GetComponent<GridFlowDungeonBuilder>();
             _pooledSceneProvider = gO.GetComponent<PooledDungeonSceneProvider>();

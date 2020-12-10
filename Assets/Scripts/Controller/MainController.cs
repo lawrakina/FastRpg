@@ -1,6 +1,6 @@
 ﻿using Windows;
-using CoreComponent;
 using Data;
+using Dungeon;
 using Enums;
 using Extension;
 using Gui;

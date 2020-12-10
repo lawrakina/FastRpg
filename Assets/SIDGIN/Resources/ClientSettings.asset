@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 1966203325, guid: 2f27773ba024b7b438c0e56203935443, type: 3}
   m_Name: ClientSettings
   m_EditorClassIdentifier: 
-  appId: 1Dw4pDO_0zK0iM89qIiFPRMpG2mBhfLBN
+  appId: 
   storageName: Google
   offlineMode: 0
   syncMainBuild: 1
