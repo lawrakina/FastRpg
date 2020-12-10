@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Dungeon;
+using CoreComponent;
 using Enums;
 using Interface;
 using UniRx;
@@ -14,7 +14,7 @@ namespace Controller
         private IPlayerView _player;
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private Dictionary<EnumMainWindow, Transform> _parentsPositions = new Dictionary<EnumMainWindow, Transform>();
-        private IGeneratorDungeon _generatorDungeon;
+        private GeneratorDungeon _generatorDungeon;
         private IReactiveProperty<EnumBattleWindow> _battleState;
 
         public void AddPlayerPosition(Transform position, EnumMainWindow mainWindow)
@@ -30,7 +30,7 @@ namespace Controller
         {
             _player = player;
         }
-        public void SetReference(IGeneratorDungeon generatorDungeon)
+        public void SetReference(GeneratorDungeon generatorDungeon)
         {
             _generatorDungeon = generatorDungeon;
         }

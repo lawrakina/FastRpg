@@ -1,5 +1,5 @@
 ﻿using System;
-using Dungeon;
+using CoreComponent;
 using Interface;
 using UniRx;
 using UniRx.Triggers;

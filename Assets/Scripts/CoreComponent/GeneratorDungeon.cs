@@ -8,9 +8,9 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 
-namespace Dungeon
+namespace CoreComponent
 {
-    public sealed class GeneratorDungeon : IGeneratorDungeon
+    public sealed class GeneratorDungeon 
     {
         private bool isEnableDungeon = false;
         private DungeonGeneratorData _dungeonGeneratorData;
@@ -22,7 +22,7 @@ namespace Dungeon
         private GameObject _dungeon;
         private Type _typeSpawnPlayer;
 
-        public IReactiveProperty<uint> Seed;
+        public IReactiveProperty<uint> Seed { get; set; }
 
         public GeneratorDungeon(DungeonGeneratorData dungeonGeneratorData, Transform parent)
         {
