@@ -6,6 +6,7 @@ using Enums;
 using Extension;
 using Gui;
 using InputMovement;
+using Interface;
 using UniRx;
 using Unit.Cameras;
 using Unit.Player;
@@ -39,6 +40,7 @@ namespace Controller
 
         [Header("Type of camera and char control")] [SerializeField]
         private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
+
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
 
         #endregion
@@ -49,7 +51,7 @@ namespace Controller
         private void Awake()
         {
             LayerManager.GroundLayer = _groundLayer;
-            
+
             _activeWindow = new ReactiveProperty<EnumMainWindow>(_activePanelAndWindow);
             _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
@@ -58,7 +60,7 @@ namespace Controller
             _ui.Ctor(_activeWindow, _battleState);
 
             var inputInitialization = new InputInitialization();
-            
+
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
 
@@ -66,8 +68,8 @@ namespace Controller
             var player = playerFactory.CreatePlayer();
             var fightCameraFactory = new CameraFactory();
             // камера используется в рендере gui и сцены - todo все в SO и префабы
-            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera); 
-            
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
+
             var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
             positioningCharInMenuController.Player = player;
             positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
@@ -77,13 +79,14 @@ namespace Controller
                 _windows.EquipmentWindow.CharacterSpawn(), EnumMainWindow.Equip);
             positioningCharInMenuController.AddPlayerPosition(
                 generatorDungeon.GetPlayerPosition(), EnumMainWindow.Battle);
-                // _windows.BattleWindow.CharacterSpawn(), EnumMainWindow.Battle);
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.SpellsWindow.CharacterSpawn(), EnumMainWindow.Spells);
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
-            
-            
+
+            var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, player);
+            battleInitialization.Dungeon = generatorDungeon.Dungeon();
+            _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
             // var positioningCharInMenuController = new PositioningCharacterInMenuController();
             // positioningCharInMenuController.SetReference(player);
             // positioningCharInMenuController.SetReference(generatorDungeon);
@@ -95,7 +98,8 @@ namespace Controller
             var battleCameraController =
                 new FightCameraController(_battleState, player, fightCamera, _typeCameraAndCharControl);
             var battlePlayerMoveController =
-                new MovePlayerController(_battleState,inputInitialization.GetInput(), player, _typeCameraAndCharControl);
+                new MovePlayerController(_battleState, inputInitialization.GetInput(), player,
+                    _typeCameraAndCharControl);
             var inputController = new InputController(inputInitialization.GetInput());
 
             _controllers = new Controllers();
@@ -115,7 +119,7 @@ namespace Controller
             _activeWindow.Value = EnumMainWindow.Character;
         }
 
-        
+
         #region Methods
 
         private void Update()
@@ -142,8 +146,46 @@ namespace Controller
         }
 
         #endregion
-        
 
         #endregion
+    }
+
+    public sealed class BattleInitialization : IBattleInit
+    {
+        private IGeneratorDungeon _generatorDungeon;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
+        private IPlayerView _player;
+
+        public BattleInitialization(IGeneratorDungeon generatorDungeon,
+            IReactiveProperty<EnumBattleWindow> battleState,
+            IReactiveProperty<EnumMainWindow> activeWindow, IPlayerView player)
+        {
+            _player = player;
+            _generatorDungeon = generatorDungeon;
+            _battleState = battleState;
+            _activeWindow = activeWindow;
+        }
+
+        public void StartBattle()
+        {
+            var playerPosition = _generatorDungeon.GetPlayerPosition();
+            Debug.Log($"StartBattle(), playerPosition:{playerPosition}");
+
+            _player.Transform().SetParent(playerPosition);
+            _player.Transform().localPosition = Vector3.zero;
+            _player.Transform().localRotation = Quaternion.identity;
+            _battleState.Value = EnumBattleWindow.Fight;
+            // if (playerPosition != null)
+            // {
+            //     if(!_parentsPositions.ContainsKey(EnumMainWindow.Battle))
+            //         _parentsPositions.Add(EnumMainWindow.Battle, playerPosition);
+            //     _battleState.Value = EnumBattleWindow.Fight;
+            //     //todo start Battle
+            //     SetPlayerPosition(playerPosition);
+            // }
+        }
+
+        public GameObject Dungeon { get; set; }
     }
 }

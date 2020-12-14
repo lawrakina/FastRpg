@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Controller
 {
-    public sealed class PositioningCharacterInMenuController : BaseController, IBattleInit
+    public sealed class PositioningCharacterInMenuController : BaseController
     {
         #region Fields
 

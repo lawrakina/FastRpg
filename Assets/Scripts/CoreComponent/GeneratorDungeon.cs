@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace CoreComponent
 {
+
     public sealed class GeneratorDungeon : IGeneratorDungeon
     {
         private bool isEnableDungeon = false;
@@ -29,15 +30,15 @@ namespace CoreComponent
             _dungeonGeneratorData = dungeonGeneratorData;
             _parent = parent;
 
-            var dungeon = Object.Instantiate(new GameObject(), _parent);
-            dungeon.name = "Dungeon";
+            _dungeon = Object.Instantiate(new GameObject(), _parent);
+            _dungeon.name = "Dungeon";
 
             var gO = Object.Instantiate(_dungeonGeneratorData.StorageGenerator, _parent);
             _generator = gO.GetComponent<DungeonArchitect.Dungeon>();
             _config = gO.GetComponent<GridFlowDungeonConfig>();
             _builder = gO.GetComponent<GridFlowDungeonBuilder>();
             _pooledSceneProvider = gO.GetComponent<PooledDungeonSceneProvider>();
-            _pooledSceneProvider.itemParent = dungeon;
+            _pooledSceneProvider.itemParent = _dungeon;
 
             Seed = new ReactiveProperty<uint>(_config.Seed);
             Seed.Subscribe(x => { _config.Seed = x; });
@@ -70,6 +71,11 @@ namespace CoreComponent
         {
             DestroyDungeon();
             Seed.Value = (uint) Random.Range(0, int.MaxValue);
+        }
+
+        public GameObject Dungeon()
+        {
+            return _dungeon;
         }
     }
 }

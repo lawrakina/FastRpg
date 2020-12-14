@@ -10,5 +10,6 @@ namespace CoreComponent
         void                    DestroyDungeon();
         Transform               GetPlayerPosition();
         void                    SetRandomSeed();
+        GameObject Dungeon();
     }
 }
