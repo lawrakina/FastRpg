@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Enums;
 using Interface;
 using UniRx;
@@ -26,6 +27,17 @@ namespace Gui
         {
         }
 
+        public void Init(List<EnumMainWindow> offItemMenu)
+        {
+            Init();
+            Debug.Log($"offItemMenu:{offItemMenu},{offItemMenu.Count}");
+            CharToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Character);
+            EquipToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Equip);
+            BattleToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Battle);
+            SpellsToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Spells);
+            TalentsToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Talents);
+        }
+
         public void Cleanup()
         {
             _subscriptions?.Dispose();
@@ -40,27 +52,44 @@ namespace Gui
 
             CharToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumMainWindow.Character;
+                if (x)
+                {
+                    // Debug.Log($"_activeWindow.Value = EnumMainWindow.Character");
+                    _activeWindow.Value = EnumMainWindow.Character;
+                }
             }).AddTo(_subscriptions);
             EquipToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumMainWindow.Equip;
+                if (x)
+                {
+                    // Debug.Log($"_activeWindow.Value = EnumMainWindow.Equip");
+                    _activeWindow.Value = EnumMainWindow.Equip;
+                }
             }).AddTo(_subscriptions);
             BattleToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)
                 {
+                    // Debug.Log($"_activeWindow.Value = EnumMainWindow.Battle");
                     _activeWindow.Value = EnumMainWindow.Battle;
                     _battleState.Value = EnumBattleWindow.DungeonGenerator;
                 }
             }).AddTo(_subscriptions);
             SpellsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumMainWindow.Spells;
+                if (x)
+                {
+                    // Debug.Log($"_activeWindow.Value = EnumMainWindow.Spells");
+                    _activeWindow.Value = EnumMainWindow.Spells;
+                }
             }).AddTo(_subscriptions);
             TalentsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
-                if (x) _activeWindow.Value = EnumMainWindow.Talents;
+                if (x)
+                {
+                    // Debug.Log($"_activeWindow.Value = EnumMainWindow.Talents");
+                    _activeWindow.Value = EnumMainWindow.Talents;
+                }
             }).AddTo(_subscriptions);
         }
 

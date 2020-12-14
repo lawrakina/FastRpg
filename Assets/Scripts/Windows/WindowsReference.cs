@@ -2,6 +2,7 @@
 using Enums;
 using Interface;
 using UniRx;
+using UnityEngine;
 
 
 namespace Windows
@@ -28,7 +29,12 @@ namespace Windows
         {
             _battleState = battleState;
             _activeWindow = activeWindow;
+            CharacterWindow.Ctor();
+            EquipmentWindow.Ctor();
             BattleWindow.Ctor(_battleState);
+            SpellsWindow.Ctor();
+            TalentsWindow.Ctor();
+            
             
             _activeWindow.Subscribe( _ => { ShowOnlyActiveWindow(); });
         }
@@ -54,6 +60,7 @@ namespace Windows
 
         private void ShowOnlyActiveWindow()
         {
+            Debug.Log($"WindowsReference.ActiveWindow:{_activeWindow}");
             if(_activeWindow.Value == EnumMainWindow.Character) CharacterWindow.Show();else CharacterWindow.Hide();
             if(_activeWindow.Value == EnumMainWindow.Equip) EquipmentWindow.Show();else EquipmentWindow.Hide();
             if(_activeWindow.Value == EnumMainWindow.Battle) BattleWindow.Show();else BattleWindow.Hide();

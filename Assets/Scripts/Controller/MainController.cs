@@ -1,4 +1,5 @@
-﻿using Windows;
+﻿using System.Collections.Generic;
+using Windows;
 using CoreComponent;
 using Data;
 using Enums;
@@ -31,7 +32,7 @@ namespace Controller
         [SerializeField] private WindowsReference _windows;
 
         [Header("Active Panel and Window at the Start")] [SerializeField]
-        private EnumMainWindow _activePanelAndWindow = EnumMainWindow.Character;
+        private EnumMainWindow _activePanelAndWindow;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
@@ -58,21 +59,38 @@ namespace Controller
 
             var inputInitialization = new InputInitialization();
             
-            var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.transform);
+            var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
 
             var playerFactory = new PlayerFactory(_playerData);
             var player = playerFactory.CreatePlayer();
             var fightCameraFactory = new CameraFactory();
-            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
-
-            var positioningCharInMenuController = new PositioningCharInMenuController();
-            positioningCharInMenuController.SetReference(player);
-            positioningCharInMenuController.SetReference(generatorDungeon);
-            positioningCharInMenuController.AddPlayerPosition(_windows.CharacterWindow.CharacterSpawn.transform,
-                EnumMainWindow.Character);
-            positioningCharInMenuController.SetReference(_activeWindow, _battleState);
-            _ui.BattlePanel.LevelGeneratorPanel.SetReference(positioningCharInMenuController);
+            // камера используется в рендере gui и сцены - todo все в SO и префабы
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera); 
+            
+            var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
+            positioningCharInMenuController.Player = player;
+            positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
+            positioningCharInMenuController.AddPlayerPosition(
+                _windows.CharacterWindow.CharacterSpawn(), EnumMainWindow.Character);
+            positioningCharInMenuController.AddPlayerPosition(
+                _windows.EquipmentWindow.CharacterSpawn(), EnumMainWindow.Equip);
+            positioningCharInMenuController.AddPlayerPosition(
+                generatorDungeon.GetPlayerPosition(), EnumMainWindow.Battle);
+                // _windows.BattleWindow.CharacterSpawn(), EnumMainWindow.Battle);
+            positioningCharInMenuController.AddPlayerPosition(
+                _windows.SpellsWindow.CharacterSpawn(), EnumMainWindow.Spells);
+            positioningCharInMenuController.AddPlayerPosition(
+                _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
+            
+            
+            // var positioningCharInMenuController = new PositioningCharacterInMenuController();
+            // positioningCharInMenuController.SetReference(player);
+            // positioningCharInMenuController.SetReference(generatorDungeon);
+            // positioningCharInMenuController.AddPlayerPosition(_windows.CharacterWindow.CharacterSpawn.transform,
+            //     EnumMainWindow.Character);
+            // positioningCharInMenuController.SetReference(_activeWindow, _battleState);
+            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(positioningCharInMenuController);
 
             var battleCameraController =
                 new FightCameraController(_battleState, player, fightCamera, _typeCameraAndCharControl);
@@ -87,10 +105,18 @@ namespace Controller
             _controllers.Add(battlePlayerMoveController);
             _controllers.Add(inputController);
 
-            _ui.Init();
+            var offItemMenu = new List<EnumMainWindow>();
+            offItemMenu.Add(EnumMainWindow.Equip);
+            offItemMenu.Add(EnumMainWindow.Spells);
+            offItemMenu.Add(EnumMainWindow.Talents);
+            _ui.Init(offItemMenu);
             _windows.Init();
             _controllers.Initialization();
+            _activeWindow.Value = EnumMainWindow.Character;
         }
+
+        
+        #region Methods
 
         private void Update()
         {
@@ -114,6 +140,9 @@ namespace Controller
         {
             _controllers.Cleanup();
         }
+
+        #endregion
+        
 
         #endregion
     }

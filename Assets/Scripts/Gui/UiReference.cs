@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Enums;
 using Interface;
 using UniRx;
@@ -12,6 +13,7 @@ namespace Gui
         #region Fields
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private IReactiveProperty<EnumBattleWindow> _battleState;
 
         public CharacterPanel CharacterPanel;
         public EquipmentPanel EquipmentPanel;
@@ -19,7 +21,6 @@ namespace Gui
         public SpellsPanel SpellsPanel;
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
-        private IReactiveProperty<EnumBattleWindow> _battleState;
 
         #endregion
 
@@ -49,7 +50,7 @@ namespace Gui
 
         private void ShowOnlyActivePanel()
         {
-            Debug.Log($"ShowOnlyActivePanel:{_activeWindow.Value}");
+            // Debug.Log($"ShowOnlyActivePanel:{_activeWindow.Value}");
             // Debug.Log($"CharacterPanel:{CharacterPanel}, BattlePanel:{BattlePanel},{BattlePanel.enabled},{BattlePanel.name}");
             if (_activeWindow.Value == EnumMainWindow.Character)
                 CharacterPanel.Show();
@@ -71,12 +72,17 @@ namespace Gui
 
         public void Init()
         {
+            
+        }
+        public void Init(List<EnumMainWindow> offItemMenu)
+        {
+            Init();
             CharacterPanel.Init();
             EquipmentPanel.Init();
             BattlePanel.Init();
             SpellsPanel.Init();
             TalentsPanel.Init();
-            NavigationBar.Init();
+            NavigationBar.Init(offItemMenu);
         }
 
         public void Cleanup()

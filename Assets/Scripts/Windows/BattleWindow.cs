@@ -14,6 +14,31 @@ namespace Windows
 
         #endregion
 
+        
+        #region Properties
+
+        public GameObject Content => _content;
+
+        #endregion
+
+
+        #region ClassLiveCycles
+
+        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
+        {
+            base.Ctor();
+            _battleState = battleState;
+
+            _battleState.Subscribe(_ =>
+            {
+                _forTextureRenderCamera.gameObject.SetActive(_battleState.Value == EnumBattleWindow.DungeonGenerator);
+            });
+        }
+
+        #endregion
+
+
+        #region Methods
 
         public override void Show()
         {
@@ -27,15 +52,7 @@ namespace Windows
             _forTextureRenderCamera.enabled = false;
         }
 
-        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
-        {
-            base.Ctor();
-            _battleState = battleState;
+        #endregion
 
-            _battleState.Subscribe(_ =>
-            {
-                _forTextureRenderCamera.gameObject.SetActive(_battleState.Value == EnumBattleWindow.DungeonGenerator);
-            });
-        }
     }
 }

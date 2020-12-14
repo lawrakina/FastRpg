@@ -8,7 +8,7 @@ namespace Controller
         #region Fields
 
         protected CompositeDisposable _subscriptions;
-        protected bool IsEnable;
+        protected bool _isEnable;
 
         #endregion
 
@@ -19,17 +19,17 @@ namespace Controller
         
         public virtual void On()
         {
-            IsEnable = true;
+            _isEnable = true;
         }
 
         public virtual void Off()
         {
-            IsEnable = false;
+            _isEnable = false;
         }
 
         public virtual void Initialization()
         {
-            
+            _isEnable = true;
         }
 
         public virtual void Cleanup()

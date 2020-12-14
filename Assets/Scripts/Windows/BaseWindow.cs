@@ -4,22 +4,26 @@ using UnityEngine;
 
 namespace Windows
 {
-    public class BaseWindow : MonoBehaviour, IWindow, IInit, ICleanup
+    public abstract class BaseWindow : MonoBehaviour, IWindow, IInit, ICleanup
     {
         #region Fields
 
         [SerializeField] private Camera _camera;
+        [SerializeField] protected GameObject _content;
 
         #endregion
 
 
         #region Properties
 
+        public delegate Transform GetCharacterSpawn();
+
+        public GetCharacterSpawn CharacterSpawn;
         public Camera Camera => _camera;
 
         #endregion
         
-        public void Ctor()
+        public virtual void Ctor()
         {
             
         }
@@ -34,13 +38,13 @@ namespace Windows
 
         public virtual void Show()
         {
-            gameObject.SetActive(true);
+            _content.SetActive(true);
             _camera.enabled = true;
         }
 
         public virtual void Hide()
         {
-            gameObject.SetActive(false);
+            _content.SetActive(false);
             _camera.enabled = false;
         }
     }

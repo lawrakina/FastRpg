@@ -2,6 +2,7 @@
 {
     public enum EnumMainWindow
     {
+        None,
         Character,
         Equip,
         Battle,

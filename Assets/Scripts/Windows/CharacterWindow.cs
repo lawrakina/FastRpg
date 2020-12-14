@@ -5,6 +5,23 @@ namespace Windows
 {
     public sealed class CharacterWindow : BaseWindow
     {
-        public GameObject CharacterSpawn;
+        #region Fields
+
+        [SerializeField] private Transform _characterPositionSpawn;
+
+        #endregion
+        
+        
+        public override void Ctor()
+        {
+            base.Ctor();
+
+            CharacterSpawn = GetPositionCharacter;
+        }
+
+        private Transform GetPositionCharacter()
+        {
+            return _characterPositionSpawn;
+        }
     }
 }

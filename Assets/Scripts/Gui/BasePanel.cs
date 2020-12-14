@@ -29,13 +29,13 @@ namespace Gui
 
         public void Show()
         {
-            Debug.Log($"ShowPanel:{name}");
+            // Debug.Log($"ShowPanel:{name}");
             gameObject.SetActive(true);
         }
         
         public void Hide()
         {
-            Debug.Log($"HidePanel:{name}");
+            // Debug.Log($"HidePanel:{name}");
             gameObject.SetActive(false);
         }
     }

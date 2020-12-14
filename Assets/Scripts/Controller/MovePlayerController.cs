@@ -46,7 +46,7 @@ namespace Controller
                 {
                     _goTarget = Object.Instantiate(new GameObject(), _unitView.Transform(), true);
                     _goTarget.name = "->DirectionMoving<-";
-                    Debug.Log($"CreateTargetMovingDirection: {_goTarget}");
+                    // Debug.Log($"CreateTargetMovingDirection: {_goTarget}");
                     _isGoTarget = true;
                 }
 
@@ -74,11 +74,11 @@ namespace Controller
             {
                 if (_battleState.Value == EnumBattleWindow.Fight)
                 {
-                    IsEnable = true;
+                    _isEnable = true;
                 }
                 else
                 {
-                    IsEnable = false;
+                    _isEnable = false;
                 }
             });
 
@@ -133,14 +133,14 @@ namespace Controller
 
         public void Execute(float deltaTime)
         {
-            if (!IsEnable) return;
+            if (!_isEnable) return;
 
             // CheckGravity();
         }
 
         public void FixedExecute(float deltaTime)
         {
-            if (!IsEnable) return;
+            if (!_isEnable) return;
 
             //правильное скалярное умножение векторов => скорость под углом 45` ~ 0.706
             _direction = Vector3.ClampMagnitude(_inputVector, 1f);
