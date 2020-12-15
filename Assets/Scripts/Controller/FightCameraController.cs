@@ -28,7 +28,7 @@ namespace Controller
         #endregion
 
 
-        #region LiveCyclesMethods
+        #region ClassLiveCycles
 
         public FightCameraController(IReactiveProperty<EnumBattleWindow> battleState, IPlayerView player,
             FightCamera camera, IReactiveProperty<EnumFightCamera> typeCameraAndCharControl)
@@ -93,10 +93,11 @@ namespace Controller
         {
             _camera.ThirdTarget.localPosition = _camera.OffsetThirdPosition();
             //CameraMove
-            _camera.transform.position = Vector3.Lerp(
-                _camera.transform.position,
-                _camera.ThirdTarget.position,
-                deltaTime * _camera.CameraMoveSpeed);
+            // _camera.transform.position = Vector3.Lerp(
+            //     _camera.transform.position,
+            //     _camera.ThirdTarget.position,
+            //     deltaTime * _camera.CameraMoveSpeed);
+            _camera.transform.position = _camera.ThirdTarget.position;
             //CameraRotate
             _camera.transform.LookAt(_player.Transform());
         }

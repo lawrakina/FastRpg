@@ -1,4 +1,5 @@
 ﻿using System;
+using Battle;
 using CoreComponent;
 using Interface;
 using UniRx;

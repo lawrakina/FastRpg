@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Windows;
+using Battle;
 using CoreComponent;
 using Data;
 using Enums;
 using Extension;
 using Gui;
 using InputMovement;
-using Interface;
 using UniRx;
 using Unit.Cameras;
 using Unit.Player;
@@ -87,13 +87,6 @@ namespace Controller
             var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, player);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
-            // var positioningCharInMenuController = new PositioningCharacterInMenuController();
-            // positioningCharInMenuController.SetReference(player);
-            // positioningCharInMenuController.SetReference(generatorDungeon);
-            // positioningCharInMenuController.AddPlayerPosition(_windows.CharacterWindow.CharacterSpawn.transform,
-            //     EnumMainWindow.Character);
-            // positioningCharInMenuController.SetReference(_activeWindow, _battleState);
-            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(positioningCharInMenuController);
 
             var battleCameraController =
                 new FightCameraController(_battleState, player, fightCamera, _typeCameraAndCharControl);
@@ -148,44 +141,5 @@ namespace Controller
         #endregion
 
         #endregion
-    }
-
-    public sealed class BattleInitialization : IBattleInit
-    {
-        private IGeneratorDungeon _generatorDungeon;
-        private IReactiveProperty<EnumMainWindow> _activeWindow;
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-        private IPlayerView _player;
-
-        public BattleInitialization(IGeneratorDungeon generatorDungeon,
-            IReactiveProperty<EnumBattleWindow> battleState,
-            IReactiveProperty<EnumMainWindow> activeWindow, IPlayerView player)
-        {
-            _player = player;
-            _generatorDungeon = generatorDungeon;
-            _battleState = battleState;
-            _activeWindow = activeWindow;
-        }
-
-        public void StartBattle()
-        {
-            var playerPosition = _generatorDungeon.GetPlayerPosition();
-            Debug.Log($"StartBattle(), playerPosition:{playerPosition}");
-
-            _player.Transform().SetParent(playerPosition);
-            _player.Transform().localPosition = Vector3.zero;
-            _player.Transform().localRotation = Quaternion.identity;
-            _battleState.Value = EnumBattleWindow.Fight;
-            // if (playerPosition != null)
-            // {
-            //     if(!_parentsPositions.ContainsKey(EnumMainWindow.Battle))
-            //         _parentsPositions.Add(EnumMainWindow.Battle, playerPosition);
-            //     _battleState.Value = EnumBattleWindow.Fight;
-            //     //todo start Battle
-            //     SetPlayerPosition(playerPosition);
-            // }
-        }
-
-        public GameObject Dungeon { get; set; }
     }
 }

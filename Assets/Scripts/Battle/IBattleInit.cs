@@ -1,4 +1,4 @@
-﻿namespace Interface
+﻿namespace Battle
 {
     public interface IBattleInit
     {
