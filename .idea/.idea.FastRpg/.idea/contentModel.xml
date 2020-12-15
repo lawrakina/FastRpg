@@ -2694,11 +2694,13 @@
             <e p="IGeneratorDungeon.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
+            <e p="CharacterSettings.cs" t="Include" />
             <e p="DungeonGeneratorData.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
             <e p="CameraViewType.cs" t="Include" />
+            <e p="CharacterSettings.cs" t="Include" />
             <e p="EnumBattleWindow.cs" t="Include" />
             <e p="EnumFightCamera.cs" t="Include" />
             <e p="EnumMainWindow.cs" t="Include" />

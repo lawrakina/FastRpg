@@ -15167,7 +15167,12 @@ MonoBehaviour:
   - {r: 0.2392157, g: 0.45882356, b: 0.81568635, a: 0}
   enabledObjects: []
   male:
-    headAllElements: []
+    headAllElements:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     headNoElements: []
     eyebrow: []
     facialHair: []

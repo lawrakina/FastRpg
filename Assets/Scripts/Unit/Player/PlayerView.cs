@@ -1,4 +1,5 @@
 ﻿using System;
+using Data;
 using Model;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Unit.Player
         private Transform _enemyTarget;
         [SerializeField] private float _agroDistance;
         [SerializeField] private float _rotateSpeedPlayer;
+        private CharacterSettings _playerSetting;
 
         #endregion
 
@@ -53,6 +55,12 @@ namespace Unit.Player
         {
             get => _rotateSpeedPlayer;
             set => _rotateSpeedPlayer = value;
+        }
+
+        public CharacterSettings PlayerSettings
+        {
+            get => _playerSetting;
+            set => _playerSetting = value;
         }
 
         #endregion

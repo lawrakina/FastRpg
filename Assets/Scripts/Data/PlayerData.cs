@@ -9,5 +9,6 @@ namespace Data
         [SerializeField] public float PlayerMoveSpeed = 10.0f;
         [SerializeField] public float AgroDistance = 10.0f;
         [SerializeField] public float RotateSpeedPlayer = 90.0f;
+        [SerializeField] public CharacterSettings PlayerSettings;
     }
 }

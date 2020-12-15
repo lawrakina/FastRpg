@@ -40,6 +40,7 @@ namespace Unit.Player
             component.Speed = _playerData.PlayerMoveSpeed;
             component.AgroDistance = _playerData.AgroDistance;
             component.RotateSpeedPlayer = _playerData.RotateSpeedPlayer;
+            component.PlayerSettings = _playerData.PlayerSettings;
             return player.GetComponent<IPlayerView>();
         }
 
