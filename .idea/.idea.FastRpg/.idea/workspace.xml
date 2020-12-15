@@ -20,7 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/InternalUtil/PromiseHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/InternalUtil/PromiseHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/InternalUtil/UnityEqualityComparer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/InternalUtil/UnityEqualityComparer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableJointTrigger.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableJointTrigger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Cameras.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/BottomPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/BottomPanel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Initializator.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VIew/Cameras/CameraView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VIew/Cameras/CameraView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VIew/HealthBarView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VIew/HealthBarView.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +80,7 @@
     <setting file="file://$PROJECT_DIR$/../../Matterials/GUI/MyIMGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C08BD57D-2B5D-46E8-9270-D6C4FB6BE1CF/34/4e05b18f/FirebaseApp.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/UI/UITooltip.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Battle/BattleInitialization.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -210,6 +221,7 @@
       <workItem from="1608011250452" duration="2520000" />
       <workItem from="1608017662433" duration="357000" />
       <workItem from="1608026457271" duration="30000" />
+      <workItem from="1608028227611" duration="77000" />
     </task>
     <servers />
   </component>

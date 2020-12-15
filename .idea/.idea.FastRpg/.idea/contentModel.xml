@@ -2682,6 +2682,12 @@
             <e p="MainController.cs" t="Include" />
             <e p="MovePlayerController.cs" t="Include" />
             <e p="PositioningCharacterInMenuController.cs" t="Include" />
+            <e p="TimeRemaining" t="Include">
+              <e p="ITimeRemaining.cs" t="Include" />
+              <e p="TimeRemaining.cs" t="Include" />
+              <e p="TimeRemainingController.cs" t="Include" />
+              <e p="TimeRemainingExtensions.cs" t="Include" />
+            </e>
           </e>
           <e p="CoreComponent" t="Include">
             <e p="GeneratorDungeon.cs" t="Include" />
@@ -2692,9 +2698,11 @@
             <e p="PlayerData.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
+            <e p="CameraViewType.cs" t="Include" />
             <e p="EnumBattleWindow.cs" t="Include" />
             <e p="EnumFightCamera.cs" t="Include" />
             <e p="EnumMainWindow.cs" t="Include" />
+            <e p="UnitState.cs" t="Include" />
           </e>
           <e p="Extension" t="Include">
             <e p="BuilderExtension.cs" t="Include" />
@@ -2712,6 +2720,7 @@
               <e p="VictoryPanel.cs" t="Include" />
             </e>
             <e p="BattlePanel.cs" t="Include" />
+            <e p="BottomPanel.cs" t="Include" />
             <e p="CharacterPanel.cs" t="Include" />
             <e p="EquipmentPanel.cs" t="Include" />
             <e p="GuiData.cs" t="Include" />
@@ -2730,20 +2739,21 @@
           <e p="Interface" t="Include">
             <e p="ICleanup.cs" t="Include" />
             <e p="IController.cs" t="Include" />
+            <e p="IEnabled.cs" t="Include" />
             <e p="IExecute.cs" t="Include" />
             <e p="IFightCamera.cs" t="Include" />
             <e p="IFixedExecute.cs" t="Include" />
+            <e p="IFixedUpdate.cs" t="Include" />
             <e p="IInit.cs" t="Include" />
             <e p="IInitialization.cs" t="Include" />
             <e p="ILateExecute.cs" t="Include" />
+            <e p="ILateUpdated.cs" t="Include" />
+            <e p="IUpdated.cs" t="Include" />
             <e p="IWindow.cs" t="Include" />
           </e>
-          <e p="Model" t="Include">
-            <e p="FloatNotifyPropertyChange.cs" t="Include" />
-            <e p="IFloatNotifyPropertyChange.cs" t="Include" />
-            <e p="IIntNotifyPropertyChange.cs" t="Include" />
-            <e p="InfoCollision.cs" t="Include" />
-            <e p="IntNotifyPropertyChange.cs" t="Include" />
+          <e p="Manager" t="Include">
+            <e p="Helper.cs" t="Include" />
+            <e p="TagManager.cs" t="Include" />
           </e>
           <e p="MyTests" t="Include">
             <e p="MyCameraView.cs" t="Include" />
@@ -2765,7 +2775,19 @@
             </e>
           </e>
           <e p="View" t="Include">
+            <e p="BaseUnitView.cs" t="Include" />
+            <e p="Cameras" t="Include">
+              <e p="CameraView.cs" t="Include" />
+            </e>
+            <e p="FloatNotifyPropertyChange.cs" t="Include" />
+            <e p="HealthBarView.cs" t="Include" />
+            <e p="IFloatNotifyPropertyChange.cs" t="Include" />
+            <e p="IIntNotifyPropertyChange.cs" t="Include" />
+            <e p="InfoCollision.cs" t="Include" />
+            <e p="IntNotifyPropertyChange.cs" t="Include" />
+            <e p="MyUiDungeonGenerator.cs" t="Include" />
             <e p="SpawnMarkerCharacterInDungeon.cs" t="Include" />
+            <e p="TopScrollerRpgCameraView.cs" t="Include" />
           </e>
           <e p="Windows" t="Include">
             <e p="BaseWindow.cs" t="Include" />
