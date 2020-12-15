@@ -52,7 +52,7 @@ namespace Controller
         {
             LayerManager.GroundLayer = _groundLayer;
 
-            _activeWindow = new ReactiveProperty<EnumMainWindow>(_activePanelAndWindow);
+            _activeWindow = new ReactiveProperty<EnumMainWindow>();
             _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
 
@@ -109,7 +109,7 @@ namespace Controller
             _ui.Init(offItemMenu);
             _windows.Init();
             _controllers.Initialization();
-            _activeWindow.Value = EnumMainWindow.Character;
+            _activeWindow.Value = _activePanelAndWindow;
         }
 
 

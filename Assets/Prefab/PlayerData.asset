@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497cda58a6a469993ab709f09277c51, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  StoragePlayer: {fileID: 1326728806038226, guid: c360e03d37d6f6c449ea70983e7e8b0b,
+  StoragePlayer: {fileID: 5604968555838804302, guid: e7475cc6d893fd94088315f39a457dd5,
     type: 3}
   PlayerMoveSpeed: 5
   AgroDistance: 10
