@@ -24,10 +24,17 @@ TagManager:
   - Friend
   - Enemy
   - Item
+<<<<<<< HEAD
   - Environment
   - ObjectsToHide
   - Camera
   - BloorEnvironment
+=======
+  - Ground
+  - 
+  - 
+  - 
+>>>>>>> AddGui
   - 
   - 
   - 

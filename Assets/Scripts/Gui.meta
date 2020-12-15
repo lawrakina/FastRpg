@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fileFormatVersion: 2
 guid: 17c733476175afc43b97004c3ea6aa18
 folderAsset: yes
@@ -6,3 +7,8 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+﻿fileFormatVersion: 2
+guid: 93eac24f83a843169f25881a5e891f54
+timeCreated: 1606736077
+>>>>>>> AddGui
