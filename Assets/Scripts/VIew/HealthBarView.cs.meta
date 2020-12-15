@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/VIew/HealthBarView.cs.meta
+guid: 29c1956eb7c09424489278f50dc8122f
+=======
+guid: 79b758631951cbc42b40ea87072e1ab3
+>>>>>>> AddGui:Assets/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableJointTrigger.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

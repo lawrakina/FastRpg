@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497cda58a6a469993ab709f09277c51, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  StoragePlayer: {fileID: 1326728806038226, guid: c360e03d37d6f6c449ea70983e7e8b0b,
+    type: 3}
+  PlayerMoveSpeed: 5
+  AgroDistance: 10
+  RotateSpeedPlayer: 120
