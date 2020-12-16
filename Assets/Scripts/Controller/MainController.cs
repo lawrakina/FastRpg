@@ -36,6 +36,7 @@ namespace Controller
         private EnumMainWindow _activePanelAndWindow;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
 
         [Header("Type of camera and char control")] [SerializeField]
@@ -53,11 +54,12 @@ namespace Controller
             LayerManager.GroundLayer = _groundLayer;
 
             _activeWindow = new ReactiveProperty<EnumMainWindow>();
+            _charWindow = new ReactiveProperty<EnumCharacterWindow>();
             _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
 
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow);
 
             var inputInitialization = new InputInitialization();
 

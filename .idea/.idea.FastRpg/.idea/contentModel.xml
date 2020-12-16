@@ -2367,6 +2367,37 @@
               <e p="EmojiOne Attribution.txt" t="Include" />
             </e>
           </e>
+          <e p="UIParticleSystem" t="Include">
+            <e p="changelog.txt" t="Include" />
+            <e p="Example" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Autorotate.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="UIParticleCanvasEditor.cs" t="Include" />
+                <e p="UIParticleDepthObjectEditor.cs" t="Include" />
+                <e p="UIParticleRectTransSizeFollowerEditor.cs" t="Include" />
+                <e p="UIParticleShaderEditor.cs" t="Include" />
+              </e>
+              <e p="UIParticleCanvas.cs" t="Include" />
+              <e p="UIParticleDepthObject.cs" t="Include" />
+              <e p="UIParticleDepthObjectInfo.cs" t="Include" />
+              <e p="UIParticleEnums.cs" t="Include" />
+              <e p="UIParticleRectTransSizeFollower.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="UIDepthLib.cginc" t="Include" />
+              <e p="UIParticle.shader" t="Include" />
+              <e p="UIParticleMask" t="Include">
+                <e p="UIParticleDepthRender.shader" t="Include" />
+                <e p="UIParticleMaskCullRender.shader" t="Include" />
+              </e>
+              <e p="UIParticleWithDistortion.shader" t="Include" />
+            </e>
+            <e p="UniversalRP(URP)_UpgradeReadme.txt" t="Include" />
+          </e>
           <e p="Ultimate Joystick" t="Include">
             <e p="_Examples" t="Include">
               <e p="Spaceship Example" t="Include">
@@ -2702,6 +2733,7 @@
             <e p="CameraViewType.cs" t="Include" />
             <e p="CharacterSettings.cs" t="Include" />
             <e p="EnumBattleWindow.cs" t="Include" />
+            <e p="EnumCharacterWindow.cs" t="Include" />
             <e p="EnumFightCamera.cs" t="Include" />
             <e p="EnumMainWindow.cs" t="Include" />
             <e p="UnitState.cs" t="Include" />
@@ -2770,6 +2802,9 @@
             </e>
             <e p="IBaseUnitView.cs" t="Include" />
             <e p="Player" t="Include">
+              <e p="BaseCharacterClass.cs" t="Include" />
+              <e p="CharacterClassRogue.cs" t="Include" />
+              <e p="CharacterClassWarrior.cs" t="Include" />
               <e p="IPlayerFactory.cs" t="Include" />
               <e p="IPlayerView.cs" t="Include" />
               <e p="PlayerFactory.cs" t="Include" />

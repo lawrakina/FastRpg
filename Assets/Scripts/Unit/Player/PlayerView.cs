@@ -63,6 +63,8 @@ namespace Unit.Player
             set => _playerSetting = value;
         }
 
+        public BaseCharacterClass CharacterClass { get; set; }
+
         #endregion
 
 

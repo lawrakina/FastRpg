@@ -1,5 +1,12 @@
 ﻿namespace Enums
 {
+    public enum CharacterClass
+    {
+        Warrior,
+        Rogue,
+        Hunter,
+        Mage
+    }
     public enum CharacterGender
     {
         Male,

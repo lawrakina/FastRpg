@@ -21,17 +21,20 @@ namespace Gui
         public SpellsPanel SpellsPanel;
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
+        private IReactiveProperty<EnumCharacterWindow> _charWindow;
 
         #endregion
 
 
         public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
-            IReactiveProperty<EnumBattleWindow> battleState)
+            IReactiveProperty<EnumBattleWindow> battleState, 
+            IReactiveProperty<EnumCharacterWindow> charWindow)
         {
-            _battleState = battleState;
             _activeWindow = activeWindow;
+            _battleState = battleState;
+            _charWindow = charWindow;
 
-            CharacterPanel.Ctor();
+            CharacterPanel.Ctor(_charWindow);
             EquipmentPanel.Ctor();
             BattlePanel.Ctor(_battleState);
             SpellsPanel.Ctor();
