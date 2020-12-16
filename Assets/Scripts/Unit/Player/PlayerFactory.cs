@@ -14,15 +14,17 @@ namespace Unit.Player
         #region fields
 
         private readonly PlayerData _playerData;
+        private PrototypePlayerModel _prototypePlayer;
 
         #endregion
 
 
         #region ctor
 
-        public PlayerFactory(PlayerData playerData)
+        public PlayerFactory(PlayerData playerData, PrototypePlayerModel prototypePlayer)
         {
             _playerData = playerData;
+            _prototypePlayer = prototypePlayer;
         }
 
         #endregion
@@ -47,6 +49,12 @@ namespace Unit.Player
             component.PlayerSettings = _playerData.PlayerSettings;
             switch (_playerData.PlayerSettings.CharacterClass)
             {
+                case CharacterClass.None:
+                    //персонаж только что создан
+                    _playerData.PlayerSettings.CharacterClass = _prototypePlayer.CharacterClass.Value;
+                    _playerData.PlayerSettings.CharacterGender = _prototypePlayer.CharacterGender.Value;
+                    _playerData.PlayerSettings.CharacterRace = _prototypePlayer.CharacterRace.Value;
+                    break;
                 case CharacterClass.Warrior:
                     component.CharacterClass = new CharacterClassWarrior();
                     break;
@@ -60,8 +68,7 @@ namespace Unit.Player
                     component.CharacterClass = new CharacterClassMage();
                     break;
                 default:
-                    component.CharacterClass = null;
-                    break;
+                    throw new Exception("PlayerFactory. playerData.PlayerSettings.CharacterClass:Недопустимое значение класса персонажа");
             }
             return player.GetComponent<IPlayerView>();
         }

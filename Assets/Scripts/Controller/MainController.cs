@@ -53,20 +53,23 @@ namespace Controller
         {
             LayerManager.GroundLayer = _groundLayer;
 
+            //UI & Windows
             _activeWindow = new ReactiveProperty<EnumMainWindow>();
             _charWindow = new ReactiveProperty<EnumCharacterWindow>();
-            _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
 
+            //Create new Character
+            var prototypePlayer = new PrototypePlayerModel();
+            
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow, prototypePlayer);
 
             var inputInitialization = new InputInitialization();
 
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
 
-            var playerFactory = new PlayerFactory(_playerData);
+            var playerFactory = new PlayerFactory(_playerData, prototypePlayer);
             var player = playerFactory.CreatePlayer();
             var fightCameraFactory = new CameraFactory();
             // камера используется в рендере gui и сцены - todo все в SO и префабы
@@ -90,6 +93,7 @@ namespace Controller
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
+            _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             var battleCameraController =
                 new FightCameraController(_battleState, player, fightCamera, _typeCameraAndCharControl);
             var battlePlayerMoveController =

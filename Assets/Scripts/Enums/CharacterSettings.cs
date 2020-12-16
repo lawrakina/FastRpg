@@ -2,6 +2,7 @@
 {
     public enum CharacterClass
     {
+        None,
         Warrior,
         Rogue,
         Hunter,

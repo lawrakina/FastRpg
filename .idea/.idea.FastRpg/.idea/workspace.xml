@@ -20,27 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/EnumCharacterWindow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/EnumCharacterWindow.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/BaseCharacterClass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/BaseCharacterClass.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassRogue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassRogue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassWarrior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassWarrior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/GameObjectLinkedList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/GameObjectLinkedList.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/wooden-ship-decorated SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/wooden-ship-decorated SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Gui/CharPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Gui/CharPanel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +47,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/Demo/UILevelFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/Battle/LevelGeneratorPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/Demo/UIUnitFrame_Bar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Polaris - Low Poly Ecosystem/Poseidon - Low Poly Water System/Runtime/Scripts/Core/PWater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/MVC/View/UiInterface.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/PolygonFantasyHeroCharacters/Scripts/CharacterRandomizer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -67,10 +64,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EnumCharacterWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassWarrior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/Disposables/DisposableExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Polaris - Low Poly Ecosystem/Poseidon - Low Poly Water System/Sample/Scripts/LightController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/8a/fb0b8e62/IObservable`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/BattleWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Scripts/Core/Utils/Matrix.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/IBaseUnitView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/IKController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/RagdollController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,6 +80,7 @@
     <setting file="file://$PROJECT_DIR$/../../Matterials/MVC/Model/HealthBar.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Editor/EditorWindows/GridFlowEditor/Inspectors/GridFlowEditorInspectors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IInitialization.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extension/GameObjectLinkedList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/TransformScripts.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controllers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/BaseController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,30 +93,34 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IExecute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/MVC/Tests/MyGui.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EnumMainWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/BaseWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/BaseWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Scripts/Core/Dungeon/DungeonSceneProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/UI/Editor/UITooltipEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Scripts/Core/Dungeon/DungeonSceneObjectInstantiator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IFixedExecute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/ReactiveProperty.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/WindowsReference.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5DE66FF1-1FCB-4513-8463-255B392B032B/bb/a0ad631d/LinkedList`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/GUI/MyAdvancedGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/ea/415ffbc5/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WaterProfile_734430697016753736.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/GUI/MyGUILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/BattlePanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/Icon Slots System/UISlotBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/GUI/MyIMGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C08BD57D-2B5D-46E8-9270-D6C4FB6BE1CF/34/4e05b18f/FirebaseApp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/BasePanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/ICleanup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/UI/UITooltip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Battle/BattleInitialization.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/InputMovement/MobileInputHorizontal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InputMovement/InputInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/EnumFightCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MyTests/MyCameraView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MoveController.cs" />
@@ -158,12 +163,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassRogue.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/EnumMainWindow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extension/ListExtension.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" />
       </list>
     </option>
@@ -251,7 +258,7 @@
       <workItem from="1608026457271" duration="30000" />
       <workItem from="1608028227611" duration="77000" />
       <workItem from="1608035636905" duration="3599000" />
-      <workItem from="1608101024464" duration="3111000" />
+      <workItem from="1608101024464" duration="11477000" />
     </task>
     <servers />
   </component>

@@ -2740,7 +2740,9 @@
           </e>
           <e p="Extension" t="Include">
             <e p="BuilderExtension.cs" t="Include" />
+            <e p="GameObjectLinkedList.cs" t="Include" />
             <e p="LayerManager.cs" t="Include" />
+            <e p="LinkedListItem.cs" t="Include" />
             <e p="StringManager.cs" t="Include" />
             <e p="TagManager.cs" t="Include" />
           </e>
@@ -2809,6 +2811,7 @@
               <e p="IPlayerView.cs" t="Include" />
               <e p="PlayerFactory.cs" t="Include" />
               <e p="PlayerView.cs" t="Include" />
+              <e p="PrototypePlayerModel.cs" t="Include" />
             </e>
           </e>
           <e p="View" t="Include">

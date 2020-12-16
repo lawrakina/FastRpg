@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Controller;
 using Enums;
 using Interface;
 using UniRx;
+using Unit.Player;
 using UnityEngine;
 
 namespace Gui
@@ -22,24 +24,26 @@ namespace Gui
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
+        private PrototypePlayerModel _prototypePlayer;
 
         #endregion
 
 
         public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
-            IReactiveProperty<EnumBattleWindow> battleState, 
-            IReactiveProperty<EnumCharacterWindow> charWindow)
+            IReactiveProperty<EnumBattleWindow> battleState,
+            IReactiveProperty<EnumCharacterWindow> charWindow, PrototypePlayerModel prototypePlayer)
         {
             _activeWindow = activeWindow;
             _battleState = battleState;
             _charWindow = charWindow;
+            _prototypePlayer = prototypePlayer;
 
-            CharacterPanel.Ctor(_charWindow);
+            CharacterPanel.Ctor(_charWindow, _prototypePlayer);
             EquipmentPanel.Ctor();
             BattlePanel.Ctor(_battleState);
             SpellsPanel.Ctor();
             TalentsPanel.Ctor();
-            NavigationBar.Ctor(_activeWindow,_battleState);
+            NavigationBar.Ctor(_activeWindow, _battleState);
 
             _activeWindow.Subscribe(_ => { ShowOnlyActivePanel(); });
             _battleState.Subscribe(_ => { ShowBattleOnlyActivePanel(); });
@@ -47,8 +51,9 @@ namespace Gui
 
         private void ShowBattleOnlyActivePanel()
         {
-            if(_battleState.Value == EnumBattleWindow.DungeonGenerator)
-                NavigationBar.Show(); else NavigationBar.Hide();
+            if (_battleState.Value == EnumBattleWindow.DungeonGenerator)
+                NavigationBar.Show();
+            else NavigationBar.Hide();
         }
 
         private void ShowOnlyActivePanel()
@@ -70,13 +75,12 @@ namespace Gui
             if (_activeWindow.Value == EnumMainWindow.Talents)
                 TalentsPanel.Show();
             else TalentsPanel.Hide();
-            
         }
 
         public void Init()
         {
-            
         }
+
         public void Init(List<EnumMainWindow> offItemMenu)
         {
             Init();
