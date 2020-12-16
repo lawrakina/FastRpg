@@ -1,6 +1,7 @@
 ﻿using System;
 using Enums;
 using Extension;
+using SharpNav.Crowds;
 using UniRx;
 using UniRx.Triggers;
 using Unit.Player;
@@ -72,26 +73,58 @@ namespace Gui
                 _newCharPanel.SetActive(_charWindow.Value == EnumCharacterWindow.NewSelectClass);
                 _newSettingCharPanel.SetActive(_charWindow.Value == EnumCharacterWindow.NewSettingsCharacter);
             }).AddTo(_subscriptions);
+            //prev class
             _prevClassButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 if (_listClasses.MovePrev())
                     _prototypePlayer.CharacterClass.Value = (CharacterClass) _listClasses.Current.Key;
             }).AddTo(_subscriptions);
+            //next class
             _nextClassButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 if (_listClasses.MoveNext())
                     _prototypePlayer.CharacterClass.Value = (CharacterClass) _listClasses.Current.Key;
             }).AddTo(_subscriptions);
+            //goto settings
             _gotoSettingChar.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _newCharPanel.SetActive(false);
                 _newSettingCharPanel.SetActive(true);
             }).AddTo(_subscriptions);
+            //goto select class
             _backtoSelectCharClass.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _newCharPanel.SetActive(true);
                 _newSettingCharPanel.SetActive(false);
-            });
+            }).AddTo(_subscriptions);
+
+            //gender
+            _genderManToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterGender.Value = CharacterGender.Male;
+            }).AddTo(_subscriptions);
+            _genderWomanToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterGender.Value = CharacterGender.Female;
+            }).AddTo(_subscriptions);
+            
+            //race
+            _raceHumanToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterRace.Value = CharacterRace.Human;
+            }).AddTo(_subscriptions);
+            _raceNightElfToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterRace.Value = CharacterRace.NightElf;
+            }).AddTo(_subscriptions);
+            _raceBloodElfToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterRace.Value = CharacterRace.BloodElf;
+            }).AddTo(_subscriptions);
+            _raceOrcToggle.OnValueChangedAsObservable().Subscribe(_ =>
+            {
+                _prototypePlayer.CharacterRace.Value = CharacterRace.Orc;
+            }).AddTo(_subscriptions);
         }
     }
 }
