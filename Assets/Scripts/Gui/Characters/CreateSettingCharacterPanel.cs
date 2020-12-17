@@ -36,7 +36,7 @@ namespace Gui.Characters
             //complete creation 
             _createCharacterButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
-                _listCharactersManager.PrototypePlayer.State.Value = StatePrototypePlayer.Complete;
+                _listCharactersManager.SaveNewCharacter();
                 _activeCharacterWindow.Value = EnumCharacterWindow.ListCharacters;
             }).AddTo(_subscriptions);
             

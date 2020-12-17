@@ -64,30 +64,22 @@ namespace Controller
             
             var playerFactory = new PlayerFactory();
             var listCharactersManager = new ListCharactersManager(playerFactory, _playerData);
+            var player = listCharactersManager.CurrentChar.Value;
             
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
             _ui.Ctor(_activeWindow, _battleState, _charWindow, listCharactersManager);
             
-            
-            
-            
-            
-            //////////////////////////////////////////////////////////////////////////
-            
-
+            //ввод с экранного джойстика
             var inputInitialization = new InputInitialization();
-
+            
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
-
-            // var playerFactory = new PlayerFactory(_playerData, prototypePlayer);
-            var player = playerFactory.CreatePlayer(new GameObject(), new CharacterSettings() );
+            
             var fightCameraFactory = new CameraFactory();
-            // камера используется в рендере gui и сцены - todo все в SO и префабы
-            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
-
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);// камера используется в рендере gui и сцены - todo все в SO и префабы
+            
             // var customizingCharacterPerson = new CustomizingCharacterPerson(player, prototypePlayer);
             
             //Positioning character in menu

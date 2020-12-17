@@ -14,26 +14,38 @@ namespace Gui.Characters
         [SerializeField] private Button _prevCharButton;
         [SerializeField] private Button _nextCharButton;
         [SerializeField] private Button _createCharacterButton;
+        [SerializeField] private Button _selectingCharacterButton;
         [SerializeField] private Text _info;
         
         private IReactiveProperty<EnumCharacterWindow> _activeCharWindow;
         private ListCharactersManager _listCharactersManager;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
 
         #endregion
 
 
-        public void Ctor(IReactiveProperty<EnumCharacterWindow> activeCharWindow, ListCharactersManager listCharactersManager)
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
+            IReactiveProperty<EnumCharacterWindow> activeCharWindow, ListCharactersManager listCharactersManager)
         {
             base.Ctor();
+            _activeWindow = activeWindow;
             _listCharactersManager = listCharactersManager;
             _activeCharWindow = activeCharWindow;
 
+            //создать нового персонажа
             _createCharacterButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _activeCharWindow.Value = EnumCharacterWindow.NewSelectClass;
                 _listCharactersManager.PrototypePlayer.State.Value = StatePrototypePlayer.New;
             }).AddTo(_subscriptions);
+            
+            //выбор персонажа и переход
+            _selectingCharacterButton.OnPointerClickAsObservable().Subscribe(_ =>
+            {
+                _activeWindow.Value = EnumMainWindow.Battle;
+            }).AddTo(_subscriptions);
 
+            //листаем список персонажей
             _prevCharButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _listCharactersManager.MovePrev();
@@ -43,6 +55,7 @@ namespace Gui.Characters
                 _listCharactersManager.MoveNext();
             }).AddTo(_subscriptions);
 
+            //подписываемся на изменение персонажа
             _listCharactersManager.CurrentChar.Subscribe(view =>
             {
                 _info.text = view.Description.Value;

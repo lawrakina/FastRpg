@@ -20,55 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Characters.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Characters.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Collections.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Collections/GameObjectLinkedList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Collections/LinkedListItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Dbg.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Dbg.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateNewCharacterPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateNewCharacterPanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/CharAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/CharAttributes.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/ICharAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/ICharAttributes.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Gui/CharPanel.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Gui/CharPanel.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Gui/CharactersPanels/ListCharPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Gui/CharactersPanels/ListCharPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/BattleInitialization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/BattleInitialization.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/FightCameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/FightCameraController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PositioningCharacterInMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PositioningCharacterInMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extension/GameObjectLinkedList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extension/GameObjectLinkedList.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/Collections/GameObjectLinkedList.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/GuiData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/GuiData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/GuiInitialization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/GuiInitialization.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MyTests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MyTests/MyMoveRotateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MyTests/MyMoveRotateController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/IBaseUnitView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/IBaseUnitView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +104,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/BaseWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Scripts/Core/Dungeon/DungeonSceneProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Arrow Mobile UI for UGUI/Scripts/UI/Editor/UITooltipEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/GuiInitialization.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Level Generate/CodeRespawn/DungeonArchitect/Scripts/Core/Dungeon/DungeonSceneObjectInstantiator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IFixedExecute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/ReactiveProperty.cs" root0="FORCE_HIGHLIGHTING" />
@@ -177,7 +140,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/EquipmentWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/SpellsWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/TalentsWindow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CoreComponent/GeneratorDungeon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CoreComponent/IGeneratorDungeon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Battle.cs" />
@@ -188,7 +150,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CharacterClassRogue.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/EnumMainWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/ListExtension.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/ListCharacters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" />
@@ -196,9 +157,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/CharacterAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/ICharacterAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/CharacterSettings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharacters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/FightCameraController.cs" />
@@ -211,17 +169,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/Collections/GameObjectLinkedList.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/Collections/LinkedListItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateNewCharacterPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/Console.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/ICharAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/CharAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/Dbg.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
       </list>
     </option>
   </component>
@@ -308,7 +271,7 @@
       <workItem from="1608026457271" duration="30000" />
       <workItem from="1608028227611" duration="77000" />
       <workItem from="1608035636905" duration="3599000" />
-      <workItem from="1608101024464" duration="31848000" />
+      <workItem from="1608101024464" duration="35982000" />
     </task>
     <servers />
   </component>

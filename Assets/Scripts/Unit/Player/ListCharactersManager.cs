@@ -8,11 +8,18 @@ namespace Unit.Player
 {
     public sealed class ListCharactersManager
     {
+        #region Fields
+
         private PlayerData _playerData;
         private IPlayerFactory _playerFactory;
         private List<IPlayerView> _characters;
 
         private ReactiveProperty<IPlayerView> _currentChar;
+
+        #endregion
+
+
+        #region Properties
 
         public ReactiveProperty<IPlayerView> CurrentChar
         {
@@ -32,6 +39,11 @@ namespace Unit.Player
 
         public PrototypePlayerModel PrototypePlayer { get; }
 
+        #endregion
+
+
+        #region ClassLiveCycles
+
         public ListCharactersManager(IPlayerFactory playerFactory, PlayerData playerData)
         {
             _playerFactory = playerFactory;
@@ -44,13 +56,17 @@ namespace Unit.Player
             _currentChar = new ReactiveProperty<IPlayerView>();
             if (_characters.Count > 0)
             {
-                _currentChar.Value = _characters[Position];
+                CurrentChar.Value = _characters[Position];
             }
             
             PrototypePlayer = new PrototypePlayerModel();
         }
 
-        
+        #endregion
+
+
+        #region Methods
+
         public bool MoveNext()
         {
             if (Position < _characters.Count - 1)
@@ -74,5 +90,17 @@ namespace Unit.Player
             }
             else return false;
         }
+
+        public void SaveNewCharacter()
+        {
+            var newPlayer = _playerFactory.CreatePlayer(_playerData.StoragePlayerPrefab, PrototypePlayer.GetCharacterSettings);
+            _characters.Add(newPlayer);
+            //сохранили в ScripObj
+            _playerData._characters.ListCharacters.Add(PrototypePlayer.GetCharacterSettings);
+            Position = _characters.Count - 1;
+            CurrentChar.Value = _characters[Position];
+        }
+
+        #endregion
     }
 }

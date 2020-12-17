@@ -19,25 +19,24 @@ namespace Gui.Characters
         [SerializeField] private CreateSettingCharacterPanel _settingCharPanel;
         [SerializeField] private ListCharacterPanel _listCharPanel;
         
-
-        
-        [Header("Navigation buttons")] 
-
         private IReactiveProperty<EnumCharacterWindow> _activeCharacterWindow;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
 
         private ListCharactersManager _listCharactersManager;
 
         #endregion
 
-        public void Ctor(IReactiveProperty<EnumCharacterWindow> activeCharacterWindow, ListCharactersManager listCharactersManager)
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
+            IReactiveProperty<EnumCharacterWindow> activeCharacterWindow, ListCharactersManager listCharactersManager)
         {
             base.Ctor();
+            _activeWindow = activeWindow;
             _activeCharacterWindow = activeCharacterWindow;
             _listCharactersManager = listCharactersManager;
 
             _newCharPanel.Ctor(_activeCharacterWindow, _listCharactersManager);
             _settingCharPanel.Ctor(_activeCharacterWindow, _listCharactersManager);
-            _listCharPanel.Ctor(_activeCharacterWindow, _listCharactersManager);
+            _listCharPanel.Ctor(_activeWindow, _activeCharacterWindow, _listCharactersManager);
             
             //переключение между дочерними окнами
             _activeCharacterWindow.Subscribe(_ =>

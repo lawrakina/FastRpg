@@ -50,6 +50,32 @@ namespace Gui
             _battleState = battleState;
             _activeWindow = activeWindow;
 
+            _activeWindow.Subscribe(active =>
+            {
+                switch (active)
+                {
+                    case EnumMainWindow.None:
+                        break;
+                    case EnumMainWindow.Character:
+                        CharToggle.isOn = true;
+                        break;
+                    case EnumMainWindow.Equip:
+                        EquipToggle.isOn = true;
+                        break;
+                    case EnumMainWindow.Battle:
+                        BattleToggle.isOn = true;
+                        break;
+                    case EnumMainWindow.Spells:
+                        SpellsToggle.isOn = true;
+                        break;
+                    case EnumMainWindow.Talents:
+                        TalentsToggle.isOn = true;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(active), active, null);
+                }
+            });
+            
             CharToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)

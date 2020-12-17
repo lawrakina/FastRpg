@@ -16,6 +16,7 @@ namespace Gui
         #region Fields
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
 
         public CharacterPanel CharacterPanel;
@@ -24,7 +25,6 @@ namespace Gui
         public SpellsPanel SpellsPanel;
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
-        private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private ListCharactersManager _listCharactersManager;
 
         #endregion
@@ -36,7 +36,7 @@ namespace Gui
             _charWindow = charWindow;
             _listCharactersManager = listCharactersManager;
 
-            CharacterPanel.Ctor(_charWindow, _listCharactersManager);
+            CharacterPanel.Ctor(_activeWindow, _charWindow, _listCharactersManager);
             EquipmentPanel.Ctor();
             BattlePanel.Ctor(_battleState);
             SpellsPanel.Ctor();
