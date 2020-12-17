@@ -663,6 +663,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _playerData: {fileID: 11400000, guid: ae491f12cb7d7764ab8bad2ff5720d07, type: 2}
+  _characterSettingsData: {fileID: 11400000, guid: f32aa82f665e6f34d8872d80de6c7e34,
+    type: 2}
   _generatorData: {fileID: 11400000, guid: 491268119048552409706074d4d24945, type: 2}
   _ui:
     CharacterPanel: {fileID: 2045588499}
@@ -1757,7 +1759,7 @@ PrefabInstance:
     - target: {fileID: 3059235798460447737, guid: 67841e35f164eab4d9db8f219f6c7641,
         type: 3}
       propertyPath: m_AllowSwitchOff
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4066903012102525125, guid: 67841e35f164eab4d9db8f219f6c7641,
         type: 3}

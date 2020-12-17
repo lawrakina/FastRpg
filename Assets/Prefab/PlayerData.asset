@@ -17,15 +17,21 @@ MonoBehaviour:
   _numberActiveCharacter: 0
   _characters:
     ListCharacters:
-    - CharacterClass: 0
+    - CharacterClass: 1
       CharacterGender: 1
       CharacterRace: 1
-      PlayerMoveSpeed: 0
-      AgroDistance: 0
-      RotateSpeedPlayer: 0
+      PlayerMoveSpeed: 5
+      AgroDistance: 10
+      RotateSpeedPlayer: 120
     - CharacterClass: 2
       CharacterGender: 0
+      CharacterRace: 1
+      PlayerMoveSpeed: 10
+      AgroDistance: 10
+      RotateSpeedPlayer: 90
+    - CharacterClass: 0
+      CharacterGender: 1
       CharacterRace: 3
-      PlayerMoveSpeed: 0
-      AgroDistance: 0
-      RotateSpeedPlayer: 0
+      PlayerMoveSpeed: 10
+      AgroDistance: 10
+      RotateSpeedPlayer: 90
