@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gui.Characters;
+using UnityEngine;
 
 namespace Gui
 {

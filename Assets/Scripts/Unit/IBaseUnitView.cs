@@ -4,15 +4,13 @@ namespace Unit
 {
     public interface IBaseUnitView
     {
-        Transform          Transform();
-        Collider           Collider();
-        Rigidbody          Rigidbody();
-        MeshRenderer       MeshRenderer();
-        Animator           Animator();
-        AnimatorParameters AnimatorParameters();
-        float              Speed             { get; set; }
-        Transform          EnemyTarget       { get; set; }
-        float              AgroDistance      { get; }
-        float              RotateSpeedPlayer { get; }
+        Transform            Transform           { get; }
+        Collider             Collider            { get; }
+        Rigidbody            Rigidbody           { get; }
+        MeshRenderer         MeshRenderer        { get; }
+        Animator             Animator            { get; }
+        AnimatorParameters   AnimatorParameters  { get; }
+        ICharAttributes CharAttributes { get; set; }
+        Transform            EnemyTarget         { get; set; }
     }
 }

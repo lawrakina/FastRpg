@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497cda58a6a469993ab709f09277c51, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  StoragePlayer: {fileID: 5604968555838804302, guid: e7475cc6d893fd94088315f39a457dd5,
+  StoragePlayerPrefab: {fileID: 5604968555838804302, guid: e7475cc6d893fd94088315f39a457dd5,
     type: 3}
-  PlayerMoveSpeed: 5
-  AgroDistance: 10
-  RotateSpeedPlayer: 120
+  _numberActiveCharacter: 0
+  _characters:
+    ListCharacters:
+    - CharacterClass: 0
+      CharacterGender: 1
+      CharacterRace: 1
+      PlayerMoveSpeed: 0
+      AgroDistance: 0
+      RotateSpeedPlayer: 0
+    - CharacterClass: 2
+      CharacterGender: 0
+      CharacterRace: 3
+      PlayerMoveSpeed: 0
+      AgroDistance: 0
+      RotateSpeedPlayer: 0

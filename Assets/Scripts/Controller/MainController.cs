@@ -55,26 +55,42 @@ namespace Controller
 
             //UI & Windows
             _activeWindow = new ReactiveProperty<EnumMainWindow>();
-            _charWindow = new ReactiveProperty<EnumCharacterWindow>();
+            _charWindow = new ReactiveProperty<EnumCharacterWindow>(EnumCharacterWindow.ListCharacters);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
 
-            //Create new Character
-            var prototypePlayer = new PrototypePlayerModel();
+            _activeWindow.Subscribe(_ => { Dbg.Log(_activeWindow.Value);});
+            _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value);});
+            _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value);});
             
+            var playerFactory = new PlayerFactory();
+            var listCharactersManager = new ListCharactersManager(playerFactory, _playerData);
+            
+            //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow, prototypePlayer);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow, listCharactersManager);
+            
+            
+            
+            
+            
+            //////////////////////////////////////////////////////////////////////////
+            
 
             var inputInitialization = new InputInitialization();
 
+            //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
 
-            var playerFactory = new PlayerFactory(_playerData, prototypePlayer);
-            var player = playerFactory.CreatePlayer();
+            // var playerFactory = new PlayerFactory(_playerData, prototypePlayer);
+            var player = playerFactory.CreatePlayer(new GameObject(), new CharacterSettings() );
             var fightCameraFactory = new CameraFactory();
             // камера используется в рендере gui и сцены - todo все в SO и префабы
             var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
 
+            // var customizingCharacterPerson = new CustomizingCharacterPerson(player, prototypePlayer);
+            
+            //Positioning character in menu
             var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
             positioningCharInMenuController.Player = player;
             positioningCharInMenuController.GeneratorDungeon = generatorDungeon;

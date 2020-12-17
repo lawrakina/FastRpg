@@ -64,10 +64,10 @@ namespace Controller
 
             _camera.ThirdTarget = Object.Instantiate(
                 new GameObject("ThirdPersonTargetCamera"),
-                _player.Transform()
+                _player.Transform
             ).transform;
             _camera.ThirdTarget.localPosition = _camera.OffsetThirdPosition();
-            _camera.TopTarget = _player.Transform();
+            _camera.TopTarget = _player.Transform;
         }
 
         #endregion
@@ -99,14 +99,14 @@ namespace Controller
             //     deltaTime * _camera.CameraMoveSpeed);
             _camera.transform.position = _camera.ThirdTarget.position;
             //CameraRotate
-            _camera.transform.LookAt(_player.Transform());
+            _camera.transform.LookAt(_player.Transform);
         }
 
         private void TopViewFollow(float deltaTime)
         {
             _camera.transform.position = Vector3.Lerp(
                 _camera.transform.position,
-                _player.Transform().position + _camera.OffsetTopPosition(),
+                _player.Transform.position + _camera.OffsetTopPosition(),
                 deltaTime * _camera.CameraMoveSpeed);
             _camera.transform.rotation = Quaternion.Euler(_camera.OffsetTopRotation());
         }

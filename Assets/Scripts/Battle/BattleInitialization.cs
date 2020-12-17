@@ -47,9 +47,9 @@ namespace Battle
         {
             var playerPosition = _generatorDungeon.GetPlayerPosition();
 
-            _player.Transform().SetParent(playerPosition);
-            _player.Transform().localPosition = Vector3.zero;
-            _player.Transform().localRotation = Quaternion.identity;
+            _player.Transform.SetParent(playerPosition);
+            _player.Transform.localPosition = Vector3.zero;
+            _player.Transform.localRotation = Quaternion.identity;
             _battleState.Value = EnumBattleWindow.Fight;
         }
 

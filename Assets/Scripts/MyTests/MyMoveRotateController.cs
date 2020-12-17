@@ -18,7 +18,7 @@ public class MyMoveRotateController : MonoBehaviour
 
     private void Awake()
     {
-        _goTarget = Object.Instantiate(new GameObject(), _player.Transform(), true);
+        _goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
         _goTarget.name = "";
     }
 
@@ -27,7 +27,7 @@ public class MyMoveRotateController : MonoBehaviour
         _direction.x = UltimateJoystick.GetHorizontalAxis("MoveRotate");
         _direction.z = UltimateJoystick.GetVerticalAxis("MoveRotate");
 
-        DebugExtension.DebugCircle(_player.Transform().position, Color.red, _agroDistance);
+        DebugExtension.DebugCircle(_player.Transform.position, Color.red, _agroDistance);
         
         MovePlayer(Time.deltaTime);
         RotatePlayer(Time.deltaTime);
@@ -38,32 +38,32 @@ public class MyMoveRotateController : MonoBehaviour
     private void MovePlayer(float deltaTime)
     {
         _goTarget.transform.localPosition = _direction;
-        var target = _player.Transform().position - _goTarget.transform.position;
-        _player.Rigidbody().MovePosition(
-            _player.Transform().position -
-            target * (_player.Speed * deltaTime)
+        var target = _player.Transform.position - _goTarget.transform.position;
+        _player.Rigidbody.MovePosition(
+            _player.Transform.position -
+            target * (_player.CharAttributes.Speed * deltaTime)
         );
     }
 
     private void RotatePlayer(float deltaTime)
     {
-        var sqrDistance = (_player.Transform().position - _enemyTarger.position).sqrMagnitude;
+        var sqrDistance = (_player.Transform.position - _enemyTarger.position).sqrMagnitude;
         if (_agroDistance * _agroDistance > sqrDistance)
         {
             Debug.Log($"Противник рядом: {sqrDistance}");
             var newDir = Vector3.RotateTowards(
-                _player.Transform().forward,
-                (_enemyTarger.transform.position - _player.Transform().position),
+                _player.Transform.forward,
+                (_enemyTarger.transform.position - _player.Transform.position),
                 10f * Time.deltaTime, _agroDistance);
             newDir.y = 0;
-            _player.Transform().rotation = Quaternion.LookRotation(newDir, Vector3.up);
+            _player.Transform.rotation = Quaternion.LookRotation(newDir, Vector3.up);
         }
         else
         {
             Debug.Log($"Противника нет: {sqrDistance}");
             
-            _player.Transform().RotateAround(
-                _player.Transform().position,
+            _player.Transform.RotateAround(
+                _player.Transform.position,
                 Vector3.up,
                 _rotateSpeedPlayer * deltaTime * _direction.x);
         }
@@ -82,6 +82,6 @@ public class MyMoveRotateController : MonoBehaviour
 
     private void RotateCamera()
     {
-        _camera.transform.LookAt(_player.Transform());
+        _camera.transform.LookAt(_player.Transform);
     }
 }

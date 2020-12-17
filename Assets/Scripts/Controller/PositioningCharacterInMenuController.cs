@@ -60,9 +60,9 @@ namespace Controller
 
         private void SetPlayerPosition(Transform position)
         {
-            _player.Transform().SetParent(position);
-            _player.Transform().localPosition = Vector3.zero;
-            _player.Transform().localRotation = Quaternion.identity;
+            _player.Transform.SetParent(position);
+            _player.Transform.localPosition = Vector3.zero;
+            _player.Transform.localRotation = Quaternion.identity;
         }
     }
 }

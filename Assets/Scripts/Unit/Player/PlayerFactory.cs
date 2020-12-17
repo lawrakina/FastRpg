@@ -1,5 +1,4 @@
 ﻿using System;
-using Controller;
 using Data;
 using Enums;
 using Extension;
@@ -11,29 +10,10 @@ namespace Unit.Player
 {
     public sealed class PlayerFactory : IPlayerFactory
     {
-        #region fields
-
-        private readonly PlayerData _playerData;
-        private PrototypePlayerModel _prototypePlayer;
-
-        #endregion
-
-
-        #region ctor
-
-        public PlayerFactory(PlayerData playerData, PrototypePlayerModel prototypePlayer)
+        public IPlayerView CreatePlayer(GameObject prefab, CharacterSettings characterSettings)
         {
-            _playerData = playerData;
-            _prototypePlayer = prototypePlayer;
-        }
-
-        #endregion
-
-
-        public IPlayerView CreatePlayer()
-        {
-            var player = Object.Instantiate(_playerData.StoragePlayer);
-            player.name = $"PlayerCharacter";
+            var player = Object.Instantiate(prefab);
+            player.name = $"PlayerCharacter.{characterSettings.CharacterClass}";
             player.AddCapsuleCollider(radius: 0.5f, isTrigger: false, 
                       center: new Vector3(0.0f,0.9f,0.0f),
                       height: 1.8f)
@@ -43,18 +23,14 @@ namespace Unit.Player
                   .AddCode<PlayerView>();
             
             var component = player.GetComponent<PlayerView>();
-            component.Speed = _playerData.PlayerMoveSpeed;
-            component.AgroDistance = _playerData.AgroDistance;
-            component.RotateSpeedPlayer = _playerData.RotateSpeedPlayer;
-            component.PlayerSettings = _playerData.PlayerSettings;
-            switch (_playerData.PlayerSettings.CharacterClass)
+            component.CharAttributes.Speed = characterSettings.PlayerMoveSpeed;
+            component.CharAttributes.AgroDistance = characterSettings.AgroDistance;
+            component.CharAttributes.RotateSpeedPlayer = characterSettings.RotateSpeedPlayer;
+            component.CharAttributes.CharacterGender = characterSettings.CharacterGender;
+            component.CharAttributes.CharacterRace = characterSettings.CharacterRace;
+
+            switch (characterSettings.CharacterClass)
             {
-                case CharacterClass.None:
-                    //персонаж только что создан
-                    _playerData.PlayerSettings.CharacterClass = _prototypePlayer.CharacterClass.Value;
-                    _playerData.PlayerSettings.CharacterGender = _prototypePlayer.CharacterGender.Value;
-                    _playerData.PlayerSettings.CharacterRace = _prototypePlayer.CharacterRace.Value;
-                    break;
                 case CharacterClass.Warrior:
                     component.CharacterClass = new CharacterClassWarrior();
                     break;
@@ -68,10 +44,10 @@ namespace Unit.Player
                     component.CharacterClass = new CharacterClassMage();
                     break;
                 default:
-                    throw new Exception("PlayerFactory. playerData.PlayerSettings.CharacterClass:Недопустимое значение класса персонажа");
+                    throw new Exception("PlayerFactory. playerData.PlayerSettings.CharacterClass:Недопустимое значение");
             }
-            return player.GetComponent<IPlayerView>();
-        }
 
+            return component;
+        }
     }
 }

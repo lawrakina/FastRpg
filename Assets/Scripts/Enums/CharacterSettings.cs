@@ -2,7 +2,7 @@
 {
     public enum CharacterClass
     {
-        None,
+        // None,
         Warrior,
         Rogue,
         Hunter,
@@ -20,5 +20,12 @@
         NightElf,
         BloodElf,
         Orc
+    }
+
+    public enum StatePrototypePlayer
+    {
+        New,
+        Edit,
+        Complete
     }
 }

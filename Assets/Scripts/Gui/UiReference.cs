@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Controller;
 using Enums;
+using Gui.Characters;
 using Interface;
 using UniRx;
 using Unit.Player;
@@ -24,21 +25,18 @@ namespace Gui
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
-        private PrototypePlayerModel _prototypePlayer;
+        private ListCharactersManager _listCharactersManager;
 
         #endregion
 
-
-        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
-            IReactiveProperty<EnumBattleWindow> battleState,
-            IReactiveProperty<EnumCharacterWindow> charWindow, PrototypePlayerModel prototypePlayer)
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow, IReactiveProperty<EnumBattleWindow> battleState, IReactiveProperty<EnumCharacterWindow> charWindow, ListCharactersManager listCharactersManager)
         {
             _activeWindow = activeWindow;
             _battleState = battleState;
             _charWindow = charWindow;
-            _prototypePlayer = prototypePlayer;
+            _listCharactersManager = listCharactersManager;
 
-            CharacterPanel.Ctor(_charWindow, _prototypePlayer);
+            CharacterPanel.Ctor(_charWindow, _listCharactersManager);
             EquipmentPanel.Ctor();
             BattlePanel.Ctor(_battleState);
             SpellsPanel.Ctor();

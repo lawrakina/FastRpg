@@ -1,7 +1,10 @@
-﻿namespace Unit.Player
+﻿using Data;
+using UnityEngine;
+
+namespace Unit.Player
 {
     public interface IPlayerFactory
     {
-        IPlayerView CreatePlayer();
+        IPlayerView CreatePlayer(GameObject playerDataStoragePlayerPrefab, CharacterSettings characterSettings);
     }
 }

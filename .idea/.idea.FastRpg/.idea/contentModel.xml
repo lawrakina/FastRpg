@@ -2725,6 +2725,7 @@
             <e p="IGeneratorDungeon.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
+            <e p="Characters.cs" t="Include" />
             <e p="CharacterSettings.cs" t="Include" />
             <e p="DungeonGeneratorData.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
@@ -2740,9 +2741,12 @@
           </e>
           <e p="Extension" t="Include">
             <e p="BuilderExtension.cs" t="Include" />
-            <e p="GameObjectLinkedList.cs" t="Include" />
+            <e p="Collections" t="Include">
+              <e p="GameObjectLinkedList.cs" t="Include" />
+              <e p="LinkedListItem.cs" t="Include" />
+            </e>
+            <e p="Dbg.cs" t="Include" />
             <e p="LayerManager.cs" t="Include" />
-            <e p="LinkedListItem.cs" t="Include" />
             <e p="StringManager.cs" t="Include" />
             <e p="TagManager.cs" t="Include" />
           </e>
@@ -2757,7 +2761,12 @@
             </e>
             <e p="BattlePanel.cs" t="Include" />
             <e p="BottomPanel.cs" t="Include" />
-            <e p="CharacterPanel.cs" t="Include" />
+            <e p="Characters" t="Include">
+              <e p="CharacterPanel.cs" t="Include" />
+              <e p="CreateNewCharacterPanel.cs" t="Include" />
+              <e p="CreateSettingCharacterPanel.cs" t="Include" />
+              <e p="ListCharacterPanel.cs" t="Include" />
+            </e>
             <e p="EquipmentPanel.cs" t="Include" />
             <e p="GuiData.cs" t="Include" />
             <e p="GuiInitialization.cs" t="Include" />
@@ -2802,13 +2811,16 @@
               <e p="FightCamera.cs" t="Include" />
               <e p="ICameraFactory.cs" t="Include" />
             </e>
+            <e p="CharAttributes.cs" t="Include" />
             <e p="IBaseUnitView.cs" t="Include" />
+            <e p="ICharAttributes.cs" t="Include" />
             <e p="Player" t="Include">
               <e p="BaseCharacterClass.cs" t="Include" />
               <e p="CharacterClassRogue.cs" t="Include" />
               <e p="CharacterClassWarrior.cs" t="Include" />
               <e p="IPlayerFactory.cs" t="Include" />
               <e p="IPlayerView.cs" t="Include" />
+              <e p="ListCharactersManager.cs" t="Include" />
               <e p="PlayerFactory.cs" t="Include" />
               <e p="PlayerView.cs" t="Include" />
               <e p="PrototypePlayerModel.cs" t="Include" />
