@@ -2727,6 +2727,7 @@
           <e p="Data" t="Include">
             <e p="Characters.cs" t="Include" />
             <e p="CharacterSettings.cs" t="Include" />
+            <e p="CharacterSettingsData.cs" t="Include" />
             <e p="DungeonGeneratorData.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
           </e>
@@ -2818,6 +2819,7 @@
               <e p="BaseCharacterClass.cs" t="Include" />
               <e p="CharacterClassRogue.cs" t="Include" />
               <e p="CharacterClassWarrior.cs" t="Include" />
+              <e p="CustomizingCharacter.cs" t="Include" />
               <e p="IPlayerFactory.cs" t="Include" />
               <e p="IPlayerView.cs" t="Include" />
               <e p="ListCharactersManager.cs" t="Include" />

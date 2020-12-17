@@ -36,7 +36,6 @@ namespace Gui.Characters
             _createCharacterButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 _activeCharWindow.Value = EnumCharacterWindow.NewSelectClass;
-                _listCharactersManager.PrototypePlayer.State.Value = StatePrototypePlayer.New;
             }).AddTo(_subscriptions);
             
             //выбор персонажа и переход

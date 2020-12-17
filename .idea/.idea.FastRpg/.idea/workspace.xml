@@ -20,16 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettingsData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettingsData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CustomizingCharacter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CustomizingCharacter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Gui/CharactersPanels/ListCharPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Gui/CharactersPanels/ListCharPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" afterDir="false" />
     </list>
@@ -51,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/Polaris - Low Poly Ecosystem/Poseidon - Low Poly Water System/Runtime/Scripts/Core/PWater.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/MVC/View/UiInterface.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettingsData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AssetsExternal/PolygonFantasyHeroCharacters/Scripts/CharacterRandomizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -110,6 +109,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/ReactiveProperty.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Windows/WindowsReference.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/CharAttributes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unit/Player/CustomizingCharacter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5DE66FF1-1FCB-4513-8463-255B392B032B/bb/a0ad631d/LinkedList`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Matterials/GUI/MyAdvancedGUI.cs" root0="SKIP_HIGHLIGHTING" />
@@ -134,9 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Windows/WindowsReference.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Windows/BaseWindow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/UniRx/Examples/Sample12_ReactiveProperty.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/EquipmentWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/SpellsWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Windows/TalentsWindow.cs" />
@@ -152,7 +149,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/ListExtension.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/ListCharacters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IBaseUnitView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/CharacterAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/ICharacterAttributes.cs" />
@@ -173,18 +169,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/ICharAttributes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/CharAttributes.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/Dbg.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/UiReference.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CharacterPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/CreateSettingCharacterPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/IPlayerFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gui/NavigationBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharactersManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/Characters/ListCharacterPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PrototypePlayerModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSettingsData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CustomizeEngine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/PlayerView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/CustomizingCharacter.cs" />
       </list>
     </option>
   </component>
@@ -271,7 +271,7 @@
       <workItem from="1608026457271" duration="30000" />
       <workItem from="1608028227611" duration="77000" />
       <workItem from="1608035636905" duration="3599000" />
-      <workItem from="1608101024464" duration="35982000" />
+      <workItem from="1608101024464" duration="41503000" />
     </task>
     <servers />
   </component>
@@ -406,10 +406,10 @@
     </state>
     <state x="-897" y="-519" key="RiderGenerateDialog/-3360.364.1842.1080/-1440.-1090.1378.2560/0.0.2482.1440@-1440.-1090.1378.2560" timestamp="1608124783625" />
     <state x="726" y="241" key="RiderGenerateDialog/0.0.1842.1080@0.0.1842.1080" timestamp="1606908188799" />
-    <state x="181" y="212" width="1495" height="708" key="SettingsEditor" timestamp="1607614870224">
-      <screen x="0" y="0" width="1842" height="1080" />
+    <state x="-1314" y="-470" width="1156" height="711" key="SettingsEditor" timestamp="1608203245600">
+      <screen x="-1440" y="-1090" width="1378" height="2560" />
     </state>
-    <state x="-1314" y="-470" key="SettingsEditor/-3360.364.1842.1080/-1440.-1090.1378.2560/0.0.2482.1440@-1440.-1090.1378.2560" timestamp="1602826300210" />
+    <state x="-1314" y="-470" width="1156" height="711" key="SettingsEditor/-3360.364.1842.1080/-1440.-1090.1378.2560/0.0.2482.1440@-1440.-1090.1378.2560" timestamp="1608203245600" />
     <state x="2110" y="-1238" width="1118" height="711" key="SettingsEditor/0.0.1458.864/1920.-1499.1378.2560/3360.-577.2498.1440@1920.-1499.1378.2560" timestamp="1602050342808" />
     <state x="2110" y="-1197" key="SettingsEditor/0.0.1842.1080/1920.-1458.1378.2560/3360.-577.2498.1440@1920.-1458.1378.2560" timestamp="1601970590441" />
     <state x="181" y="212" width="1495" height="708" key="SettingsEditor/0.0.1842.1080@0.0.1842.1080" timestamp="1607614870224" />

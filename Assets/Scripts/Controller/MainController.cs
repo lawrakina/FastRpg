@@ -21,27 +21,38 @@ namespace Controller
 
         private Controllers _controllers;
 
-        [Header("Game Layers")] [SerializeField]
+        [Header("Game Layers")]
+        [SerializeField]
         private LayerMask _groundLayer;
 
-        [Header("Game Data")] [SerializeField] private PlayerData _playerData;
-        [SerializeField] private DungeonGeneratorData _generatorData;
+        [Header("Game Data")]
+        [SerializeField]
+        private PlayerData _playerData;
 
-        [Header("Ui & Windows")] [SerializeField]
+        [SerializeField]
+        private CharacterSettingsData _characterSettingsData;
+
+        [SerializeField]
+        private DungeonGeneratorData _generatorData;
+
+        [Header("Ui & Windows")]
+        [SerializeField]
         private UiReference _ui;
 
-        [SerializeField] private WindowsReference _windows;
+        [SerializeField]
+        private WindowsReference _windows;
 
-        [Header("Active Panel and Window at the Start")] [SerializeField]
+        [Header("Active Panel and Window at the Start")]
+        [SerializeField]
         private EnumMainWindow _activePanelAndWindow;
+
+        [Header("Type of camera and char control")]
+        [SerializeField]
+        private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
-
-        [Header("Type of camera and char control")] [SerializeField]
-        private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
-
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
 
         #endregion
@@ -58,30 +69,31 @@ namespace Controller
             _charWindow = new ReactiveProperty<EnumCharacterWindow>(EnumCharacterWindow.ListCharacters);
             _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
 
-            _activeWindow.Subscribe(_ => { Dbg.Log(_activeWindow.Value);});
-            _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value);});
-            _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value);});
-            
+            _activeWindow.Subscribe(_ => { Dbg.Log(_activeWindow.Value); });
+            _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value); });
+            _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
+
             var playerFactory = new PlayerFactory();
             var listCharactersManager = new ListCharactersManager(playerFactory, _playerData);
             var player = listCharactersManager.CurrentChar.Value;
-            
+            var customizingCharacter =
+                new CustomizingCharacter(_characterSettingsData, player, listCharactersManager.PrototypePlayer);
+
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
             _ui.Ctor(_activeWindow, _battleState, _charWindow, listCharactersManager);
-            
+
             //ввод с экранного джойстика
             var inputInitialization = new InputInitialization();
-            
+
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
-            
+
             var fightCameraFactory = new CameraFactory();
-            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);// камера используется в рендере gui и сцены - todo все в SO и префабы
-            
-            // var customizingCharacterPerson = new CustomizingCharacterPerson(player, prototypePlayer);
-            
+            // камера используется в рендере gui и сцены - todo все в SO и префабы
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
+
             //Positioning character in menu
             var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
             positioningCharInMenuController.Player = player;
