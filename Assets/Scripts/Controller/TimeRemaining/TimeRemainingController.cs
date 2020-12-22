@@ -2,27 +2,28 @@
 using Interface;
 using UnityEngine;
 
+
 namespace Controller
 {
     public sealed class TimeRemainingController : IUpdated
     {
         #region Fields
-        
+
         private readonly List<ITimeRemaining> _timeRemainingsExecute;
-        
+
         #endregion
 
-        
+
         #region ClassLifeCycles
 
         public TimeRemainingController()
         {
             _timeRemainingsExecute = TimeRemainingExtensions.TimeRemainings;
         }
-        
+
         #endregion
 
-        
+
         #region IExecute
 
         public void UpdateTick()
@@ -36,17 +37,13 @@ namespace Controller
                 {
                     obj?.Method?.Invoke();
                     if (!obj.IsRepeating)
-                    {
                         obj.RemoveTimeRemainingExecute();
-                    }
                     else
-                    {
                         obj.CurrentTime = obj.Time;
-                    }
                 }
             }
         }
-        
+
         #endregion
     }
 }

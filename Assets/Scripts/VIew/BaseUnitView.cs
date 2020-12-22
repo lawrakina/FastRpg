@@ -12,47 +12,73 @@ namespace VIew
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class BaseUnitView : MonoBehaviour
     {
-        public bool isEnable = true;
-        public Transform Transform;
         public NavMeshAgent Agent;
-        public Collider Collider;
-        public Rigidbody Rigidbody;
         public Animator Animator;
         public AnimatorParammeters AnimatorParams;
+        public Collider Collider;
         public HealthBarView HealthBar;
+        public bool isEnable = true;
+        public Rigidbody Rigidbody;
+        public Transform Transform;
 
-        #region fields
 
-        private float _speed;
+        #region Properties
 
-        [Header("Movement")]
-
-        #region movenment
-
-        public float _moveSpeed = 5.0f;
-
-        public float distanceToCheckGround = 0.51f;
-        public float accelerationOfGravity = 1f;
+        public float Speed
+        {
+            get => _speed;
+            set
+            {
+                _speed = value;
+                AnimatorParams.Speed = value;
+            }
+        }
 
         #endregion
 
-        #endregion
+
+        protected virtual void Awake()
+        {
+            Transform = GetComponent<Transform>();
+            Rigidbody = GetComponent<Rigidbody>();
+            Collider = GetComponent<Collider>();
+            Agent = GetComponent<NavMeshAgent>();
+            Animator = GetComponent<Animator>();
+            AnimatorParams = new AnimatorParammeters(Animator);
+            HealthBar = GetComponentInChildren<HealthBarView>();
+        }
+
+        public void ToSwim()
+        {
+            OnSwimEvent?.Invoke();
+        }
+
+        public void ToUnSwim()
+        {
+            OnUnSwimEvent?.Invoke();
+        }
 
 
         #region PrivateClass
 
         public class AnimatorParammeters
         {
-            private Animator _animator;
+            private readonly Animator _animator;
+            private bool _attack;
+            private int _attackType;
 
             private bool _battle;
             private bool _falling;
             private bool _jump;
-            private bool _attack;
-            private int _weaponType;
-            private int _attackType;
             private float _speed;
             private UnitState _unitState;
+            private int _weaponType;
+
+
+            public AnimatorParammeters(Animator animator)
+            {
+                _animator = animator;
+            }
 
             public bool Battle
             {
@@ -88,11 +114,6 @@ namespace VIew
                 }
             }
 
-            public void SetTriggerJump()
-            {
-                Jump = true;
-            }
-
             public bool Jump
             {
                 get => _jump;
@@ -102,11 +123,6 @@ namespace VIew
                     _animator.SetTrigger(TagManager.ANIMATOR_PARAM_JUMP_TRIGGER);
                     _jump = !value;
                 }
-            }
-
-            public void SetTriggerAttack()
-            {
-                Attack = true;
             }
 
             public bool Attack
@@ -145,9 +161,9 @@ namespace VIew
                 get => _unitState;
                 set
                 {
-                    if(_unitState == value) return;
+                    if (_unitState == value) return;
                     _unitState = value;
-                    _animator.SetFloat(TagManager.ANIMATOR_PARAM_STATE_UNIT, (float)value);
+                    _animator.SetFloat(TagManager.ANIMATOR_PARAM_STATE_UNIT, (float) value);
                     // switch (_unitState)
                     // {
                     //     case UnitState.None:
@@ -180,34 +196,43 @@ namespace VIew
                 }
             }
 
+            public void SetTriggerJump()
+            {
+                Jump = true;
+            }
+
+            public void SetTriggerAttack()
+            {
+                Attack = true;
+            }
+
             public void ResetTrigger(string name)
             {
                 _animator.ResetTrigger(name);
             }
-
-
-            public AnimatorParammeters(Animator animator)
-            {
-                _animator = animator;
-            }
         }
 
         #endregion
 
 
-        #region Properties
+        #region fields
 
-        public float Speed
-        {
-            get => _speed;
-            set
-            {
-                _speed = value;
-                AnimatorParams.Speed = value;
-            }
-        }
+        private float _speed;
+
+        [Header("Movement")]
+
+
+        #region movenment
+
+        public float _moveSpeed = 5.0f;
+
+        public float distanceToCheckGround = 0.51f;
+        public float accelerationOfGravity = 1f;
 
         #endregion
+
+        #endregion
+
 
         #region Events
 
@@ -215,26 +240,5 @@ namespace VIew
         public event Action OnUnSwimEvent;
 
         #endregion
-
-        protected virtual void Awake()
-        {
-            Transform = GetComponent<Transform>();
-            Rigidbody = GetComponent<Rigidbody>();
-            Collider = GetComponent<Collider>();
-            Agent = GetComponent<NavMeshAgent>();
-            Animator = GetComponent<Animator>();
-            AnimatorParams = new AnimatorParammeters(Animator);
-            HealthBar = GetComponentInChildren<HealthBarView>();
-        }
-
-        public void ToSwim()
-        {
-            OnSwimEvent?.Invoke();
-        }
-
-        public void ToUnSwim()
-        {
-            OnUnSwimEvent?.Invoke();
-        }
     }
 }

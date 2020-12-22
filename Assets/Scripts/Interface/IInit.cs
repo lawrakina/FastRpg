@@ -1,7 +1,7 @@
-﻿    namespace Interface
+﻿namespace Interface
+{
+    public interface IInit
     {
-        public interface IInit
-        {
-            void Init();
-        }
+        void Init();
     }
+}

@@ -8,8 +8,11 @@ namespace Windows
     {
         #region Fields
 
-        [SerializeField] private Camera _camera;
-        [SerializeField] protected GameObject _content;
+        [SerializeField]
+        private Camera _camera;
+
+        [SerializeField]
+        protected GameObject _content;
 
         #endregion
 
@@ -22,17 +25,17 @@ namespace Windows
         public Camera Camera => _camera;
 
         #endregion
-        
+
+
         public virtual void Ctor()
-        {
-            
-        }
-        
-        public virtual void Init()
         {
         }
 
         public void Cleanup()
+        {
+        }
+
+        public virtual void Init()
         {
         }
 

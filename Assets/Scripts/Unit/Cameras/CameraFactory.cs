@@ -1,6 +1,7 @@
 ﻿using Extension;
 using UnityEngine;
 
+
 namespace Unit.Cameras
 {
     public sealed class CameraFactory : ICameraFactory

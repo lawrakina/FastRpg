@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Model
 {
     public class FloatNotifyPropertyChange : IFloatNotifyPropertyChange
@@ -20,6 +21,7 @@ namespace Model
 
         #endregion
 
+
         public float Value
         {
             get => _value;
@@ -30,6 +32,6 @@ namespace Model
             }
         }
 
-        public event Action<float> OnValueChange = delegate(float i) { };
+        public event Action<float> OnValueChange = delegate { };
     }
 }

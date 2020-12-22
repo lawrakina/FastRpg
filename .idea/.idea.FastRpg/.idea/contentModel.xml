@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\lawr_\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\lawr_\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_FastRpg.2120776638.00" t="ExcludeRecursive" />
-    <e p="E:\Unity\Projects\FastRpg" t="IncludeRecursive">
+    <e p="C:\Unity\Projects\FastRpg" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -2708,8 +2706,10 @@
           <e p="Controller" t="Include">
             <e p="BaseController.cs" t="Include" />
             <e p="Controllers.cs" t="Include" />
+            <e p="CustomizerCharacter.cs" t="Include" />
             <e p="FightCameraController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
+            <e p="ListOfCharactersController.cs" t="Include" />
             <e p="MainController.cs" t="Include" />
             <e p="MovePlayerController.cs" t="Include" />
             <e p="PositioningCharacterInMenuController.cs" t="Include" />
@@ -2725,9 +2725,9 @@
             <e p="IGeneratorDungeon.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
+            <e p="CharacterData.cs" t="Include" />
             <e p="Characters.cs" t="Include" />
             <e p="CharacterSettings.cs" t="Include" />
-            <e p="CharacterSettingsData.cs" t="Include" />
             <e p="DungeonGeneratorData.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
           </e>
@@ -2798,7 +2798,6 @@
             <e p="IWindow.cs" t="Include" />
           </e>
           <e p="Manager" t="Include">
-            <e p="Helper.cs" t="Include" />
             <e p="TagManager.cs" t="Include" />
           </e>
           <e p="MyTests" t="Include">
@@ -2869,5 +2868,7 @@
       <e p="UniRx.csproj" t="IncludeRecursive" />
       <e p="UniRx.Examples.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\lawr_\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\lawr_\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_FastRpg.1461245116.00" t="ExcludeRecursive" />
   </component>
 </project>

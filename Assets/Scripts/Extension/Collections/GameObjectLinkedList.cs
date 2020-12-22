@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Extension.Collections
 {
     public sealed class GameObjectLinkedList<T1> : LinkedList<LinkedListItem<T1>>
     {
-        private LinkedListItem<T1>[] _array;
+        private readonly LinkedListItem<T1>[] _array;
         private int _position = -1;
 
         public GameObjectLinkedList(LinkedListItem<T1>[] items)
         {
-            this._array = items;
+            _array = items;
             _position = 0;
         }
 
@@ -19,7 +20,7 @@ namespace Extension.Collections
             get
             {
                 if (_position == -1 || _position >= _array.Length)
-                    throw new InvalidOperationException($"fuck off");
+                    throw new InvalidOperationException("fuck off");
                 return _array[_position];
             }
         }
@@ -33,7 +34,8 @@ namespace Extension.Collections
                 _array[_position].Value.SetActive(true);
                 return true;
             }
-            else return false;
+
+            return false;
         }
 
         public bool MovePrev()
@@ -45,7 +47,8 @@ namespace Extension.Collections
                 _array[_position].Value.SetActive(true);
                 return true;
             }
-            else return false;
+
+            return false;
         }
     }
 }

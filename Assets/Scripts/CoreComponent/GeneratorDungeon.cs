@@ -10,20 +10,17 @@ using Random = UnityEngine.Random;
 
 namespace CoreComponent
 {
-
     public sealed class GeneratorDungeon : IGeneratorDungeon
     {
-        private bool isEnableDungeon = false;
-        private DungeonGeneratorData _dungeonGeneratorData;
-        private Transform _parent;
-        private DungeonArchitect.Dungeon _generator;
-        private GridFlowDungeonConfig _config;
         private GridFlowDungeonBuilder _builder;
-        private PooledDungeonSceneProvider _pooledSceneProvider;
-        private GameObject _dungeon;
+        private readonly GridFlowDungeonConfig _config;
+        private readonly GameObject _dungeon;
+        private readonly DungeonGeneratorData _dungeonGeneratorData;
+        private readonly Dungeon _generator;
+        private readonly Transform _parent;
+        private readonly PooledDungeonSceneProvider _pooledSceneProvider;
         private Type _typeSpawnPlayer;
-
-        public IReactiveProperty<uint> Seed { get; set; }
+        private bool isEnableDungeon;
 
         public GeneratorDungeon(DungeonGeneratorData dungeonGeneratorData, Transform parent)
         {
@@ -34,7 +31,7 @@ namespace CoreComponent
             _dungeon.name = "Dungeon";
 
             var gO = Object.Instantiate(_dungeonGeneratorData.StorageGenerator, _parent);
-            _generator = gO.GetComponent<DungeonArchitect.Dungeon>();
+            _generator = gO.GetComponent<Dungeon>();
             _config = gO.GetComponent<GridFlowDungeonConfig>();
             _builder = gO.GetComponent<GridFlowDungeonBuilder>();
             _pooledSceneProvider = gO.GetComponent<PooledDungeonSceneProvider>();
@@ -43,6 +40,8 @@ namespace CoreComponent
             Seed = new ReactiveProperty<uint>(_config.Seed);
             Seed.Subscribe(x => { _config.Seed = x; });
         }
+
+        public IReactiveProperty<uint> Seed { get; set; }
 
         public void BuildDungeon()
         {
@@ -63,8 +62,7 @@ namespace CoreComponent
             var result = _parent.GetComponentInChildren<SpawnMarkerCharacterInDungeon>();
             if (result != null)
                 return result.transform;
-            else
-                return null;
+            return null;
         }
 
         public void SetRandomSeed()

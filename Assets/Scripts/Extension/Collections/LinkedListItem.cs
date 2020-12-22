@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
+
 namespace Extension.Collections
 {
-    [Serializable]
-    public class LinkedListItem
+    [Serializable] public class LinkedListItem
     {
         public int Key;
         public GameObject Value;
@@ -15,8 +15,8 @@ namespace Extension.Collections
             Value = value;
         }
     }
-    [Serializable]
-    public class LinkedListItem<T1>
+
+    [Serializable] public class LinkedListItem<T1>
     {
         public T1 Key;
         public GameObject Value;

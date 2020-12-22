@@ -6,48 +6,52 @@ namespace Unit.Player
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
+        #region UnityMethods
+
+        private void Awake()
+        {
+            Transform = GetComponent<Transform>();
+            Rigidbody = GetComponent<Rigidbody>();
+            Collider = GetComponent<Collider>();
+            MeshRenderer = GetComponent<MeshRenderer>();
+            _animator = GetComponent<Animator>();
+            AnimatorParameters = new AnimatorParameters(ref _animator);
+
+            CharAttributes = new CharAttributes();
+        }
+
+        #endregion
+
+
         #region Fields
 
-        private Transform _transform;
-        private Collider _collider;
-        private Rigidbody _rigidbody;
-        private MeshRenderer _meshRenderer;
         private Animator _animator;
-        private AnimatorParameters _animatorParameters;
-        private Transform _enemyTarget;
-        private ICharAttributes _charAttributes;
 
         #endregion
 
 
         #region Properties
 
-        public Transform Transform => _transform;
-        public Collider Collider => _collider;
-        public Rigidbody Rigidbody => _rigidbody;
-        public MeshRenderer MeshRenderer => _meshRenderer;
+        public Transform Transform { get; private set; }
+
+        public Collider Collider { get; private set; }
+
+        public Rigidbody Rigidbody { get; private set; }
+
+        public MeshRenderer MeshRenderer { get; private set; }
+
         public Animator Animator => _animator;
-        public AnimatorParameters AnimatorParameters => _animatorParameters;
-        public ICharAttributes CharAttributes
-        {
-            get => _charAttributes;
-            set => _charAttributes = value;
-        }
-        public Transform EnemyTarget
-        {
-            get => _enemyTarget;
-            set => _enemyTarget = value;
-        }
+        public AnimatorParameters AnimatorParameters { get; private set; }
+
+        public ICharAttributes CharAttributes { get; set; }
+
+        public Transform EnemyTarget { get; set; }
+
         public BaseCharacterClass CharacterClass { get; set; }
 
-        public StringReactiveProperty Description
-        {
-            get
-            {
-                return new StringReactiveProperty(
-                    $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
-            }
-        }
+        public StringReactiveProperty Description =>
+            new StringReactiveProperty(
+                $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
 
         #endregion
 
@@ -55,23 +59,6 @@ namespace Unit.Player
         #region Events
 
         // public event Action<InfoCollision> OnBonusUp;
-
-        #endregion
-
-
-        #region UnityMethods
-
-        private void Awake()
-        {
-            _transform = GetComponent<Transform>();
-            _rigidbody = GetComponent<Rigidbody>();
-            _collider = GetComponent<Collider>();
-            _meshRenderer = GetComponent<MeshRenderer>();
-            _animator = GetComponent<Animator>();
-            _animatorParameters = new AnimatorParameters(ref _animator);
-
-            _charAttributes = new CharAttributes();
-        }
 
         #endregion
 

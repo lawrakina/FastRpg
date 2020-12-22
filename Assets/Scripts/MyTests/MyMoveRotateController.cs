@@ -1,24 +1,35 @@
-﻿using System;
-using Unit.Player;
+﻿using Unit.Player;
 using UnityEngine;
-using Object = UnityEngine.Object;
+
 
 public class MyMoveRotateController : MonoBehaviour
 {
-    [SerializeField] private PlayerView _player;
-    [SerializeField] private Transform _cameraTarget;
-    [SerializeField] private Transform _enemyTarger;
-    [SerializeField] private MyCameraView _camera;
-    [SerializeField] private float _rotateSpeedPlayer = 90.0f;
-    [SerializeField] private float _agroDistance = 5.0f;
+    [SerializeField]
+    private readonly float _agroDistance = 5.0f;
+
+    [SerializeField]
+    private MyCameraView _camera;
+
+    [SerializeField]
+    private Transform _cameraTarget;
 
     private Vector3 _direction = Vector3.zero;
+
+    [SerializeField]
+    private Transform _enemyTarger;
+
     private GameObject _goTarget;
+
+    [SerializeField]
+    private PlayerView _player;
+
+    [SerializeField]
+    private readonly float _rotateSpeedPlayer = 90.0f;
 
 
     private void Awake()
     {
-        _goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
+        _goTarget = Instantiate(new GameObject(), _player.Transform, true);
         _goTarget.name = "";
     }
 
@@ -28,7 +39,7 @@ public class MyMoveRotateController : MonoBehaviour
         _direction.z = UltimateJoystick.GetVerticalAxis("MoveRotate");
 
         DebugExtension.DebugCircle(_player.Transform.position, Color.red, _agroDistance);
-        
+
         MovePlayer(Time.deltaTime);
         RotatePlayer(Time.deltaTime);
         MoveCamera(Time.deltaTime);
@@ -53,7 +64,7 @@ public class MyMoveRotateController : MonoBehaviour
             Debug.Log($"Противник рядом: {sqrDistance}");
             var newDir = Vector3.RotateTowards(
                 _player.Transform.forward,
-                (_enemyTarger.transform.position - _player.Transform.position),
+                _enemyTarger.transform.position - _player.Transform.position,
                 10f * Time.deltaTime, _agroDistance);
             newDir.y = 0;
             _player.Transform.rotation = Quaternion.LookRotation(newDir, Vector3.up);
@@ -61,13 +72,12 @@ public class MyMoveRotateController : MonoBehaviour
         else
         {
             Debug.Log($"Противника нет: {sqrDistance}");
-            
+
             _player.Transform.RotateAround(
                 _player.Transform.position,
                 Vector3.up,
                 _rotateSpeedPlayer * deltaTime * _direction.x);
         }
-        
     }
 
     private void MoveCamera(float deltaTime)

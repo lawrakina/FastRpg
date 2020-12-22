@@ -1,33 +1,15 @@
-﻿using System;
-using Enums;
+﻿using Enums;
 using Interface;
 using UniRx;
 using Unit.Cameras;
 using Unit.Player;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 
 namespace Controller
 {
     public sealed class FightCameraController : BaseController, IExecute
     {
-        #region Fields
-
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-        private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-        private IPlayerView _player;
-        private FightCamera _camera;
-        private bool _followThePlayer;
-        private float _deltaTime;
-
-        private delegate void ActionMove(float deltaTime);
-
-        private ActionMove _move;
-
-        #endregion
-
-
         #region ClassLiveCycles
 
         public FightCameraController(IReactiveProperty<EnumBattleWindow> battleState, IPlayerView player,
@@ -48,7 +30,7 @@ namespace Controller
                 {
                     _followThePlayer = false;
                 }
-            });
+            }).AddTo(_subscriptions);
             _typeCameraAndCharControl.Subscribe(_ =>
             {
                 if (_typeCameraAndCharControl.Value == EnumFightCamera.TopView)
@@ -60,7 +42,7 @@ namespace Controller
                 {
                     _move = ThirdPersonViewFollow;
                 }
-            });
+            }).AddTo(_subscriptions);
 
             _camera.ThirdTarget = Object.Instantiate(
                 new GameObject("ThirdPersonTargetCamera"),
@@ -83,6 +65,22 @@ namespace Controller
                 _move(_deltaTime);
             }
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private readonly IReactiveProperty<EnumBattleWindow> _battleState;
+        private readonly IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
+        private readonly IPlayerView _player;
+        private readonly FightCamera _camera;
+        private bool _followThePlayer;
+        private float _deltaTime;
+
+        private delegate void ActionMove(float deltaTime);
+
+        private ActionMove _move;
 
         #endregion
 

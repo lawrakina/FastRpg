@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Model
 {
     public class IntNotifyPropertyChange : IIntNotifyPropertyChange
@@ -20,6 +21,7 @@ namespace Model
 
         #endregion
 
+
         public int Value
         {
             get => _value;
@@ -30,6 +32,6 @@ namespace Model
             }
         }
 
-        public event Action<int> OnValueChange = delegate(int i) { };
+        public event Action<int> OnValueChange = delegate { };
     }
 }

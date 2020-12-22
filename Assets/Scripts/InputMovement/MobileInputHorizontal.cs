@@ -1,13 +1,13 @@
 ﻿using System;
 using Extension;
-using UnityEngine;
+
 
 namespace InputMovement
 {
     public sealed class MobileInputHorizontal : IUserInputProxy
     {
-        public event Action<float> AxisOnChange = delegate(float f) {  };
-        
+        public event Action<float> AxisOnChange = delegate { };
+
         public void GetAxis()
         {
             // AxisOnChange.Invoke(Input.GetAxis(StringManager.AXIS_HORIZONTAL));

@@ -1,9 +1,10 @@
 ﻿using Interface;
 using UniRx;
 
+
 namespace Controller
 {
-    public abstract class BaseController: IInitialization, ICleanup
+    public abstract class BaseController : IInitialization, ICleanup
     {
         #region Fields
 
@@ -12,11 +13,29 @@ namespace Controller
 
         #endregion
 
+
+        #region ClassLiveCycles
+
         public BaseController()
         {
             _subscriptions = new CompositeDisposable();
         }
-        
+
+        #endregion
+
+
+        #region ICleanUp
+
+        public virtual void Cleanup()
+        {
+            _subscriptions?.Dispose();
+        }
+
+        #endregion
+
+
+        #region IController
+
         public virtual void On()
         {
             _isEnable = true;
@@ -27,14 +46,16 @@ namespace Controller
             _isEnable = false;
         }
 
+        #endregion
+
+
+        #region IInitialization
+
         public virtual void Initialization()
         {
             _isEnable = true;
         }
 
-        public virtual void Cleanup()
-        {
-            _subscriptions?.Dispose();
-        }
+        #endregion
     }
 }

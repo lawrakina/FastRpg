@@ -8,6 +8,7 @@
         Hunter,
         Mage
     }
+
     public enum CharacterGender
     {
         Male,
@@ -20,12 +21,5 @@
         NightElf,
         BloodElf,
         Orc
-    }
-
-    public enum StatePrototypePlayer
-    {
-        New,
-        Edit,
-        Complete
     }
 }

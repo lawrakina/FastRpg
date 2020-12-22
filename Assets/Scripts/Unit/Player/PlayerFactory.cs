@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Controller;
 using Data;
-using Enums;
 using Extension;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -10,44 +9,32 @@ namespace Unit.Player
 {
     public sealed class PlayerFactory : IPlayerFactory
     {
-        public IPlayerView CreatePlayer(GameObject prefab, CharacterSettings characterSettings)
+        private CharacterData _characterData;
+        private CustomizerCharacter _customizerCharacter;
+
+        public PlayerFactory(CustomizerCharacter customizerCharacter, CharacterData characterData)
         {
-            var player = Object.Instantiate(prefab);
-            player.name = $"PlayerCharacter.{characterSettings.CharacterClass}";
-            player.AddCapsuleCollider(radius: 0.5f, isTrigger: false, 
-                      center: new Vector3(0.0f,0.9f,0.0f),
-                      height: 1.8f)
-                  .AddRigidBody(mass: 80, CollisionDetectionMode.ContinuousSpeculative, 
-                      isKinematic: false, useGravity: true, 
-                      constraints: RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationZ)
+            _customizerCharacter = customizerCharacter;
+            _characterData = characterData;
+        }
+
+        public IPlayerView CreatePlayer(CharacterSettings item)
+        {
+            var player = Object.Instantiate(_characterData.StoragePlayerPrefab);
+            player.name = $"PlayerCharacter.{item.CharacterClass}";
+            player.AddCapsuleCollider(0.5f, false,
+                      new Vector3(0.0f, 0.9f, 0.0f),
+                      1.8f)
+                  .AddRigidBody(80, CollisionDetectionMode.ContinuousSpeculative,
+                      false, true,
+                      RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                      RigidbodyConstraints.FreezeRotationZ)
                   .AddCode<PlayerView>();
-            
-            var component = player.GetComponent<PlayerView>();
-            component.CharAttributes.Speed = characterSettings.PlayerMoveSpeed;
-            component.CharAttributes.AgroDistance = characterSettings.AgroDistance;
-            component.CharAttributes.RotateSpeedPlayer = characterSettings.RotateSpeedPlayer;
-            component.CharAttributes.CharacterGender = characterSettings.CharacterGender;
-            component.CharAttributes.CharacterRace = characterSettings.CharacterRace;
 
-            switch (characterSettings.CharacterClass)
-            {
-                case CharacterClass.Warrior:
-                    component.CharacterClass = new CharacterClassWarrior();
-                    break;
-                case CharacterClass.Rogue:
-                    component.CharacterClass = new CharacterClassRogue();
-                    break;
-                case CharacterClass.Hunter:
-                    component.CharacterClass = new CharacterClassHunter();
-                    break;
-                case CharacterClass.Mage:
-                    component.CharacterClass = new CharacterClassMage();
-                    break;
-                default:
-                    throw new Exception("PlayerFactory. playerData.PlayerSettings.CharacterClass:Недопустимое значение");
-            }
+            var playerView = player.GetComponent<IPlayerView>();
+            _customizerCharacter.Customize(ref playerView, item);
 
-            return component;
+            return playerView;
         }
     }
 }

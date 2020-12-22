@@ -1,6 +1,7 @@
 ﻿using Gui.Characters;
 using UnityEngine;
 
+
 namespace Gui
 {
     public sealed class GuiInitialization
@@ -8,18 +9,6 @@ namespace Gui
         #region Fields
 
         private readonly GuiData _guiData;
-
-        #endregion
-
-
-        #region Properties
-
-        public BattlePanel BattlePanel;
-        public CharacterPanel CharacterPanel;
-        public TalentsPanel TalentsPanel;
-        public SpellsPanel SpellsPanel;
-        public EquipmentPanel EquipmentPanel;
-        public NavigationBar NavigationBar;
 
         #endregion
 
@@ -36,6 +25,18 @@ namespace Gui
             TalentsPanel = Object.Instantiate(_guiData.TalentsPanel, uiRoot.transform);
             NavigationBar = Object.Instantiate(_guiData.NavigationBar, uiRoot.transform);
         }
+
+        #endregion
+
+
+        #region Properties
+
+        public BattlePanel BattlePanel;
+        public CharacterPanel CharacterPanel;
+        public TalentsPanel TalentsPanel;
+        public SpellsPanel SpellsPanel;
+        public EquipmentPanel EquipmentPanel;
+        public NavigationBar NavigationBar;
 
         #endregion
     }

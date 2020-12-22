@@ -6,16 +6,22 @@ namespace Unit
 {
     public sealed class AnimatorParameters
     {
-        private Animator _animator;
+        private readonly Animator _animator;
+        private bool _attack;
+        private int _attackType;
 
         private bool _battle;
         private bool _falling;
-        private bool _jump;
-        private bool _attack;
-        private int _weaponType;
-        private int _attackType;
-        private float _speed;
         private float _horizontalSpeed;
+        private bool _jump;
+        private float _speed;
+        private int _weaponType;
+
+
+        public AnimatorParameters(ref Animator animator)
+        {
+            _animator = animator;
+        }
 
         public bool Battle
         {
@@ -49,11 +55,6 @@ namespace Unit
                 _falling = value;
                 _animator.SetBool(TagManager.ANIMATOR_PARAM_FALLING, _falling);
             }
-        }
-
-        public void SetTriggerAttack()
-        {
-            Attack = true;
         }
 
         public bool Attack
@@ -94,18 +95,17 @@ namespace Unit
             {
                 _horizontalSpeed = value;
                 _animator.SetFloat(TagManager.ANIMATOR_PARAM_HORIZONTAL_SPEED, _horizontalSpeed);
-            } 
+            }
+        }
+
+        public void SetTriggerAttack()
+        {
+            Attack = true;
         }
 
         public void ResetTrigger(string name)
         {
             _animator.ResetTrigger(name);
-        }
-
-
-        public AnimatorParameters(ref Animator animator)
-        {
-            _animator = animator;
         }
     }
 }

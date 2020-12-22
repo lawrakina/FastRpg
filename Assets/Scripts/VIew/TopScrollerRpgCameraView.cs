@@ -6,6 +6,22 @@ namespace VIew
 {
     public sealed class TopScrollerRpgCameraView : MonoBehaviour
     {
+        private void Awake()
+        {
+            Collider = GetComponent<CapsuleCollider>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            OnCollisionEnter?.Invoke(other);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnCollisionExit?.Invoke(other);
+        }
+
+
         #region Fields
 
         // private Transform _target;
@@ -14,7 +30,9 @@ namespace VIew
         public float _offsetHeight = 9.1f;
         public float _offsetRadius = 5.2f;
         public bool _enableOffsetAxisX = true;
-        [HideInInspector] public CapsuleCollider Collider;
+
+        [HideInInspector]
+        public CapsuleCollider Collider;
 
         #endregion
 
@@ -25,21 +43,5 @@ namespace VIew
         public event Action<Collider> OnCollisionExit;
 
         #endregion
-
-        
-        private void Awake()
-        {
-            Collider = GetComponent<CapsuleCollider>();
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            OnCollisionEnter?.Invoke(other);
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            OnCollisionExit?.Invoke(other);
-        }
     }
 }

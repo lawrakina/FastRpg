@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace Extension
 {
     public static class LayerManager
@@ -7,7 +8,7 @@ namespace Extension
         public static LayerMask GroundLayer;
 
         /// <summary>
-        /// Проверка на вхождение слоя layer в маску слоев layerMask
+        ///     Проверка на вхождение слоя layer в маску слоев layerMask
         /// </summary>
         /// <param name="layerMask"></param>
         /// <param name="collider"></param>
@@ -18,7 +19,7 @@ namespace Extension
         }
 
         /// <summary>
-        /// Проверка на вхождение слоя collider.gameObject в маску слоев layerMask
+        ///     Проверка на вхождение слоя collider.gameObject в маску слоев layerMask
         /// </summary>
         /// <param name="layerMask"></param>
         /// <param name="collider"></param>
@@ -29,7 +30,7 @@ namespace Extension
         }
 
         /// <summary>
-        /// Проверка на вхождение слоя collider.gameObject.layer в маску слоев layerMask
+        ///     Проверка на вхождение слоя collider.gameObject.layer в маску слоев layerMask
         /// </summary>
         /// <param name="layerMask"></param>
         /// <param name="collider"></param>
@@ -38,5 +39,6 @@ namespace Extension
         {
             return (layerMask.value & (1 << collider.gameObject.layer)) != 0;
         }
+        
     }
 }

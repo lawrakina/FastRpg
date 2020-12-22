@@ -6,30 +6,6 @@ namespace VIew
 {
     public class HealthBarView : MonoBehaviour, IEnabled
     {
-        #region Fields
-
-        [HideInInspector] public MaterialPropertyBlock MatBlock;
-        [HideInInspector] public MeshRenderer MeshRenderer;
-        private static readonly int Fill = Shader.PropertyToID("_Fill");
-
-        #endregion
-
-
-        #region UnityMethods
-
-        public void On()
-        {
-            MeshRenderer = GetComponent<MeshRenderer>();
-            MatBlock = new MaterialPropertyBlock();
-        }
-
-        public void Off()
-        {
-            
-        }
-
-        #endregion
-
         public void AlignCamera(Transform cameraTransform)
         {
             var camXform = cameraTransform;
@@ -45,5 +21,33 @@ namespace VIew
             MatBlock.SetFloat(Fill, hp / maxHp);
             MeshRenderer.SetPropertyBlock(MatBlock);
         }
+
+
+        #region Fields
+
+        [HideInInspector]
+        public MaterialPropertyBlock MatBlock;
+
+        [HideInInspector]
+        public MeshRenderer MeshRenderer;
+
+        private static readonly int Fill = Shader.PropertyToID("_Fill");
+
+        #endregion
+
+
+        #region UnityMethods
+
+        public void On()
+        {
+            MeshRenderer = GetComponent<MeshRenderer>();
+            MatBlock = new MaterialPropertyBlock();
+        }
+
+        public void Off()
+        {
+        }
+
+        #endregion
     }
 }

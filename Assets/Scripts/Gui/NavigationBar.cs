@@ -9,18 +9,22 @@ using UnityEngine.UI;
 
 namespace Gui
 {
-    [Serializable]
-    public sealed class NavigationBar : MonoBehaviour, IInit, ICleanup
+    [Serializable] public sealed class NavigationBar : MonoBehaviour, IInit, ICleanup
     {
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private CompositeDisposable _subscriptions;
+        public Toggle BattleToggle;
 
         public Toggle CharToggle;
         public Toggle EquipToggle;
-        public Toggle BattleToggle;
         public Toggle SpellsToggle;
         public Toggle TalentsToggle;
+
+        public void Cleanup()
+        {
+            _subscriptions?.Dispose();
+        }
 
 
         public void Init()
@@ -38,11 +42,6 @@ namespace Gui
             TalentsToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Talents);
         }
 
-        public void Cleanup()
-        {
-            _subscriptions?.Dispose();
-        }
-
         public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
             IReactiveProperty<EnumBattleWindow> battleState)
         {
@@ -56,41 +55,43 @@ namespace Gui
                 {
                     case EnumMainWindow.None:
                         break;
+
                     case EnumMainWindow.Character:
                         CharToggle.isOn = true;
                         break;
+
                     case EnumMainWindow.Equip:
                         EquipToggle.isOn = true;
                         break;
+
                     case EnumMainWindow.Battle:
                         BattleToggle.isOn = true;
                         break;
+
                     case EnumMainWindow.Spells:
                         SpellsToggle.isOn = true;
                         break;
+
                     case EnumMainWindow.Talents:
                         TalentsToggle.isOn = true;
                         break;
+
                     default:
                         throw new ArgumentOutOfRangeException(nameof(active), active, null);
                 }
             });
-            
+
             CharToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)
-                {
                     // Debug.Log($"_activeWindow.Value = EnumMainWindow.Character");
                     _activeWindow.Value = EnumMainWindow.Character;
-                }
             }).AddTo(_subscriptions);
             EquipToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)
-                {
                     // Debug.Log($"_activeWindow.Value = EnumMainWindow.Equip");
                     _activeWindow.Value = EnumMainWindow.Equip;
-                }
             }).AddTo(_subscriptions);
             BattleToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
@@ -104,18 +105,14 @@ namespace Gui
             SpellsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)
-                {
                     // Debug.Log($"_activeWindow.Value = EnumMainWindow.Spells");
                     _activeWindow.Value = EnumMainWindow.Spells;
-                }
             }).AddTo(_subscriptions);
             TalentsToggle.OnValueChangedAsObservable().Subscribe(x =>
             {
                 if (x)
-                {
                     // Debug.Log($"_activeWindow.Value = EnumMainWindow.Talents");
                     _activeWindow.Value = EnumMainWindow.Talents;
-                }
             }).AddTo(_subscriptions);
         }
 

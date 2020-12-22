@@ -6,12 +6,11 @@ using Gui.Characters;
 using Interface;
 using UniRx;
 using Unit.Player;
-using UnityEngine;
+
 
 namespace Gui
 {
-    [Serializable]
-    public sealed class UiReference : IInit, ICleanup
+    [Serializable] public sealed class UiReference : IInit, ICleanup
     {
         #region Fields
 
@@ -25,18 +24,58 @@ namespace Gui
         public SpellsPanel SpellsPanel;
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
-        private ListCharactersManager _listCharactersManager;
+        private ListOfCharactersController _listOfCharactersController;
 
         #endregion
 
-        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow, IReactiveProperty<EnumBattleWindow> battleState, IReactiveProperty<EnumCharacterWindow> charWindow, ListCharactersManager listCharactersManager)
+
+        #region ICleanup
+
+        public void Cleanup()
+        {
+            CharacterPanel.Cleanup();
+            EquipmentPanel.Cleanup();
+            BattlePanel.Cleanup();
+            SpellsPanel.Cleanup();
+            TalentsPanel.Cleanup();
+            NavigationBar.Cleanup();
+        }
+
+        #endregion
+
+
+        #region IInit
+
+        public void Init()
+        {
+        }
+
+        public void Init(List<EnumMainWindow> offItemMenu)
+        {
+            Init();
+            CharacterPanel.Init();
+            EquipmentPanel.Init();
+            BattlePanel.Init();
+            SpellsPanel.Init();
+            TalentsPanel.Init();
+            NavigationBar.Init(offItemMenu);
+        }
+
+        #endregion
+
+
+        #region ClassLiveCycles
+
+        public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
+            IReactiveProperty<EnumBattleWindow> battleState, IReactiveProperty<EnumCharacterWindow> charWindow,
+            ListOfCharactersController listOfCharactersController)
         {
             _activeWindow = activeWindow;
             _battleState = battleState;
             _charWindow = charWindow;
-            _listCharactersManager = listCharactersManager;
+            _listOfCharactersController = listOfCharactersController;
 
-            CharacterPanel.Ctor(_activeWindow, _charWindow, _listCharactersManager);
+            CharacterPanel.Ctor(_activeWindow, _charWindow, _listOfCharactersController);
             EquipmentPanel.Ctor();
             BattlePanel.Ctor(_battleState);
             SpellsPanel.Ctor();
@@ -46,6 +85,11 @@ namespace Gui
             _activeWindow.Subscribe(_ => { ShowOnlyActivePanel(); });
             _battleState.Subscribe(_ => { ShowBattleOnlyActivePanel(); });
         }
+
+        #endregion
+
+
+        #region PrivateMethods
 
         private void ShowBattleOnlyActivePanel()
         {
@@ -75,29 +119,6 @@ namespace Gui
             else TalentsPanel.Hide();
         }
 
-        public void Init()
-        {
-        }
-
-        public void Init(List<EnumMainWindow> offItemMenu)
-        {
-            Init();
-            CharacterPanel.Init();
-            EquipmentPanel.Init();
-            BattlePanel.Init();
-            SpellsPanel.Init();
-            TalentsPanel.Init();
-            NavigationBar.Init(offItemMenu);
-        }
-
-        public void Cleanup()
-        {
-            CharacterPanel.Cleanup();
-            EquipmentPanel.Cleanup();
-            BattlePanel.Cleanup();
-            SpellsPanel.Cleanup();
-            TalentsPanel.Cleanup();
-            NavigationBar.Cleanup();
-        }
+        #endregion
     }
 }

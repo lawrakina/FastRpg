@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
+
 namespace Extension
 {
-    public static partial class BuilderExtension
+    public static class BuilderExtension
     {
         public static GameObject AddCapsuleCollider(this GameObject gameObject, float radius, bool isTrigger,
             Vector3 center, float height)
@@ -16,7 +17,7 @@ namespace Extension
         }
 
         public static GameObject AddRigidBody(this GameObject gameObject, float mass,
-            CollisionDetectionMode collisionDetectionMode, bool isKinematic, bool useGravity, 
+            CollisionDetectionMode collisionDetectionMode, bool isKinematic, bool useGravity,
             RigidbodyConstraints constraints)
         {
             var component = gameObject.GetOrAddComponent<Rigidbody>();
@@ -33,14 +34,11 @@ namespace Extension
             var component = gameObject.GetOrAddComponent<T>();
             return gameObject;
         }
-        
+
         private static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
         {
             var result = gameObject.GetComponent<T>();
-            if (!result)
-            {
-                result = gameObject.AddComponent<T>();
-            }
+            if (!result) result = gameObject.AddComponent<T>();
 
             return result;
         }

@@ -1,6 +1,6 @@
 ﻿namespace Gui.Battle
 {
-    public sealed class FightPanel: BasePanel
+    public sealed class FightPanel : BasePanel
     {
     }
 }

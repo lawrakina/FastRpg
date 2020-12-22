@@ -5,16 +5,18 @@ using UnityEngine;
 
 namespace Windows
 {
-    public sealed class BattleWindow: BaseWindow
+    public sealed class BattleWindow : BaseWindow
     {
         #region Fields
-        
-        [SerializeField] private Camera _forTextureRenderCamera;
+
+        [SerializeField]
+        private Camera _forTextureRenderCamera;
+
         private IReactiveProperty<EnumBattleWindow> _battleState;
 
         #endregion
 
-        
+
         #region Properties
 
         public GameObject Content => _content;
@@ -31,7 +33,8 @@ namespace Windows
 
             _battleState.Subscribe(_ =>
             {
-                _forTextureRenderCamera.gameObject.SetActive(_battleState.Value == EnumBattleWindow.DungeonGenerator);
+                _forTextureRenderCamera.gameObject.SetActive(
+                    _battleState.Value == EnumBattleWindow.DungeonGenerator);
             });
         }
 
@@ -53,6 +56,5 @@ namespace Windows
         }
 
         #endregion
-
     }
 }

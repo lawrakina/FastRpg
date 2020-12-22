@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 
+
 namespace Windows
 {
     public sealed class TalentsWindow : BaseWindow
     {
         #region Fields
 
-        [SerializeField] private Transform _characterPositionSpawn;
+        [SerializeField]
+        private Transform _characterPositionSpawn;
 
         #endregion
 

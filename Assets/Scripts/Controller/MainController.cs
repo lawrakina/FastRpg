@@ -30,7 +30,7 @@ namespace Controller
         private PlayerData _playerData;
 
         [SerializeField]
-        private CharacterSettingsData _characterSettingsData;
+        private CharacterData _characterData;
 
         [SerializeField]
         private DungeonGeneratorData _generatorData;
@@ -48,7 +48,7 @@ namespace Controller
 
         [Header("Type of camera and char control")]
         [SerializeField]
-        private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
+        private readonly EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
@@ -73,15 +73,48 @@ namespace Controller
             _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value); });
             _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
 
-            var playerFactory = new PlayerFactory();
-            var listCharactersManager = new ListCharactersManager(playerFactory, _playerData);
-            var player = listCharactersManager.CurrentChar.Value;
-            var customizingCharacter =
-                new CustomizingCharacter(_characterSettingsData, player, listCharactersManager.PrototypePlayer);
+            var customizerCharacter = new CustomizerCharacter(_characterData);
+            var playerFactory = new PlayerFactory(customizerCharacter, _characterData);
+            var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
+            var player = listOfCharactersController.CurrentCharacter.Value;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // var playerFactory = new PlayerFactory();
+            // var customizingCharacter = new CustomizingCharacter(_characterData);
+            // var listCharactersManager = new ListCharactersManager(playerFactory, customizingCharacter, _playerData);
+            // var player = listCharactersManager.CurrentChar.Value;
+
+            // 1-вый запуск чаров нет
+            //     взять префаб фентезиЧара
+            //         если в SO нет записей для чего какая вещь - заполнить
+            //         если есть - прочитать из сохранения и создать первого чара
+            //         если чаров несколько то создать и добавить в менеджер списка чаров.
+            //     если никого нет то
+            //     создать пустого чара,
+            //         все поля редактирования персонажа привязать к прототипу
+            //     когда сохраняем прототип в персонажа
+            //         
+            //  если записи есть
+            //         создать нового персонажа по сохраненным настройкам
+            //     создать всех персонажей
 
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow, listCharactersManager);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController);
 
             //ввод с экранного джойстика
             var inputInitialization = new InputInitialization();
@@ -122,6 +155,7 @@ namespace Controller
             var inputController = new InputController(inputInitialization.GetInput());
 
             _controllers = new Controllers();
+            // _controllers.Add(customizingCharacter);
             _controllers.Add(positioningCharInMenuController);
             _controllers.Add(battleCameraController);
             _controllers.Add(inputInitialization);

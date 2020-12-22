@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
+
 namespace Windows
 {
-    public sealed class EquipmentWindow: BaseWindow
+    public sealed class EquipmentWindow : BaseWindow
     {
         #region Fields
 
-        [SerializeField] private Transform _characterPositionSpawn;
+        [SerializeField]
+        private Transform _characterPositionSpawn;
 
         #endregion
-        
-        
+
+
         public override void Ctor()
         {
             base.Ctor();

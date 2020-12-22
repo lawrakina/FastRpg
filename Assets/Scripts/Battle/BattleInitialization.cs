@@ -9,23 +9,6 @@ namespace Battle
 {
     public sealed class BattleInitialization : IBattleInit
     {
-        #region Fields
-
-        private IGeneratorDungeon _generatorDungeon;
-        private IReactiveProperty<EnumMainWindow> _activeWindow;
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-        private IPlayerView _player;
-
-        #endregion
-
-
-        #region Properties
-
-        public GameObject Dungeon { get; set; }
-
-        #endregion
-
-
         #region ClassLiveCycles
 
         public BattleInitialization(IGeneratorDungeon generatorDungeon,
@@ -41,6 +24,13 @@ namespace Battle
         #endregion
 
 
+        #region Properties
+
+        public GameObject Dungeon { get; set; }
+
+        #endregion
+
+
         #region Methods
 
         public void StartBattle()
@@ -52,6 +42,16 @@ namespace Battle
             _player.Transform.localRotation = Quaternion.identity;
             _battleState.Value = EnumBattleWindow.Fight;
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private readonly IGeneratorDungeon _generatorDungeon;
+        private IReactiveProperty<EnumMainWindow> _activeWindow;
+        private readonly IReactiveProperty<EnumBattleWindow> _battleState;
+        private readonly IPlayerView _player;
 
         #endregion
     }
