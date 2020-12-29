@@ -709,37 +709,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1084103786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2309475557531078511, guid: d92d6ed23c665da4e9af441afe85eebb,
-    type: 3}
-  m_PrefabInstance: {fileID: 2309475558455650626}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1084103791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084103786}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb42831ee5422f409e7f24f9e7488ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderingStrategy: 0
-  renderTargetName: 
-  renderingMode: 0
-  outlineLayerMask: -1
-  scaleIndepented: 1
-  primaryRendererScale: 0.75
-  blurShift: 1
-  dilateShift: 1
-  dilateIterrations: 1
-  dilateQuality: 0
-  blurIterrations: 1
-  blurType: 1
-  infoRendererScale: 0.75
 --- !u!1 &1163862500
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +772,6 @@ MonoBehaviour:
     SpellsWindow: {fileID: 587162686}
     TalentsWindow: {fileID: 1289326281}
   _activePanelAndWindow: 1
-  _fightCameraType: 1
 --- !u!4 &1289326280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1582378958552782866, guid: 05bf864ab5e6b6543b89499824caa7a2,
@@ -1590,20 +1558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1009567182}
     m_Modifications:
-    - target: {fileID: 2309475557531078512, guid: d92d6ed23c665da4e9af441afe85eebb,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2309475557531078515, guid: d92d6ed23c665da4e9af441afe85eebb,
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2309475557772574281, guid: d92d6ed23c665da4e9af441afe85eebb,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2309475559204548610, guid: d92d6ed23c665da4e9af441afe85eebb,
         type: 3}

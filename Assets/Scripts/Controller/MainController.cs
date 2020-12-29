@@ -48,7 +48,7 @@ namespace Controller
 
         [Header("Type of camera and char control")]
         [SerializeField]
-        private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
+        private readonly EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
@@ -77,7 +77,41 @@ namespace Controller
             var playerFactory = new PlayerFactory(customizerCharacter, _characterData);
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
             var player = listOfCharactersController.CurrentCharacter.Value;
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // var playerFactory = new PlayerFactory();
+            // var customizingCharacter = new CustomizingCharacter(_characterData);
+            // var listCharactersManager = new ListCharactersManager(playerFactory, customizingCharacter, _playerData);
+            // var player = listCharactersManager.CurrentChar.Value;
+
+            // 1-вый запуск чаров нет
+            //     взять префаб фентезиЧара
+            //         если в SO нет записей для чего какая вещь - заполнить
+            //         если есть - прочитать из сохранения и создать первого чара
+            //         если чаров несколько то создать и добавить в менеджер списка чаров.
+            //     если никого нет то
+            //     создать пустого чара,
+            //         все поля редактирования персонажа привязать к прототипу
+            //     когда сохраняем прототип в персонажа
+            //         
+            //  если записи есть
+            //         создать нового персонажа по сохраненным настройкам
+            //     создать всех персонажей
+
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
             _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController);
