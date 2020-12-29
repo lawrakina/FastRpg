@@ -52,12 +52,12 @@ namespace Unit.Cameras
 
         public Vector3 OffsetThirdPosition()
         {
-            return _offetTopPosition;
+            return _offsetThirdPosition;
         }
 
         public Vector3 OffsetThirdRotation()
         {
-            return _offsetTopRotation;
+            return _offsetThirdRotation;
         }
 
         public float CameraMoveSpeed => _cameraMoveSpeed;

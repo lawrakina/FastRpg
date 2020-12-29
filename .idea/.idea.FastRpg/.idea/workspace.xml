@@ -22,21 +22,9 @@
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidController.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidController.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/Humanoid.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/Humanoid/BaseHumanoidController.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/Humanoid/BaseHumanoidController.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/Humanoid/BaseUnitAnimatorController.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/Humanoid/BaseUnitAnimatorController.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AnimatorControllers/ui.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/CharacterData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/CharacterData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/ModularCharacters.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Character.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CoreComponent/GeneratorDungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CoreComponent/GeneratorDungeon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,8 +197,8 @@
         <option value="$PROJECT_DIR$/Assets/AssetsExternal/PolygonFantasyHeroCharacters/Scripts/CharacterRandomizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/CustomizerCharacter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CoreComponent/GeneratorDungeon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
       </list>
     </option>
   </component>

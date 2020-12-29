@@ -23,6 +23,10 @@ namespace Controller
 
         public void Customize(ref IPlayerView playerView, CharacterSettings settings)
         {
+            playerView.CharAttributes.AgroDistance = settings.AgroDistance;
+            playerView.CharAttributes.Speed= settings.PlayerMoveSpeed;
+            playerView.CharAttributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
+
             var person = new PersonCharacter(playerView.Transform.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;

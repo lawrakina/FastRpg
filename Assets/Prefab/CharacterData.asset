@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3666e134113a40aeb11c29d053f150d6, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  StoragePlayerPrefab: {fileID: 3702406414006084823, guid: 889c1f64bd0c06b41b4bda60b8314ca6,
+  StoragePlayerPrefab: {fileID: 1588895830433058, guid: 5f160eebd5f55fb4d8187a5e697e1088,
     type: 3}
   humanSkin:
   - {r: 1, g: 0.8000001, b: 0.682353, a: 1}

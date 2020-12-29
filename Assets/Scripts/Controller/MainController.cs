@@ -19,6 +19,7 @@ namespace Controller
     {
         #region Fields
 
+        private CompositeDisposable _subscriptions;
         private Controllers _controllers;
 
         [Header("Game Layers")]
@@ -50,6 +51,12 @@ namespace Controller
         [SerializeField]
         private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
 
+        private IPlayerView _player;
+
+        [Header("For debug")]
+        [SerializeField]
+        private GameObject _linkToCharPlayer;
+
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
@@ -62,6 +69,7 @@ namespace Controller
 
         private void Awake()
         {
+            _subscriptions = new CompositeDisposable();
             LayerManager.GroundLayer = _groundLayer;
 
             //UI & Windows
@@ -76,7 +84,12 @@ namespace Controller
             var customizerCharacter = new CustomizerCharacter(_characterData);
             var playerFactory = new PlayerFactory(customizerCharacter, _characterData);
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
-            var player = listOfCharactersController.CurrentCharacter.Value;
+            _player = listOfCharactersController.CurrentCharacter.Value;
+            listOfCharactersController.CurrentCharacter.Subscribe(_ =>
+            {
+                _player = listOfCharactersController.CurrentCharacter.Value;
+                _linkToCharPlayer = _player.Transform.gameObject;
+            }).AddTo(_subscriptions);
             
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
@@ -95,7 +108,7 @@ namespace Controller
 
             //Positioning character in menu
             var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
-            positioningCharInMenuController.Player = player;
+            positioningCharInMenuController.Player = _player;
             positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.CharacterWindow.CharacterSpawn(), EnumMainWindow.Character);
@@ -108,15 +121,15 @@ namespace Controller
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
-            var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, player);
+            var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, _player);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
             _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
             var battleCameraController =
-                new FightCameraController(_battleState, player, fightCamera, _typeCameraAndCharControl);
+                new FightCameraController(_battleState, _player, fightCamera, _typeCameraAndCharControl);
             var battlePlayerMoveController =
-                new MovePlayerController(_battleState, inputInitialization.GetInput(), player,
+                new MovePlayerController(_battleState, inputInitialization.GetInput(), _player,
                     _typeCameraAndCharControl);
             var inputController = new InputController(inputInitialization.GetInput());
 
@@ -161,6 +174,7 @@ namespace Controller
 
         private void OnDestroy()
         {
+            _subscriptions?.Dispose();
             _controllers.Cleanup();
         }
 
