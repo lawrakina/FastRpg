@@ -28,7 +28,8 @@ namespace CoreComponent
             _parent = parent;
 
             _dungeon = Object.Instantiate(new GameObject(), _parent);
-            _dungeon.name = "Dungeon";
+            _dungeon.name = "root-Dungeon.Static";
+            _dungeon.isStatic = true;
 
             var gO = Object.Instantiate(_dungeonGeneratorData.StorageGenerator, _parent);
             _generator = gO.GetComponent<Dungeon>();
