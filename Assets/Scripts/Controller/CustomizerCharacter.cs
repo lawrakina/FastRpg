@@ -107,8 +107,8 @@ namespace Controller
         private SkinColor SkinColor{ get; set; }
         public CharacterRace CharacterRace { get; set; }
         public CharacterGender CharacterGender{ get; set; }
-        [SerializeField] private Elements _elements = Elements.No;
-        [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_Base_Hair;
+        [SerializeField] private Elements _elements = Elements.Yes;
+        [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_No_FacialHair;
         [SerializeField] private FacialHair _facialHair = FacialHair.No;
         
         

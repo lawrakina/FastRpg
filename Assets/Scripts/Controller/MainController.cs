@@ -7,6 +7,7 @@ using Enums;
 using Extension;
 using Gui;
 using InputMovement;
+using JetBrains.Annotations;
 using UniRx;
 using Unit.Cameras;
 using Unit.Player;
@@ -64,6 +65,9 @@ namespace Controller
 
         #endregion
 
+        
+        
+        //ДОДЕЛАТЬ БЛЯТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!outLine
 
         #region UnityMethods
 

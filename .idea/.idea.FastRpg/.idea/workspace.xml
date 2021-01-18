@@ -22,9 +22,17 @@
     <list default="true" id="c47b76d1-785f-4bb7-bf24-a8375df81df7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastRpg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/AnimatorControllers/Humanoid/HumanoidController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/AnimatorControllers/Humanoid/HumanoidController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LevelGenerator-DungeonGridFlow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LevelGenerator-DungeonGridFlow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/CustomizerCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/CustomizerCharacter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extension/BuilderExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Extension/BuilderExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/CameraFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/CameraFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/FightCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/FightCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sgpatcher_token/Google.Apis.Auth.OAuth2.Responses.TokenResponse-user" beforeDir="false" afterPath="$PROJECT_DIR$/sgpatcher_token/Google.Apis.Auth.OAuth2.Responses.TokenResponse-user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,10 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player/ListCharacters.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gui/CharacterPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/PositioningCharacterInMenuController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MyTests/MyMoveRotateController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extension/LinkedListItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Battle/BattleInitialization.cs" />
@@ -196,9 +200,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/ListOfCharactersController.cs" />
         <option value="$PROJECT_DIR$/Assets/AssetsExternal/PolygonFantasyHeroCharacters/Scripts/CharacterRandomizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/CharacterData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/CustomizerCharacter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CoreComponent/GeneratorDungeon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MovePlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/CustomizerCharacter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extension/BuilderExtension.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/FightCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Cameras/CameraFactory.cs" />
       </list>
     </option>
   </component>
@@ -217,7 +225,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="Inspections-C#" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -295,6 +303,12 @@
       <workItem from="1608533220222" duration="4348000" />
       <workItem from="1608616734132" duration="202000" />
       <workItem from="1608616964961" duration="14179000" />
+      <workItem from="1609256580328" duration="1931000" />
+      <workItem from="1609302474518" duration="3583000" />
+      <workItem from="1609851220099" duration="466000" />
+      <workItem from="1610113659425" duration="1755000" />
+      <workItem from="1610364172808" duration="1810000" />
+      <workItem from="1610535233320" duration="615000" />
     </task>
     <servers />
   </component>
@@ -437,13 +451,13 @@
     </state>
     <state x="-897" y="-519" key="RiderGenerateDialog/-3360.364.1842.1080/-1440.-1090.1378.2560/0.0.2482.1440@-1440.-1090.1378.2560" timestamp="1608631638429" />
     <state x="726" y="241" key="RiderGenerateDialog/0.0.1842.1080@0.0.1842.1080" timestamp="1606908188799" />
-    <state x="181" y="212" width="1156" height="711" key="SettingsEditor" timestamp="1608375396516">
+    <state x="183" y="84" width="1495" height="976" key="SettingsEditor" timestamp="1609259989676">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
     <state x="-1314" y="-470" width="1156" height="711" key="SettingsEditor/-3360.364.1842.1080/-1440.-1090.1378.2560/0.0.2482.1440@-1440.-1090.1378.2560" timestamp="1608203245600" />
     <state x="2110" y="-1238" width="1118" height="711" key="SettingsEditor/0.0.1458.864/1920.-1499.1378.2560/3360.-577.2498.1440@1920.-1499.1378.2560" timestamp="1602050342808" />
     <state x="2110" y="-1197" key="SettingsEditor/0.0.1842.1080/1920.-1458.1378.2560/3360.-577.2498.1440@1920.-1458.1378.2560" timestamp="1601970590441" />
-    <state x="181" y="212" width="1495" height="708" key="SettingsEditor/0.0.1842.1080@0.0.1842.1080" timestamp="1608375396516" />
+    <state x="183" y="84" width="1495" height="976" key="SettingsEditor/0.0.1842.1080@0.0.1842.1080" timestamp="1609259989676" />
     <state x="-1340" y="-345" width="1178" height="1719" key="VCS.FileHistoryDialog" timestamp="1608532641456">
       <screen x="-1440" y="-1090" width="1378" height="2560" />
     </state>

@@ -94,8 +94,8 @@ namespace Controller
         private void AnimatorSpeedUpdate(Vector3 movingVector)
         {
             _unitView.AnimatorParameters.Speed = movingVector.z;
-            if (movingVector.z < 0)
-                _unitView.AnimatorParameters.Speed = -1.0f;
+            // if (movingVector.z < 0)
+            //     _unitView.AnimatorParameters.Speed = -1.0f;
             _unitView.AnimatorParameters.HorizontalSpeed = movingVector.x;
         }
 

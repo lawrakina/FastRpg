@@ -1,5 +1,8 @@
-﻿using Interface;
+﻿using System;
+using Extension;
+using Interface;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 namespace Unit.Cameras
@@ -76,5 +79,28 @@ namespace Unit.Cameras
         }
 
         #endregion
+
+
+        private void OnCollisionEnter(Collision other)
+        {
+            Dbg.Log($"OnTriggerEnter.other:{other},{other.gameObject},isStatic:{other.gameObject.isStatic}");
+            if (other.gameObject.isStatic)
+            {
+                var go = other.gameObject.GetComponent<MeshRenderer>();
+                go.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+            }
+        }
+
+        // OnCollisionEnter OnCollisionExit OnTriggerEnter  OnTriggerExit
+
+        private void OnCollisionExit(Collision other)
+        {
+            Dbg.Log($"OnTriggerExit.other:{other},{other.gameObject},isStatic:{other.gameObject.isStatic}");
+            if (other.gameObject.isStatic)
+            {
+                var go = other.gameObject.GetComponent<MeshRenderer>();
+                go.shadowCastingMode = ShadowCastingMode.On;
+            }
+        }
     }
 }

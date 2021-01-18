@@ -6,13 +6,14 @@ namespace Extension
     public static class BuilderExtension
     {
         public static GameObject AddCapsuleCollider(this GameObject gameObject, float radius, bool isTrigger,
-            Vector3 center, float height)
+            Vector3 center, float height, int numberAxisDirection = 1)
         {
             var component = gameObject.GetOrAddComponent<CapsuleCollider>();
             component.radius = radius;
             component.isTrigger = isTrigger;
             component.center = center;
             component.height = height;
+            component.direction = numberAxisDirection;
             return gameObject;
         }
 
